@@ -1,0 +1,3 @@
+import CreateAccountRequestConfirmation from './CreateAccountRequestConfirmation'
+
+export default CreateAccountRequestConfirmation
