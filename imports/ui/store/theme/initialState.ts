@@ -15,6 +15,36 @@ const initialState = {
     paddingLeft: 24,
     borderRadius: 4
   },
+  deleteModal: {
+    deleteTitle: {
+      color: '#2E2226',
+      fontSize:  22.78,
+      marginBottom: 0,
+      marginTop: 32
+    },
+    deleteButton: {
+      backgroundColor: '#F34C4F',
+      color: 'white',
+      cursor: 'pointer',
+      borderRadius: 7,
+      paddingTop: 14,
+      paddingBottom: 14,
+    },
+    cancelButton: {
+      borderRadius: 7,
+      paddingTop: 14,
+      paddingBottom: 14,
+    },
+    deleteDescription: {
+      fontSize: 18,
+      color: '#ABA5A7',
+      textAlign: 'center',
+      fontWeight: 100,
+      marginBottom: 32,
+      marginTop: 16,
+      maxWidth: 452
+    }
+  },
   input: {
     inputContainer: {
       display: 'flex',
@@ -145,6 +175,32 @@ const initialState = {
     },
     logoutButton: {
       cursor: 'pointer'
+    },
+    createAccountRequestButton: {
+      backgroundColor: '#3CD2C8',
+      color: 'white',
+      paddingTop: 12,
+      paddingBottom: 12,
+      paddingRight: 16,
+      paddingLeft: 16,
+    },
+    createaAccountButton: {
+      backgroundColor: '#3CD2C8',
+      color: 'white',
+      paddingTop: 12,
+      paddingBottom: 12,
+      paddingRight: 16,
+      paddingLeft: 16,
+      marginLeft: 10
+    },
+    loginButton: {
+      backgroundColor: '#3CD2C8',
+      color: 'white',
+      paddingTop: 12,
+      paddingBottom: 12,
+      paddingRight: 16,
+      paddingLeft: 16,
+      marginLeft: 10
     }
   },
   footer: {
@@ -576,8 +632,9 @@ const initialState = {
       display: 'flex'
     },
     sideMenuContainer: {
-      width: 222,
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      height: 610,
+      marginRight: 46.18
     }
   },
   sideMenu: {
@@ -625,7 +682,7 @@ const initialState = {
       marginBottom: 16
     },
     selectedOptionColor: '#3CD2C8',
-    unselectedOption: '#ABA5A7'
+    unselectedOptionColor: '#ABA5A7'
   },
   profileButton: {
     profileButtonContainer: {
@@ -651,6 +708,214 @@ const initialState = {
       fontWeight: 500,
       marginRight: 8,
       color: '#2E2226'
+    }
+  },
+  contacts: {
+    contactsContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 162,
+      height: 2
+    },
+    tableContainer: {
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      display: 'flex',
+    },
+    inviteButton1: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 184,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+    },
+    column: {
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+    },
+    tableRow: {
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+    },
+    columnName: {
+      minWidth: 150,
+      maxWidth: 150,
+    },
+    columnEmail: {
+      minWidth: 300,
+      maxWidth: 300,
+    },
+    columnPost: {
+      minWidth: 100,
+      maxWidth: 100,
+    },
+    columnProjectRoles: {
+      minWidth: 200,
+      maxWidth: 200,
+    }
+  },
+  contact: {
+    contactContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 162,
+      height: 2
+    },
+    information: {
+      display: 'flex',
+      justifyContent: 'space-between'
+    },
+    personalInformation: {
+      display: 'flex',
+      width: '48%',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      backgroundColor: 'white',
+      padding: 32,
+      boxSizing: 'border-box'
+    },
+    personalInformationTitle: {
+      color: '#2E2226',
+      fontSize: 22,
+      fontWeight: 500
+    },
+    personalInformationSubTitle: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginBottom: 32,
+      
+      marginTop: 7,
+      fontWeight: 100
+    },
+    firstNameAndLastName: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    firstName: {
+      width: '48%',
+      boxSizing: 'border-box',
+      flex: 'initial',
+    },
+    lastName: {
+      width: '48%',
+      boxSizing: 'border-box',
+      flex: 'initial',
+    },
+    contactInformation: {
+      display: 'flex',
+      width: '48%',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      backgroundColor: 'white',
+      padding: 32,
+      boxSizing: 'border-box'
+    },
+    contactInformationTitle: {
+      color: '#2E2226',
+      fontSize: 22,
+      fontWeight: 500
+    },
+    contactInformationSubTitle: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginBottom: 32,
+
+      marginTop: 7,
+      fontWeight: 100
+    },
+    email: {
+      marginBottom: 10,
+      height: 'initial',
+      flex: 'initial'
     }
   }
 }

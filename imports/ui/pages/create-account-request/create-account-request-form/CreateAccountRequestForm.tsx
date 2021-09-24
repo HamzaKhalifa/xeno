@@ -55,7 +55,6 @@ const CreateAccountRequestForm = () => {
     
     setLoading(true)
     remote.call('clientPortalAccountCreationRequests.requestAccountCreation', { legalName, firstName, lastName, email, message }, (error, response) => {
-      console.log('response', response)
       setLoading(false)
       if (error) return Toast.error('Error sending invitation ' + error.message)
 

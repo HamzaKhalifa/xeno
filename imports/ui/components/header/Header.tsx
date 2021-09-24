@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useHistory } from 'react-router-dom'
 
 import CustomButton from '/imports/ui/components/custom-button'
 import CustomLoader from '/imports/ui/components/custom-loader'
@@ -19,10 +19,15 @@ const Header = () => {
 
   const user = useAuth()
   const styles = useStyles()
+  const location = useLocation()
+  const history = useHistory()
 
   const logout = () => {
     setLogoutLoading(true)
-    Meteor.logout(_ => setLogoutLoading(false))
+    Meteor.logout(_ => {
+      setLogoutLoading(false)
+      history.push('/login')
+    })
   }
 
   return (
@@ -49,6 +54,10 @@ const Header = () => {
           </div>
         }
         {user && <ProfileButton />}
+
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccount') && <Link to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</Link>}
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest') && <Link to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</Link>}
+        {!user && (location.pathname === '/createAccountRequest' || location.pathname === '/createAccount') && <Link to='/login' style={{ ...headerStyles.loginButton }}>Login</Link>}
       </div>
 
     </div>

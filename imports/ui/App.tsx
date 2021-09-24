@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
+import SplashScreen from '/imports/ui/pages/splash-screen'
 import CreateAccountRequest from '/imports/ui/pages/create-account-request'
 import CreateAccountRequestConfirmation from '/imports/ui/pages/create-account-request-confirmation'
 import CreateAccount from '/imports/ui//pages/create-account'
@@ -11,6 +12,9 @@ import CreateAccountConfirmation from '/imports/ui/pages/create-account-confirma
 import EnrollAccount from '/imports/ui/pages/enroll-account'
 import Login from '/imports/ui/pages/login'
 import Home from '/imports/ui/pages/home'
+import Contacts from './pages/contacts'
+import AutomaticLogin from '/imports/ui/pages/automatic-login'
+import Contact from '/imports/ui/pages/contact'
 
 import store from '/imports/ui/store'
 
@@ -18,9 +22,12 @@ export const App = () => {
   return (
     <Provider store={store}>
 
-      <Toaster position='top-center' reverseOrder={false} toastOptions={{ duration: 5000 }}/>
+      <Toaster position='top-center' reverseOrder={false} toastOptions={{ duration: 5000 }} />
 
       <BrowserRouter>
+
+        <AutomaticLogin />
+
         <Switch>
           <Route exact path='/createAccountRequest' component={CreateAccountRequest} />
           <Route exact path='/createAccountRequestConfirmation' component={CreateAccountRequestConfirmation} />
@@ -30,11 +37,17 @@ export const App = () => {
           <Route path='/confirmEmail' component={ConfirmEmail} />
           <Route path='/createAccountConfirmation' component={CreateAccountConfirmation} />
 
+          <Route exact path='/splashScreen' component={SplashScreen} />
+
           <Route exact path='/login' component={Login} />
 
           <Route exact path='/home' component={Home} />
+          
+          <Route exact path='/contacts' component={Contacts} />
 
-          <Redirect from='/' to='/home' />
+          <Route exact path='/contact/:id' component={Contact} />
+
+          <Redirect from='/' to='/splashScreen' />
         </Switch>
       </BrowserRouter>
     </Provider>

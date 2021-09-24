@@ -13,8 +13,6 @@ const useAuth = () => {
     return user
   })
 
-  console.log('user', user)
-
   React.useEffect(() => {
     if (user && user.profile && user.profile.userType === 'Organizational') {
       Toast.error('You are trying to login using an organization user')
@@ -22,7 +20,10 @@ const useAuth = () => {
     }
   }, [user])
 
-  if (user === null && history.location.pathname !== '/login') history.push('/login')
+  if (user === null 
+    && ['/login', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation'].indexOf(history.location.pathname) === -1 
+    && !history.location.pathname.includes('/enrollAccount')
+  ) { history.push('/splashScreen') }
 
   if (user && history.location.pathname === '/login' || history.location.pathname === '/splash') {
     if (user && user.profile && user.profile.userType !== 'Organizational') {

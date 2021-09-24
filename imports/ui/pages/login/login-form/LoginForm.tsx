@@ -89,6 +89,9 @@ const LoginForm = () => {
       if (error) return Toast.error('Error logging in with Facebook ' + error.message)
       Meteor.loginWithToken(result.token, error => {
         if (error) return Toast.error('Error logging in with a token ' + error.message)
+        else {
+          localStorage.setItem('token', result.token)
+        }
       })
     })
   }
@@ -124,15 +127,15 @@ const LoginForm = () => {
 
           <FacebookLogin
             appId={Meteor.settings.public.FACEBOOK_APP_ID}
-            autoLoad
+            autoLoad={false}
             callback={loginWithFacebook}
             fields='name,email,picture.type(large)'
             render={renderProps => (
-              <FacebookIcon style={{ ...loginFormStyles.facebookButton }} onClick={renderProps.onClick} />
+              <FacebookIcon style={{ ...loginFormStyles.facebookButton }} onClick={() => renderProps.onClick()} />
             )}
           />
-          <GoogleIcon style={{ ...loginFormStyles.googleButton }} />
-          <LinkedinIcon style={{ ...loginFormStyles.linkedinButton }} />
+          {/* <GoogleIcon style={{ ...loginFormStyles.googleButton }} />
+          <LinkedinIcon style={{ ...loginFormStyles.linkedinButton }} /> */}
         </div>
 
       </form>

@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTracker } from 'meteor/react-meteor-data'
 
-import AccordionIcon from '/imports/ui/icons/AccordionIcon'
-
 interface IProfileButton {
 }
 
@@ -17,11 +15,10 @@ const ProfileButton = (props: IProfileButton) => {
   return (
     <Link
       style={{ ...profileButtonStyles.profileButtonContainer }}
-      to='/profile'
+      to={'/contact/' + user.profile?.contact._id}
     >
       {user.profile.avatar && <img src={user.profile.avatar} style={{ ...profileButtonStyles.avatar }} />}
       <span style={{ ...profileButtonStyles.firstName }}>{user.profile.firstName}</span>
-      <AccordionIcon />
     </Link>
   )
 }
