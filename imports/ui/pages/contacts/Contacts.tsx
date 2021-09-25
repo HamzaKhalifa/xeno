@@ -1,4 +1,6 @@
 import React from 'react'
+import { Meteor } from 'meteor/meteor'
+import { useTracker } from 'meteor/react-meteor-data'
 import { useSelector } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
 
@@ -29,13 +31,13 @@ const contacts = () => {
 
   //#region Hooks
   const styles = useStyles()
+  const user = useTracker(() => Meteor.user())
   const [limit, setLimit, page, setPage, total, elements, loading] = usePaginatedElements({ elementsName: 'contacts', Collection: ContactCollection, condition: {} })
 
   React.useEffect(() => {
     remote.call('contacts.getWithUser', limit, page, {}, (error, response) => {
       if (error) Toast.error('Error fetching contacts ' + error.message)
       else {
-        console.log('response', response)
         if (JSON.stringify(response) !== JSON.stringify(contacts)) {
           setContacts(response)
           setInvitationsLoading(response.map(contact => ({ contactId: contact._id, loading: false })))
@@ -104,14 +106,14 @@ const contacts = () => {
 
         <div className={styles.tableColumns} style={{ ...contactsStyles.tableColumns }}>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>Name</div>
-          <div className={styles.column} style={{ ...contactsStyles.column }}>Phone number</div>
+          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>Phone number</div>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>Email Address</div>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>Post</div>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>Attributed At</div>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>Status</div>
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}></div>
         </div>
-
+        
         {contacts.map((contact, index) => {
           const isSocialMediaAccount = ['Facebook', 'Google', 'Linkedin'].indexOf(contact.user?.profile?.loginMethod) !== -1
           const invited = Boolean(contact.user) || isSocialMediaAccount
@@ -120,8 +122,8 @@ const contacts = () => {
           return (
             <div className={styles.tableColumns} style={{ ...contactsStyles.tableRow }} key={index}>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>{(contact.firstName ?? '') + ' ' + (contact?.lastName ?? '')}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column }}>{contact.phone1 ?? '-'}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>{contact.user?.emails[0].address ?? '-'}</div>
+              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>{contact.phone1 ?? '-'}</div>
+              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>{contact.email ?? '-'}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>{contact.user?.profile.post ?? '-'}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>{contact.projectRoles?.map((projectRole, index) => projectRole.name + (index === contact.projectRoles?.length - 1 ? '' : ', '))}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>
@@ -140,7 +142,8 @@ const contacts = () => {
                       Invite
                   </CustomButton>
                 }
-                <DeleteIcon style={{ ...contactsStyles.deleteIcon }} onClick={() => deleteContactWarning(contact)} />
+                {contact.user._id !== user._id && <DeleteIcon style={{ ...contactsStyles.deleteIcon }} onClick={() => deleteContactWarning(contact)} />}
+                {contact.user._id === user._id && <span style={{ ...contactsStyles.you }}>You</span>}
               </div>
             </div>
           )

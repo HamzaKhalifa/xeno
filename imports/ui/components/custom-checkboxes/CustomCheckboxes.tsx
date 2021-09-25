@@ -10,12 +10,13 @@ interface ICustomCheckboxes {
   error?: string
   onChange?: (value: any) => void,
   checkBoxes: CheckBox[]
+  selectedCheckBoxes: CheckBox[]
   multiple?: boolean
 }
 
 interface CheckBox {
-  label: string
-  checked: boolean
+  name: string
+  _id: string
 }
 
 const CustomCheckboxes = (props: ICustomCheckboxes) => {
@@ -23,16 +24,12 @@ const CustomCheckboxes = (props: ICustomCheckboxes) => {
 
   const styles = useStyles()
 
-  const onChange = (e, index) => {
-    const newCheckboxes = [...props.checkBoxes]
+  const onChange = (e, checkbox) => {
+    let newSelectedCheckbBoxes = [...props.selectedCheckBoxes]
+    if (e.target.checked) newSelectedCheckbBoxes.push(checkbox)
+    else newSelectedCheckbBoxes = newSelectedCheckbBoxes.filter(potential => potential._id !== checkbox._id)
 
-    if (props.multiple) {
-      newCheckboxes.forEach(checkbox => checkbox.checked = false)
-    }
-
-    newCheckboxes[index] = { ...newCheckboxes[index], checked: e.target.checked }
-
-    props.onChange(newCheckboxes)
+    props.onChange(newSelectedCheckbBoxes)
   }
   
   return (
@@ -45,11 +42,11 @@ const CustomCheckboxes = (props: ICustomCheckboxes) => {
             key={index}
             control={
               <Checkbox
-                checked={checkbox.checked}
-                onChange={(e) => onChange(e, index)}
+                checked={Boolean(props.selectedCheckBoxes.find(potential => potential._id === checkbox._id))}
+                onChange={(e) => onChange(e, checkbox)}
               />
             }
-            label={checkbox.label}
+            label={checkbox.name}
           />
         ))}
       </div>

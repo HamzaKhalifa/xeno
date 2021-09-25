@@ -8,10 +8,12 @@ const useStyles = createUseStyles({
     position: 'relative',
     height: 50,
     justifyContent: 'center',
-    marginBottom: 40
+    marginBottom: 40,
+    marginTop: 20
   },
   label: {
-    marginBottom: 5
+    marginBottom: 5,
+    whiteSpace: 'nowrap'
   },
   error: {
     position: 'absolute',
@@ -21,6 +23,7 @@ const useStyles = createUseStyles({
   },
   checkBoxes: {
     display: 'flex',
+    flexWrap: 'wrap',
   }
 })
 

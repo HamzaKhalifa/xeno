@@ -29,7 +29,7 @@ const Header = () => {
       history.push('/login')
     })
   }
-
+  
   return (
     <div style={{ ...(user ? headerStyles.loggedInHeaderContainer : headerStyles.headerContainer) }}>
       <div style={{ ...headerStyles.left }}>

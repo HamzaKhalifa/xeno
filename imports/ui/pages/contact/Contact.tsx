@@ -1,7 +1,9 @@
 import React from 'react'
+import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
+import { useTracker } from 'meteor/react-meteor-data'
 
-import remote from '/imports/api/remote'
+import remote, { SettingCollection } from '/imports/api/remote'
 
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
@@ -23,6 +25,7 @@ interface IContact {
 const Contact = (props: IContact) => {
   const id = props.match?.params.id
 
+  //#region State
   const { contact: contactStyles } = useSelector(state => state.theme)
   const [contact, setContact] = React.useState({})
 
@@ -30,27 +33,34 @@ const Contact = (props: IContact) => {
   const [lastName, setLastName] = React.useState('')
   const [post, setPost] = React.useState('')
   const [birthday, setBirthday] = React.useState('')
-  const [projectRoles, setProjectRoles] = React.useState([
-    { label: 'Billing', checked: false, id: 'billing' },
-    { label: 'Project Management', checked: false, id: 'projectManagement'},
-  ])
+  const [projectRoles, setProjectRoles] = React.useState<any>([])
   const [email, setEmail] = React.useState('')
   const [phone1, setPhone1] = React.useState('')
 
+  const [loading, setLoading] = React.useState(false)
+  //#endregion State
+
+  //#region Hooks
   const styles = useStyles()
   React.useEffect(() => {
     remote.call('contacts.getOneWithUser', id, (error, response) => {
       if (error) Toast.error('Error fetching contact ' + error.message)
       else {
         setContact(response)
-        setFirstName(response.firstName); setLastName(response.lastName); setPost(contact.user?.profile.post); 
-        setBirthday(contact.user?.profile.birthday); 
-        setProjectRoles(projectRoles.map(projectRole => ({ ...projectRole, checked: projectRole.id === response.projectRole })))
+        setFirstName(response.firstName); setLastName(response.lastName); setPost(response.user?.profile.post); 
+        setBirthday(response.user?.profile.birthday); 
+        setProjectRoles(response.projectRoles ?? [])
         setEmail(response.email)
         setPhone1(response.phone1)
       }
     })
   }, [])
+  const remoteProjectRoles: any[] = useTracker(() => {
+    remote.subscribe('settings.paginated', { settingType: 'projectRole' }, 99, 0)
+
+    return SettingCollection.find({ settingType: 'projectRole' }).fetch()
+  })
+  //#endregion Hooks
   
   const onFirstNameChange = React.useCallback((e) => setFirstName(e.target.value),[])
   const onLastNameChange = React.useCallback((e) => setLastName(e.target.value),[])
@@ -60,10 +70,32 @@ const Contact = (props: IContact) => {
   const onEmailChange = React.useCallback(e => setEmail(e.target.value), [])
   const onPhone1Change = React.useCallback(phone1 => setPhone1(phone1), [])
 
+  const save = (e) => {
+    e.preventDefault()
+
+    const newUser = { ...contact.user, firstName, lastName, post, birthday, email }
+    const newContact = { ...contact, firstName, lastName, projectRoles, email, phone1 }
+    delete newContact.user
+
+    console.log('new user', newUser)
+    console.log('new contact', newContact)
+
+    setLoading(true)
+
+    remote.call('contacts.updateClientPortalContact', newContact, newUser, error => {
+      if (error) Toast.error('Error updating contact ' + error.message)
+      else Toast.success('Contact has been updated')
+
+      setLoading(false)
+    })
+
+  }
+
   return (
-    <div 
+    <form 
       className={styles.contactContainer}
       style={{ ...contactStyles.contactContainer }}
+      onSubmit={save}
     >
       <h2 className={styles.title} style={{ ...contactStyles.title }}>Profil</h2>
 
@@ -82,26 +114,26 @@ const Contact = (props: IContact) => {
             <CustomInput value={lastName} style={{ ...contactStyles.lastName }} label='Lastname' placeholder='Lastname' onChange={onLastNameChange} />
           </div>
 
-          <CustomInput value={post} style={{ ...contactStyles.post }} label='Post in the company' placeholder='Post' onChange={onPostChange} />
-          <CustomDatePicker value={birthday} label='Birthday' onChange={onBirthdayChange} />
+          <CustomInput value={post ?? ''} style={{ ...contactStyles.post }} label='Post in the company' placeholder='Post' onChange={onPostChange} />
+          <CustomDatePicker value={birthday ?? ''} label='Birthday' onChange={onBirthdayChange} />
         </div>
         
         <div className={styles.contactInformation} style={{ ...contactStyles.contactInformation }}>
           <h2 className={styles.contactInformationTitle} style={{ ...contactStyles.contactInformationTitle }}>Contact Information</h2>
           <span className={styles.contactInformationSubTitle} style={{ ...contactStyles.contactInformationSubTitle }}>How can we contact you?</span>
 
-          <CustomCheckBoxes multiple={false} label='Participates in' onChange={onProjectRolesChange} checkBoxes={projectRoles} />
+          <CustomCheckBoxes multiple={true} label='Participates in' onChange={onProjectRolesChange} checkBoxes={remoteProjectRoles} selectedCheckBoxes={projectRoles} />
 
-          <CustomInput value={email} style={{ ...contactStyles.email }} type='email' label='Email' placeholder='Email' onChange={onEmailChange} />
-          <CustomPhoneNumber value={phone1} onChange={onPhone1Change} placeholder='Phone Number' label='Phone Number' />
+          <CustomInput value={email ?? ''} style={{ ...contactStyles.email }} type='email' label='Email' placeholder='Email' onChange={onEmailChange} />
+          <CustomPhoneNumber value={phone1 ?? ''} onChange={onPhone1Change} placeholder='Phone Number' label='Phone Number' />
         </div>
 
       </div>
 
       <div style={{ ...contactStyles.actionsContainer }}>
-        <CustomButton style={{ ...contactStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
+        <CustomButton loadingStyle={{ ...contactStyles.loading }} loading={loading} type='submit' style={{ ...contactStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
       </div>
-    </div>
+    </form>
   )
 }
 

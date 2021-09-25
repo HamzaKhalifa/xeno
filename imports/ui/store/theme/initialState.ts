@@ -904,12 +904,16 @@ const initialState = {
       alignItems: 'center',
     },
     columnName: {
-      minWidth: 150,
-      maxWidth: 150,
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnPhone: {
+      minWidth: 170,
+      maxWidth: 170,
     },
     columnEmail: {
-      minWidth: 250,
-      maxWidth: 250,
+      minWidth: 270,
+      maxWidth: 270,
     },
     columnPost: {
       minWidth: 100,
@@ -957,6 +961,9 @@ const initialState = {
       cursor: 'pointer',
       paddingRight: 15,
       paddingLeft: 15,
+    },
+    you: {
+      padding: 10
     }
   },
   contact: {
@@ -1062,8 +1069,149 @@ const initialState = {
       height: 44.44,
       display: 'flex',
       alignItems: 'center'
-    }
-  }
+    },
+    loading: {
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
+    } 
+  },
+  paymentMethods: {
+    paymentMethodsContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 162,
+      height: 2
+    },
+    tableContainer: {
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      display: 'flex',
+    },
+    inviteButton1: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 250,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnName: {
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnPaymentMode: {
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnLast4: {
+      minWidth: 270,
+      maxWidth: 270,
+    },
+    columnAction: {
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    deleteIcon: {
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
+  },
 }
 
 export default initialState

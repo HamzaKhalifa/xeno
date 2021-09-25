@@ -10,6 +10,7 @@ const SplashScreen = () => {
       style={{ height: '100vh', width: '100%',display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
       <AutomaticLogin />
+      
       <CustomLoader />
     </div>
   )

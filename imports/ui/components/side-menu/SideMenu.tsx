@@ -32,7 +32,7 @@ const SideMenu = (props: ISideMenu) => {
           <Link style={{ ...sideMenuStyles.option }} to='/home'><HomeIcon fill={location.pathname === '/home' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='/contacts'><UserIcon fill={location.pathname === '/contacts' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='#'><InvoiceIcon fill={location.pathname === '/invoices' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='#'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
+          <Link style={{ ...sideMenuStyles.option }} to='/paymentMethods'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
         </div>
 
       </div>

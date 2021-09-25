@@ -16,6 +16,7 @@ import ResetPassword from '/imports/ui/pages/reset-password'
 import Home from '/imports/ui/pages/home'
 import Contacts from './pages/contacts'
 import Contact from '/imports/ui/pages/contact'
+import PaymentMethods from '/imports/ui/pages/payment-methods'
 
 import store from '/imports/ui/store'
 
@@ -48,6 +49,8 @@ export const App = () => {
           <Route exact path='/contacts' component={Contacts} />
 
           <Route exact path='/contact/:id' component={Contact} />
+
+          <Route exact path='/paymentMethods' component={PaymentMethods} />
 
           <Redirect from='/' to='/splashScreen' />
         </Switch>
