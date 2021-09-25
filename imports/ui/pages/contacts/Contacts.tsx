@@ -123,7 +123,7 @@ const contacts = () => {
               <div className={styles.column} style={{ ...contactsStyles.column }}>{contact.phone1 ?? '-'}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>{contact.user?.emails[0].address ?? '-'}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>{contact.user?.profile.post ?? '-'}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>{contact.user?.profile.departments?.map((department, index) => department.name + (index === user.profile.departments?.length - 1 ? '' : ' ,'))}</div>
+              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>{contact.projectRoles?.map((projectRole, index) => projectRole.name + (index === contact.projectRoles?.length - 1 ? '' : ', '))}</div>
               <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>
                 {(invited && verified) && <span style={{ ...contactsStyles.status }}>Active <ActiveUserIcon style={{ ...contactsStyles.statusIcon }} /></span>}
                 {(invited && !verified) && <span style={{ ...contactsStyles.status }}>Invited <InvitationIcon style={{ ...contactsStyles.statusIcon }} /></span>}

@@ -920,8 +920,8 @@ const initialState = {
       maxWidth: 200,
     },
     columnStatus: {
-      minWidth: 120,
-      maxWidth: 120,
+      minWidth: 150,
+      maxWidth: 150,
     },
     columnAction: {
       minWidth: 200,
