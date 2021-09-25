@@ -12,6 +12,7 @@ import CustomInput from '/imports/ui/components/custom-input'
 import CustomDatePicker from '/imports/ui/components/custom-date-picker'
 import CustomPhoneNumber from '/imports/ui/components/custom-phone-input'
 import CustomCheckBoxes from '/imports/ui/components/custom-checkboxes'
+import CustomButton from '/imports/ui/components/custom-button'
 
 import useStyles from './styles'
 
@@ -95,6 +96,10 @@ const Contact = (props: IContact) => {
           <CustomPhoneNumber value={phone1} onChange={onPhone1Change} placeholder='Phone Number' label='Phone Number' />
         </div>
 
+      </div>
+
+      <div style={{ ...contactStyles.actionsContainer }}>
+        <CustomButton style={{ ...contactStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ import useStyles from './styles'
 interface ICustomLoader {
   height?: number
   width?: number
+  style?: any
 }
 
 const CustomLoader = (props: ICustomLoader) => {
@@ -14,7 +15,7 @@ const CustomLoader = (props: ICustomLoader) => {
   const styles = useStyles()
   
   return (
-    <div className={styles.customLoaderContainer}>
+    <div className={styles.customLoaderContainer} style={{ ...(props.style ?? {}) }}>
       <Loader
         type='Puff'
         color='#00BFFF'

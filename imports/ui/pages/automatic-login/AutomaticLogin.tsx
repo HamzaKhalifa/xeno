@@ -15,19 +15,21 @@ const AutomaticLogin = () => {
         Meteor.loginWithToken(token, error => {
           if (error) {
             localStorage.setItem('token', null)
-
-            if(['/login', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
+            
+            if(['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
                 .indexOf(history.location.pathname) === -1 
               && !history.location.pathname.includes('/enrollAccount')
+              && !history.location.pathname.includes('/resetPassword')
             ) {
               history.push('/login')
             }
           } else {
             localStorage.setItem('token', token)
   
-            if(['/login', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
+            if(['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
                 .indexOf(history.location.pathname) !== -1 
               || history.location.pathname.includes('/enrollAccount')
+              || history.location.pathname.includes('/resetPassword')
             ) {
               history.push('/home')
             } else {

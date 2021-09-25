@@ -11,9 +11,10 @@ import ConfirmEmail from '/imports/ui//pages/confirm-email'
 import CreateAccountConfirmation from '/imports/ui/pages/create-account-confirmation'
 import EnrollAccount from '/imports/ui/pages/enroll-account'
 import Login from '/imports/ui/pages/login'
+import ForgotPassword from '/imports/ui/pages/forgot-password'
+import ResetPassword from '/imports/ui/pages/reset-password'
 import Home from '/imports/ui/pages/home'
 import Contacts from './pages/contacts'
-import AutomaticLogin from '/imports/ui/pages/automatic-login'
 import Contact from '/imports/ui/pages/contact'
 
 import store from '/imports/ui/store'
@@ -25,8 +26,6 @@ export const App = () => {
       <Toaster position='top-center' reverseOrder={false} toastOptions={{ duration: 5000 }} />
 
       <BrowserRouter>
-
-        <AutomaticLogin />
 
         <Switch>
           <Route exact path='/createAccountRequest' component={CreateAccountRequest} />
@@ -40,6 +39,9 @@ export const App = () => {
           <Route exact path='/splashScreen' component={SplashScreen} />
 
           <Route exact path='/login' component={Login} />
+
+          <Route exact path='/forgotPassword' component={ForgotPassword} />
+          <Route exact path='/resetPassword/:resetPasswordToken' component={ResetPassword} />
 
           <Route exact path='/home' component={Home} />
           

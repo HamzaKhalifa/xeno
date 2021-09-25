@@ -15,7 +15,7 @@ const CreateAccountRequestConfirmation = () => {
   const styles = useStyles()
   const history = useHistory()
 
-  const returnToWebsite = () => history.push('/')
+  const returnToWebsite = () => history.push('/login')
 
   return (
     <div 

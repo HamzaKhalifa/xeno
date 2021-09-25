@@ -15,7 +15,7 @@ const ProfileButton = (props: IProfileButton) => {
   return (
     <Link
       style={{ ...profileButtonStyles.profileButtonContainer }}
-      to={'/contact/' + user.profile?.contact._id}
+      to={'/contact/' + user.profile?.contact?._id}
     >
       {user.profile.avatar && <img src={user.profile.avatar} style={{ ...profileButtonStyles.avatar }} />}
       <span style={{ ...profileButtonStyles.firstName }}>{user.profile.firstName}</span>

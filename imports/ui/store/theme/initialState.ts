@@ -177,6 +177,7 @@ const initialState = {
       cursor: 'pointer'
     },
     createAccountRequestButton: {
+      textAlign: 'center',
       backgroundColor: '#3CD2C8',
       color: 'white',
       paddingTop: 12,
@@ -185,6 +186,7 @@ const initialState = {
       paddingLeft: 16,
     },
     createaAccountButton: {
+      textAlign: 'center',
       backgroundColor: '#3CD2C8',
       color: 'white',
       paddingTop: 12,
@@ -492,6 +494,80 @@ const initialState = {
       width: 340
     }
   },
+  forgotPassword: {
+    forgotPasswordContainer: {
+      margin: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      backgroundColor: 'white',
+      width: 630,
+      height: 300,
+      marginTop: 50,
+      position: 'relative'
+    },
+    title: {
+      marginTop: 58,
+      marginBottom: 30,
+      fontSize: 29,
+      color: '#2E2226',
+      textAlign: 'center',
+      fontWeight: 500,
+      maxWidth: 515
+    },
+    button: {
+      padding: 10,
+      width: 300,
+      marginTop: 20
+    },
+    input: {
+      flex: 'initial',
+      width: 500,
+    },
+    didntReceivePassword: {
+      color: '#71717F',
+      fontSize: 12.64,
+      fontWeight: 300,
+      position: 'absolute',
+      bottom: 95
+    }
+  },
+  resetPassword: {
+    resetPasswordContainer: {
+      margin: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      backgroundColor: 'white',
+      width: 630,
+      height: 300,
+      marginTop: 50,
+      paddingBottom: 20
+    },
+    title: {
+      marginTop: 58,
+      marginBottom: 30,
+      fontSize: 29,
+      color: '#2E2226',
+      textAlign: 'center',
+      fontWeight: 500,
+      maxWidth: 515
+    },
+    button: {
+      padding: 10,
+      width: 300,
+      marginTop: 20
+    },
+    input: {
+      flex: 'initial',
+      width: 500,
+    },
+    didntReceivePassword: {
+      color: '#71717F',
+      fontSize: 12.64,
+      fontWeight: 300
+    }
+  },
   login: {
     loginContainer: {
       display: 'flex',
@@ -552,6 +628,13 @@ const initialState = {
       linkedinButton: {
         marginLeft: 10,
         cursor: 'pointer',
+      },
+      forgotPasswordText: {
+        fontWeight: 100,
+        color: '#8E8E98',
+        fontSize: 14,
+        textAlign: 'center',
+        marginTop: 22.4
       }
     },
   },
@@ -795,6 +878,21 @@ const initialState = {
       borderBottomLeftRadius: 0
     },
     tableColumns: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
     },
     column: {
       paddingTop: 14.2,
@@ -802,20 +900,16 @@ const initialState = {
       paddingLeft: 22.7,
       paddingRight: 22.7,
       boxSizing: 'border-box',
-    },
-    tableRow: {
-      marginTop: 10,
-      backgroundColor: '#F9F8F9',
-      borderRadius: 12,
-      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
     },
     columnName: {
       minWidth: 150,
       maxWidth: 150,
     },
     columnEmail: {
-      minWidth: 300,
-      maxWidth: 300,
+      minWidth: 250,
+      maxWidth: 250,
     },
     columnPost: {
       minWidth: 100,
@@ -824,6 +918,45 @@ const initialState = {
     columnProjectRoles: {
       minWidth: 200,
       maxWidth: 200,
+    },
+    columnStatus: {
+      minWidth: 120,
+      maxWidth: 120,
+    },
+    columnAction: {
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    status: {
+      fontSize: 14.12,
+      color: 'rgba(119, 103, 108, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    statusIcon: {
+      marginLeft: 8.88,
+    },
+    inviteButton: {
+      width: 150,
+      color: 'white',
+      backgroundColor: '#6EB0DD',
+      boxSizing: 'border-box',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    inviteButtonLoadingStyles: {
+      width: 150,
+    },
+    deleteIcon: {
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
     }
   },
   contact: {
@@ -855,7 +988,7 @@ const initialState = {
     },
     personalInformation: {
       display: 'flex',
-      width: '48%',
+      width: '49%',
       flexDirection: 'column',
       marginTop: 25.63,
       backgroundColor: 'white',
@@ -892,7 +1025,7 @@ const initialState = {
     },
     contactInformation: {
       display: 'flex',
-      width: '48%',
+      width: '49%',
       flexDirection: 'column',
       marginTop: 25.63,
       backgroundColor: 'white',
@@ -916,6 +1049,19 @@ const initialState = {
       marginBottom: 10,
       height: 'initial',
       flex: 'initial'
+    },
+    actionsContainer: {
+      backgroundColor: 'white',
+      padding: 32.4,
+      marginTop: 25.63,
+      display: 'flex',
+      justifyContent: 'flex-end'
+    },
+    saveModifcationsButton: {
+      backgroundColor: '#3CD2C8',
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
     }
   }
 }

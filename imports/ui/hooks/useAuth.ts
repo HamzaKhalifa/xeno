@@ -21,8 +21,9 @@ const useAuth = () => {
   }, [user])
 
   if (user === null 
-    && ['/login', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation'].indexOf(history.location.pathname) === -1 
+    && ['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation'].indexOf(history.location.pathname) === -1 
     && !history.location.pathname.includes('/enrollAccount')
+    && !history.location.pathname.includes('/resetPassword')
   ) { history.push('/splashScreen') }
 
   if (user && history.location.pathname === '/login' || history.location.pathname === '/splash') {

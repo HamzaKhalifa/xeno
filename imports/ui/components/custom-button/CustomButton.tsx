@@ -12,6 +12,7 @@ interface ICustomButton {
   type?: any
   onClick?: (e: void) => void
   style?: any
+  loadingStyle?: any
 }
 
 const CustomButton = (props: ICustomButton) => {
@@ -23,7 +24,15 @@ const CustomButton = (props: ICustomButton) => {
     if (props.onClick) props.onClick()
   }, [props.onClick])
 
-  if (props.loading) return <CustomLoader />
+  if (props.loading) {
+    return(
+      <div style={{ 
+        ...(props.loadingStyle ?? {})
+      }}>
+        <CustomLoader />
+      </div>
+    )
+  }
   
   return (
     <button

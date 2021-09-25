@@ -28,7 +28,7 @@ const CustomInput = (props: ICustomInput) => {
       <span className={styles.label} style={{ ...inputStyles.label }}>
         {props.check && <CheckIcon />}
         {props.label ?? ''} 
-        <RequiredFieldIcon style={{ ...inputStyles.requiredFieldIcon }} />
+        {props.required && <RequiredFieldIcon style={{ ...inputStyles.requiredFieldIcon }} />}
       </span>
 
       <input 

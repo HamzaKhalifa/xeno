@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { Accounts } from 'meteor/accounts-base'
 import { useSelector } from 'react-redux'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { Link } from 'react-router-dom'
 
 import CustomInput from '/imports/ui/components/custom-input'
 import CustomButton from '/imports/ui/components/custom-button'
@@ -72,6 +73,8 @@ const LoginForm = () => {
       const token = Accounts._storedLoginToken()
       
       localStorage.setItem('token', token)
+
+      Toast.success('You are logged in')
     })
   }
 
@@ -85,12 +88,13 @@ const LoginForm = () => {
       avatar: res.picture.data.url
     }
 
-    remote.call('users.signWithSocialMedia', user, (error, result) => {
+    remote.call('users.signWithSocialMedia', user, res.accessToken, res.userID, 'Facebook', (error, result) => {
       if (error) return Toast.error('Error logging in with Facebook ' + error.message)
       Meteor.loginWithToken(result.token, error => {
         if (error) return Toast.error('Error logging in with a token ' + error.message)
         else {
           localStorage.setItem('token', result.token)
+          Toast.success('You are logged in')
         }
       })
     })
@@ -137,6 +141,8 @@ const LoginForm = () => {
           {/* <GoogleIcon style={{ ...loginFormStyles.googleButton }} />
           <LinkedinIcon style={{ ...loginFormStyles.linkedinButton }} /> */}
         </div>
+
+        <Link to='/forgotPassword' style={{ ...loginFormStyles.forgotPasswordText }}>Did you forget your password? Click here.</Link>
 
       </form>
     </div>

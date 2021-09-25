@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <div style={{ ...(user ? headerStyles.loggedInHeaderContainer : headerStyles.headerContainer) }}>
       <div style={{ ...headerStyles.left }}>
-        <Link to='/'><HeaderIcon /></Link>
+        <Link to={user ? '/home' : '/login'}><HeaderIcon /></Link>
 
         <div className={styles.links} style={{ ...headerStyles.links }}>
           <Link to='#'><span style={{ ...headerStyles.link }}>Our Story</span></Link>
@@ -55,9 +55,9 @@ const Header = () => {
         }
         {user && <ProfileButton />}
 
-        {!user && (location.pathname === '/login' || location.pathname === '/createAccount') && <Link to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</Link>}
-        {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest') && <Link to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</Link>}
-        {!user && (location.pathname === '/createAccountRequest' || location.pathname === '/createAccount') && <Link to='/login' style={{ ...headerStyles.loginButton }}>Login</Link>}
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <Link to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</Link>}
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest' || location.pathname === '/forgotPassword') && <Link to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</Link>}
+        {!user && (location.pathname === '/createAccountRequest' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <Link to='/login' style={{ ...headerStyles.loginButton }}>Login</Link>}
       </div>
 
     </div>
