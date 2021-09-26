@@ -65,8 +65,7 @@ const AddressForm = (props: IAddressForm) => {
   //#endregion Changer handlers
 
   //#region Event listeners
-  const save = (e) => {
-    e.preventDefault()
+  const save = () => {
     
     const newFormErrors: any = {}
     if (!nickName || nickName.trim() === '') {

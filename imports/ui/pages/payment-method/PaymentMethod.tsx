@@ -95,6 +95,34 @@ const PaymentMethod = (props: IPaymentMethod) => {
       newFormErrors.name = 'Name is required'
     }
 
+    if (paymentMode === 'Card') {
+      if (!last4 || last4.trim() === '') {
+        newFormErrors.last4 = 'Last 4 digits are required'
+      }
+      if (!expirationMonth || expirationMonth.trim() === '') {
+        newFormErrors.expirationMonth = 'Required'
+      }
+      if (!expirationYear || expirationYear.trim() === '') {
+        newFormErrors.expirationYear = 'Required'
+      }
+    }
+
+    if (paymentMode === 'PreAuthorizedPayment') {
+      if (!institution || institution.trim() === '') {
+        newFormErrors.institution = 'Institution is required'
+      }
+      if (!transit || transit.trim() === '') {
+        newFormErrors.transit = 'Transit is required'
+      }
+      if (!accountNumber || accountNumber.trim() === '') {
+        newFormErrors.accountNumber = 'Account number is required'
+      }
+    }
+    
+    if (!name || name.trim() === '') {
+      newFormErrors.billingAddress = 'Billing address is required'
+    }
+
     setFormErrors(newFormErrors)
     if (Object.keys(newFormErrors).length > 0) {
       return Toast.error('Some fields are either invalid or unfilled')
@@ -273,6 +301,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
             getOptionName={getAddressName}
             onChange={onBillingAddressChange}
             value={billingAddress}
+            error={formErrors.billingAddress}
           />
         }
 

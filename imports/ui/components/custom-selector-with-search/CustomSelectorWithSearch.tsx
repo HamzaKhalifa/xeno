@@ -37,6 +37,7 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 
 	const confirmButtonTextColor = useSelector(state => state.theme.confirmButtonTextColor)
 	const confirmButtonBackgroundColor = useSelector(state => state.theme.confirmButtonBackgroundColor)
+  const { input: inputStyles } = useSelector(state => state.theme)
 	//#endregion State
 
 	//#region Hooks
@@ -98,7 +99,7 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 				value={value}
 				options={searchText ? [{ _id: - 1 }, ...searchResult] : [{ _id: - 1 }, ...options]}
 				getOptionLabel={value._id !== -1 ? props.getOptionName : () => '-----'}
-				style={{ width: '100%', marginTop: 10 }}
+				style={{ width: '100%', marginTop: 10, marginBottom: 10 }}
 				renderInput={
 					(params) => 
 						<TextField onChange={onSearchTextChange} {...params} variant='outlined' />
@@ -110,6 +111,7 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 				multiple={multiple}
 				disabled={props.disabled}
 			/>
+      {props.error && <span style={{ ...inputStyles.error }}>x {props.error}</span>}
 		</div>
 		//#endregion View
 	)

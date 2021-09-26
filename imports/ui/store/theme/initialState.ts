@@ -97,7 +97,8 @@ const initialState = {
       color: '#F34C4F',
       fontWeight: 500,
       fontSize: 16,
-      marginTop: 10
+      marginTop: 10,
+      whiteSpace: 'nowrap'
     },
   },
   textarea: {
