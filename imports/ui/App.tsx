@@ -18,6 +18,7 @@ import Contacts from './pages/contacts'
 import Contact from '/imports/ui/pages/contact'
 import PaymentMethods from '/imports/ui/pages/payment-methods'
 import PaymentMethod from '/imports/ui/pages/payment-method'
+import Business from '/imports/ui/pages/business'
 
 import store from '/imports/ui/store'
 
@@ -49,13 +50,16 @@ export const App = () => {
           
           <Route exact path='/contacts' component={Contacts} />
 
-          <Route exact path='/contact/:id' component={Contact} />
+          <Route exact path='/contacts/:id' component={Contact} />
 
           <Route exact path='/paymentMethods' component={PaymentMethods} />
 
-          <Route exact path='/paymentMethod/:id' component={PaymentMethod} />
           <Route exact path='/paymentMethod' component={PaymentMethod} />
+          <Route exact path='/paymentMethod/:id' component={PaymentMethod} />
 
+          <Route exact path='/businesses' component={Business} />
+          <Route exact path='/businesses/:id' component={Business} />
+          
           <Redirect from='/' to='/splashScreen' />
         </Switch>
       </BrowserRouter>

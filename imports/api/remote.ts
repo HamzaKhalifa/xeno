@@ -11,6 +11,8 @@ if (Meteor.isClient) {
 }
 
 export const ContactCollection = new Mongo.Collection('contacts', { connection: apiehubConnection })
+export const AddressCollection = new Mongo.Collection('addresses', { connection: apiehubConnection })
+export const BusinessCollection = new Mongo.Collection('businesses', { connection: apiehubConnection })
 export const SettingCollection = new Mongo.Collection('settings', { connection: apiehubConnection })
 export const PaymentMethodCollection = new Mongo.Collection('paymentMethods', { connection: apiehubConnection })
 

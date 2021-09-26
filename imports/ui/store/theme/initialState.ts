@@ -193,7 +193,8 @@ const initialState = {
       paddingRight: 16,
       paddingLeft: 16,
       borderRadius: 4,
-      width: 130
+      width: 130,
+      borderWidth: 0
     },
     logoutButton: {
       cursor: 'pointer'
@@ -926,16 +927,16 @@ const initialState = {
       alignItems: 'center',
     },
     columnName: {
-      minWidth: 170,
-      maxWidth: 170,
+      minWidth: 200,
+      maxWidth: 200,
     },
     columnPhone: {
       minWidth: 170,
       maxWidth: 170,
     },
     columnEmail: {
-      minWidth: 270,
-      maxWidth: 270,
+      minWidth: 250,
+      maxWidth: 250,
     },
     columnPost: {
       minWidth: 100,
@@ -1004,11 +1005,12 @@ const initialState = {
     subTitle: {
       color: '#2E2226',
       fontSize: 20.25,
-      marginBottom: 10
+      marginBottom: 10,
+      fontWeight: '100'
     },
     line: {
       backgroundColor: '#3CD2C8',
-      width: 162,
+      width: 180,
       height: 2
     },
     information: {
@@ -1033,9 +1035,9 @@ const initialState = {
       color: '#ABA5A7',
       fontSize: 16,
       marginBottom: 32,
+      fontWeight: 100,
       
       marginTop: 7,
-      fontWeight: 100
     },
     firstNameAndLastName: {
       display: 'flex',
@@ -1210,12 +1212,12 @@ const initialState = {
       alignItems: 'center',
     },
     columnName: {
-      minWidth: 170,
-      maxWidth: 170,
+      minWidth: 250,
+      maxWidth: 250,
     },
     columnPaymentMode: {
-      minWidth: 170,
-      maxWidth: 170,
+      minWidth: 250,
+      maxWidth: 250,
     },
     columnLast4: {
       minWidth: 270,
@@ -1372,7 +1374,89 @@ const initialState = {
   },
   addressForm: {
 
-  }
+  },
+  business: {
+    businessContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    tabs: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    selectedSubTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    subTitle: {
+      color: '#ABA5A7',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 180,
+      height: 2
+    },
+    information: {
+      display: 'flex',
+      width: '100%',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      backgroundColor: 'white',
+      padding: 32,
+      boxSizing: 'border-box'
+    },
+    informationTitle: {
+      color: '#2E2226',
+      fontSize: 22,
+      fontWeight: 500
+    },
+    informationSubTitle: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginBottom: 32,
+      fontWeight: 100,
+      
+      marginTop: 7,
+    },
+    name: {
+      marginBottom: 10,
+      height: 'initial',
+      flex: 'initial'
+    },
+    actionsContainer: {
+      backgroundColor: 'white',
+      padding: 32.4,
+      marginTop: 25.63,
+      display: 'flex',
+      justifyContent: 'flex-end'
+    },
+    saveModifcationsButton: {
+      backgroundColor: '#3CD2C8',
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
+    },
+    loading: {
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
+    } 
+  },
 }
 
 export default initialState

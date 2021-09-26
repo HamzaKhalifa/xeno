@@ -45,4 +45,4 @@ const CustomInput = (props: ICustomInput) => {
   )
 }
 
-export default CustomInput
+export default React.memo(CustomInput)

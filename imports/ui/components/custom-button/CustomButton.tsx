@@ -54,5 +54,5 @@ const CustomButton = (props: ICustomButton) => {
   )
 }
 
-export default CustomButton
+export default React.memo(CustomButton)
 

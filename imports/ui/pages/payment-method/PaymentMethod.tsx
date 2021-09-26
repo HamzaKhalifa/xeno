@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 
-import remote from '/imports/api/remote'
+import remote, { ContactCollection, AddressCollection } from '/imports/api/remote'
 
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
@@ -14,7 +14,6 @@ import Toast from '/imports/ui/components/toast'
 import CustomInput from '/imports/ui/components/custom-input'
 import CustomCheckBoxes from '/imports/ui/components/custom-checkboxes'
 import CustomButton from '/imports/ui/components/custom-button'
-import CustomSelectorWithSearch from '/imports/ui/components/custom-selector-with-search'
 import CustomSelector from '/imports/ui/components/custom-selector'
 import AddressForm from '/imports/ui/pages/payment-method/address-form'
 
@@ -54,7 +53,17 @@ const PaymentMethod = (props: IPaymentMethod) => {
 
   //#region Hooks
   const styles = useStyles()
-  const user = useTracker(() => Meteor.user()) 
+  const user = useTracker(() => Meteor.user())
+  const contact: any = useTracker(() => {
+    remote.subscribe('contacts.findOne', user?.profile.contact._id)
+
+    return ContactCollection.findOne(user?.profile.contact._id)
+  })
+  const addresses: any = useTracker(() => {
+    remote.subscribe('addresses.paginated', { _id: { $in: contact?.addresses.map(address => address._id) ?? [] } }, 999, 0)
+
+    return AddressCollection.find( { _id: { $in: contact?.addresses.map(address => address._id) ?? [] } }).fetch()
+  }) 
   const history = useHistory()
   React.useEffect(() => {
     if (id) {
@@ -78,7 +87,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
   const onLast4Change = React.useCallback((e) => setLast4(e.target.value),[])
   const onExpirationMonthChange = React.useCallback((e) => setExpirationMonth(e.target.value),[])
   const onExpirationYearChange = React.useCallback(e => setExpirationYear(e.target.value), [])
-  const onCurrencyChange = React.useCallback(e => console.log('e', e), [])
+  const onCurrencyChange = React.useCallback(currency => setCurrency(currency), [])
   const onBillingAddressChange = React.useCallback(billingAddress => setBillingAddress(billingAddress), [])
   const onInstitutionChange = React.useCallback((e) => setInstitution(e.target.value),[])
   const onTransitChange = React.useCallback((e) => setTransit(e.target.value),[])
@@ -134,7 +143,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
       last4,
       expirationMonth,
       expirationYear,
-      currency,
+      currency: currency._id,
       contact: user.profile.contact,
       customerType: 'Contact',
       institution, transit, accountNumber,
@@ -163,11 +172,18 @@ const PaymentMethod = (props: IPaymentMethod) => {
 
   const saveAddress = (addressForm) => {
     setSaveAddressLoading(true)
-    remote.call('addresses.addAddressToContact', addressForm, user.profile.contact?._id, error => {
+    remote.call('addresses.addAddressToContact', addressForm, user.profile.contact?._id, (error, addressId) => {
       setSaveAddressLoading(false)
       if (error) return Toast.error('Error adding address ' + error.message)
       else Toast.success('Address has been added')
+
+      remote.call('addresses.findOne', addressId, (error, response) => {
+        if (error) return Toast.error('Unable to find the address we just added ' + error.message)
+        setBillingAddress(response)
+      })
     })
+
+    setAddressCheckbox({ _id: 'chooseAddress', name: 'Choose Address' })
   }
 
   return (
@@ -293,11 +309,10 @@ const PaymentMethod = (props: IPaymentMethod) => {
           style={{ ...paymentMethodStyles.addressCheckboxes }}
         />
 
-        {addressCheckbox._id === 'chooseAddress' && 
-          <CustomSelectorWithSearch
+        {addresses && addressCheckbox._id === 'chooseAddress' && 
+          <CustomSelector
             label='Billing Address'
-            elementsName={'addresses'}
-            searchMethod='addresses.search'
+            options={addresses}
             getOptionName={getAddressName}
             onChange={onBillingAddressChange}
             value={billingAddress}
@@ -309,11 +324,11 @@ const PaymentMethod = (props: IPaymentMethod) => {
       </div>
 
       <div style={{ ...paymentMethodStyles.actionsContainer }}>
-        <CustomButton style={{ ...paymentMethodStyles.cancelButton }}>Cancel</CustomButton>
+        <Link to='/paymentMethods'><CustomButton style={{ ...paymentMethodStyles.cancelButton }}>Cancel</CustomButton></Link>
         <CustomButton loadingStyle={{ ...paymentMethodStyles.loading }} loading={loading} type='submit' style={{ ...paymentMethodStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
       </div>
     </form>
   )
 }
 
-export default withLayout(withSideMenu(PaymentMethod))
+export default withLayout(withSideMenu(React.memo(PaymentMethod)))

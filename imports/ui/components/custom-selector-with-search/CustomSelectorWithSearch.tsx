@@ -117,4 +117,4 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 	)
 }
 
-export default CustomSelectorWithSearch
+export default React.memo(CustomSelectorWithSearch)
