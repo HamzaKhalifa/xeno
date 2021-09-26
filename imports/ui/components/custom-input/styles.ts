@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     }
   },
   label: {
-    
+    whiteSpace: 'nowrap'
   },
 })
 

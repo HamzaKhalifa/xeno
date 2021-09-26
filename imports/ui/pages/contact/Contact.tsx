@@ -1,5 +1,4 @@
 import React from 'react'
-import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
 import { useTracker } from 'meteor/react-meteor-data'
 
@@ -9,7 +8,6 @@ import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
 
 import Toast from '/imports/ui/components/toast'
-import CustomLoader from '/imports/ui/components/custom-loader'
 import CustomInput from '/imports/ui/components/custom-input'
 import CustomDatePicker from '/imports/ui/components/custom-date-picker'
 import CustomPhoneNumber from '/imports/ui/components/custom-phone-input'

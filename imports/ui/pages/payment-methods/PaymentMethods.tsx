@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { useTracker } from 'meteor/react-meteor-data'
 import { useSelector } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
+import { Link } from 'react-router-dom'
 
 import remote, { PaymentMethodCollection } from '/imports/api/remote'
 
@@ -29,7 +30,7 @@ const PaymentMethods = () => {
   //#region Hooks
   const styles = useStyles()
   const user = useTracker(() => Meteor.user())
-  const [limit, setLimit, page, setPage, total, elements, loading] = usePaginatedElements({ elementsName: 'paymentMethods', Collection: PaymentMethodCollection, condition: { 'contact._id': user.profile?.contact?._id } })
+  const [limit, setLimit, page, setPage, total, elements, loading] = usePaginatedElements({ elementsName: 'paymentMethods', Collection: PaymentMethodCollection, condition: { 'contact._id': user?.profile?.contact?._id } })
   //#endregion Hooks
 
   //#region Event listeners
@@ -71,9 +72,9 @@ const PaymentMethods = () => {
           </div>
 
           <div style={{ ...paymentMethodsStyles.headerRight }}>
-            <CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton>
+          <Link to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton></Link>
 
-            <CustomButton style={{ ...paymentMethodsStyles.inviteButton2 }}>Add a payment mode</CustomButton>
+            <Link to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton2 }}>Add a payment method</CustomButton></Link>
           </div>
 
         </div>

@@ -38,7 +38,7 @@ const SideMenu = (props: ISideMenu) => {
       </div>
 
       <div className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
-        <Link to='/'><ParametersIcon /></Link>
+        <Link to='#'><ParametersIcon /></Link>
       </div>
       
     </div>

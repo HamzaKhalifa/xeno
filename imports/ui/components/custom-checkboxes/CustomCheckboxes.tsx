@@ -12,6 +12,7 @@ interface ICustomCheckboxes {
   checkBoxes: CheckBox[]
   selectedCheckBoxes: CheckBox[]
   multiple?: boolean
+  style?: any
 }
 
 interface CheckBox {
@@ -26,14 +27,18 @@ const CustomCheckboxes = (props: ICustomCheckboxes) => {
 
   const onChange = (e, checkbox) => {
     let newSelectedCheckbBoxes = [...props.selectedCheckBoxes]
-    if (e.target.checked) newSelectedCheckbBoxes.push(checkbox)
-    else newSelectedCheckbBoxes = newSelectedCheckbBoxes.filter(potential => potential._id !== checkbox._id)
+    if (props.multiple) {
+      if (e.target.checked) newSelectedCheckbBoxes.push(checkbox)
+      else newSelectedCheckbBoxes = newSelectedCheckbBoxes.filter(potential => potential._id !== checkbox._id)
+    } else {
+      newSelectedCheckbBoxes = checkbox
+    }
 
     props.onChange(newSelectedCheckbBoxes)
   }
   
   return (
-    <div className={styles.customCheckboxesContainer}>
+    <div className={styles.customCheckboxesContainer} style={{ ...(props.style ?? {}) }}>
       <span className={styles.label} style={{ ...inputStyles.label }}>{props.label}</span>
 
       <div className={styles.checkBoxes}>

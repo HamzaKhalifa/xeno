@@ -45,6 +45,27 @@ const initialState = {
       maxWidth: 452
     }
   },
+  selector: {
+    input: {
+      boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
+      borderRadius: 4,
+      backgroundColor: '#FDFFFF',
+      borderStyle: 'solid',
+    },
+    option: {
+      padding: 10,
+      borderRadius: 5
+    },
+    selectedOption: {
+      color: 'white',
+      backgroundColor: 'green',
+      padding: 10,
+      borderRadius: 5
+    }
+  },
+  locationSearchInput: {
+    hoverBackgroundColor: '#38c172'
+  },
   input: {
     inputContainer: {
       display: 'flex',
@@ -1091,6 +1112,7 @@ const initialState = {
     },
     subTitle: {
       color: '#2E2226',
+      marginTop: 13,
       fontSize: 20.25,
       marginBottom: 10
     },
@@ -1212,6 +1234,144 @@ const initialState = {
       paddingLeft: 15,
     },
   },
+  paymentMethod: {
+    paymentMethodContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    goBack: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 270,
+      height: 2
+    },
+    information: {
+      display: 'flex',
+      width: '100%',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      backgroundColor: 'white',
+      padding: 32,
+      boxSizing: 'border-box'
+    },
+    informationTitle: {
+      color: '#2E2226',
+      fontSize: 22,
+      fontWeight: 500
+    },
+    informationSubTitle: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginBottom: 32,
+      
+      marginTop: 7,
+      fontWeight: 100
+    },
+    name: {
+      width: '100%',
+      boxSizing: 'border-box',
+      flex: 'initial',
+    },
+    cardContainer: {
+      display: 'flex',
+      alignItems: 'center'
+    },
+    last4: {
+      width: '60%',
+      flex: 'initial'
+    },
+    expirationMonth: {
+      width: '20%',
+      marginRight: 10,
+      marginLeft: 10
+    },
+    expirationYear: {
+      width: '20%'
+    },
+    preAuthorizedPaymentContainer: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    institutionAndTransit: {
+      display: 'flex',
+    },
+    institution: {
+      marginRight: 25.63
+    },
+    transit: {
+
+    },
+    accountNumber: {
+
+    },
+    billingAddressContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'white',
+      padding: 32,
+      marginTop: 26
+    },
+    billingAddressTitle: {
+      color: '#2E2226',
+      fontSize: 22.28,
+      fontWeight: 500
+    },
+    billingAddressDescription: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginBottom: 32,
+      fontWeight: 100,
+      marginTop: 5
+    },
+    saveModifcationsButton: {
+      backgroundColor: '#3CD2C8',
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
+    },
+    cancelButton: {
+      backgroundColor: 'transparent',
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center',
+      borderColor: 'black',
+      borderRadius: '4px',
+      borderWidth: '1px',
+      color: 'black',
+      justifyContent: 'center'
+    },
+    loading: {
+      height: 44.44,
+      display: 'flex',
+      alignItems: 'center'
+    },
+    actionsContainer: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: 32,
+      backgroundColor: 'white',
+      marginTop: 25.63
+    },
+    addressCheckboxes: {
+      marginTop: 0,
+      marginBottom: 10
+    }
+  },
+  addressForm: {
+
+  }
 }
 
 export default initialState

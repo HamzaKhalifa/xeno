@@ -17,6 +17,7 @@ import Home from '/imports/ui/pages/home'
 import Contacts from './pages/contacts'
 import Contact from '/imports/ui/pages/contact'
 import PaymentMethods from '/imports/ui/pages/payment-methods'
+import PaymentMethod from '/imports/ui/pages/payment-method'
 
 import store from '/imports/ui/store'
 
@@ -51,6 +52,9 @@ export const App = () => {
           <Route exact path='/contact/:id' component={Contact} />
 
           <Route exact path='/paymentMethods' component={PaymentMethods} />
+
+          <Route exact path='/paymentMethod/:id' component={PaymentMethod} />
+          <Route exact path='/paymentMethod' component={PaymentMethod} />
 
           <Redirect from='/' to='/splashScreen' />
         </Switch>
