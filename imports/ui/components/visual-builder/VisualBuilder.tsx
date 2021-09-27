@@ -45,12 +45,25 @@ const VisualBuilder = () => {
       {pages.map((page, pageIndex) => (
         <div className={styles.page} key={pageIndex}>
 
-          <Link to={page.key}>
-            <div className={styles.showButton}>{location.pathname === ('/' + page.key) ? <CheckIcon style={{ color: highlightColor }} /> : 'Go'}</div>
+          <Link to={page.to}>
+            <div className={styles.showButton}>{location.pathname === page.to ? 
+              <CheckIcon style={{ color: highlightColor }} /> : 'Go'}
+            </div>
           </Link>
 
-          <div style={{ marginTop: pageIndex === 0 ? 0 : 40 }} className={styles.pageTitleContainer} onClick={() => togglePageCollapsed(pageIndex)} >
-            <AccordionIcon reversed={!page.collapsed} width={15} height={15} fill={highlightColor} className={styles.pageTitleIcon} />
+          <div 
+            style={{ marginTop: pageIndex === 0 ? 0 : 40 }} 
+            className={styles.pageTitleContainer} 
+            onClick={() => togglePageCollapsed(pageIndex)} 
+          >
+            <AccordionIcon 
+              reversed={!page.collapsed} 
+              width={15}
+              height={15}
+              fill={highlightColor}
+              className={styles.pageTitleIcon}
+            />
+            
             <h2 className={styles.pageTitle}>{page.title}</h2>
             
           </div>

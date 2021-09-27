@@ -12,7 +12,7 @@ const withVisualBuilder = Component => props => {
 
   return (
     <div className={styles.withVisualBuilderContainer}>
-      <div style={{ width: visualBuilderVisible ? '30%' : '100%' }}>
+      <div style={{ width: visualBuilderVisible ? '70%' : '100%' }}>
         <Component {...props} />
       </div>
       

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ParametersIcon = (props) => {
-  const { fill = 'none', ...rest } = props
+  const { fill = '#ABA5A7', ...rest } = props
   
   return (
     <svg width='33' height='33' viewBox='0 0 33 33' fill={fill} {...rest}>

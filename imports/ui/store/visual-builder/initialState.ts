@@ -2,23 +2,21 @@ const initialState = {
   visible: false,
   pages: [
     {
-      title: 'Estimation',
-      key: 'estimation',
+      title: 'Home',
+      key: 'home',
+      to: '/home',
       collapsed: true
     },
     {
-      title: 'Catalog Options',
-      key: 'catalogOptions',
+      title: 'Contacts',
+      key: 'contacts',
+      to: '/contacts',
       collapsed: true
     },
     {
-      title: 'Personal Information',
-      key: 'personalInformation',
-      collapsed: true
-    },
-    {
-      title: 'Payment Details',
-      key: 'paymentDetails',
+      title: 'Payment Methods',
+      key: 'paymentMethods',
+      to: '/paymentMethods',
       collapsed: true
     },
   ]

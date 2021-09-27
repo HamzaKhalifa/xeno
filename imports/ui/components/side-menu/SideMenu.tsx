@@ -49,7 +49,7 @@ const SideMenu = (props: ISideMenu) => {
 
       <div className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
         <CustomButton style={{ ...sideMenuStyles.paramsButton }} onClick={onSettingsClicked}>
-          <ParametersIcon fill='red' />
+          <ParametersIcon fill={visualBuilderVisible ? '#3CD2C8' : '#ABA5A7'} />
         </CustomButton>
       </div>
       
