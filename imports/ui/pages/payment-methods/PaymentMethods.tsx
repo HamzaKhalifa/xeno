@@ -93,7 +93,7 @@ const PaymentMethods = () => {
               <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnPaymentMode }}>{paymentMethod.paymentMode ?? '-'}</div>
               <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnLast4 }}>{paymentMethod.last4 ? 'XXXX.. ' + paymentMethod.last4 : '-'}</div>
               <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnAction }}>
-
+                <Link to={'/paymentMethods/' + paymentMethod._id}><CustomButton style={{ ...paymentMethodsStyles.editButton }}>Edit</CustomButton></Link>
                 <DeleteIcon style={{ ...paymentMethodsStyles.deleteIcon }} onClick={() => deletePaymentMethodWarning(paymentMethod)} />
               </div>
             </div>

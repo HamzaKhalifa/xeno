@@ -22,6 +22,10 @@ const Header = () => {
   const location = useLocation()
   const history = useHistory()
 
+  // Store location for the splash screen to know where to redirect to
+  console.log('storing', location.pathname)
+  localStorage.setItem('location', location.pathname)
+
   const logout = () => {
     setLogoutLoading(true)
     Meteor.logout(_ => {

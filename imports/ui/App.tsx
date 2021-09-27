@@ -20,6 +20,7 @@ import PaymentMethods from '/imports/ui/pages/payment-methods'
 import PaymentMethod from '/imports/ui/pages/payment-method'
 import Business from '/imports/ui/pages/business'
 import Addresses from '/imports/ui/pages/addresses'
+import Address from '/imports/ui/pages/address'
 
 import store from '/imports/ui/store'
 
@@ -56,12 +57,15 @@ export const App = () => {
           <Route exact path='/paymentMethods' component={PaymentMethods} />
 
           <Route exact path='/paymentMethod' component={PaymentMethod} />
-          <Route exact path='/paymentMethod/:id' component={PaymentMethod} />
+          <Route exact path='/paymentMethods/:id' component={PaymentMethod} />
 
           <Route exact path='/businesses' component={Business} />
           <Route exact path='/businesses/:id' component={Business} />
 
           <Route exact path='/businesses/:id/addresses' component={Addresses} />
+          <Route exact path='/businesses/:id/addresses/:addressId' component={Address} />
+          
+          <Route exact path='/businesses/:id/addAddress' component={Address} />
           
           <Redirect from='/' to='/splashScreen' />
         </Switch>

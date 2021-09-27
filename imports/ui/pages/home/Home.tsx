@@ -50,7 +50,7 @@ const Home = () => {
 
           <div className={styles.subLinks} style={{ ...homeStyles.subLinks }}>
             <Link className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id : '')}>Important Information</Link>
-            <Link className={styles.subLink} style={{ ...homeStyles.subLink }} to='#'>Addresses</Link>
+            <Link className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id + '/addresses' : '')}>Addresses</Link>
           </div>
         </div>
 

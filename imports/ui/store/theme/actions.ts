@@ -1,5 +1,5 @@
-import { 
-  SET_THEME
+import {
+  SET_THEME_VALUE,
 } from './actionTypes'
 
-export const setTheme = (theme) => ({ type: SET_THEME, payload: theme })
+export const setThemeValue = (path, value) => ({ type: SET_THEME_VALUE, payload: { path, value } })

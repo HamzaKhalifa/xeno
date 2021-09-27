@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import remote from '/imports/api/remote'
+
 import LocationSearchInput from '/imports/ui/components/location-search-input'
 import CustomInput from '/imports/ui/components/custom-input'
 import CustomButton from '/imports/ui/components/custom-button'
@@ -11,10 +13,13 @@ import useStyles from './styles'
 interface IAddressForm {
   save?: any
   loading?: boolean
+  id?: string
 }
 
 const AddressForm = (props: IAddressForm) => {
   //#region State
+  const [address, setAddress] = React.useState(null)
+
   const [fullAddress, setFullAddress] = React.useState('')
   const [nickName, setNickName] = React.useState('')
   const [city, setCity] = React.useState('')
@@ -34,6 +39,27 @@ const AddressForm = (props: IAddressForm) => {
 
   //#region Hooks
   const styles = useStyles()
+  React.useEffect(() => {
+    if (props.id) {
+      remote.call('addresses.findOne', props.id, (error, response) => {
+        if (error) return Toast.error('Error fetching address ' + error.message)
+        else {
+          setAddress(response)
+
+          setNickName(response.nickName)
+          setCity(response.city)
+          setCivicNumber(response.civicNumber)
+          setCountry(response.country)
+          setPostalCode(response.postalCode)
+          setProvince(response.province)
+          setStreetName(response.streetName)
+          setLatitude(response.latitude)
+          setLongitude(response.longitude)
+          setStreetType(response.streetType)
+        }
+      })
+    }
+  }, [props.id])
   //#endregion Hooks
 
   //#region Change handlers
@@ -90,6 +116,7 @@ const AddressForm = (props: IAddressForm) => {
     if (Object.keys(newFormErrors).length > 0) return  
 
     props.save?.({
+      ...address,
       nickName,
       city,
       civicNumber,
@@ -105,7 +132,7 @@ const AddressForm = (props: IAddressForm) => {
   //#endregion Event listeners
 
   return (
-    <div className={styles.addressForm} style={{ ...addressFormStyles.estimationContainer }}>
+    <div className={styles.addressForm} style={{ ...addressFormStyles.addressFormContainer }}>
       <LocationSearchInput 
         label='Address'
         placeholder='Type your full address'

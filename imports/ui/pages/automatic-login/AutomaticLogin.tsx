@@ -16,25 +16,11 @@ const AutomaticLogin = () => {
           if (error) {
             localStorage.setItem('token', null)
             
-            if(['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
-                .indexOf(history.location.pathname) === -1 
-              && !history.location.pathname.includes('/enrollAccount')
-              && !history.location.pathname.includes('/resetPassword')
-            ) {
-              history.push('/login')
-            }
+            history.push('/login')
           } else {
             localStorage.setItem('token', token)
-  
-            if(['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation']
-                .indexOf(history.location.pathname) !== -1 
-              || history.location.pathname.includes('/enrollAccount')
-              || history.location.pathname.includes('/resetPassword')
-            ) {
-              history.push('/home')
-            } else {
-              history.push('/login')
-            }
+
+            history.push(localStorage.getItem('location') ?? '/home')
           }
         })
       }, 2000)

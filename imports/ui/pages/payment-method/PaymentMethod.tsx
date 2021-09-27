@@ -25,6 +25,11 @@ interface IPaymentMethod {
   match?: any
 }
 
+const currencies = [
+  { _id: 'ca', name: '$ca' },
+  { _id: 'us', name: '$us' }
+]
+
 const PaymentMethod = (props: IPaymentMethod) => {
   const id = props.match?.params.id
 
@@ -73,8 +78,9 @@ const PaymentMethod = (props: IPaymentMethod) => {
           setPaymentMethod(response)
 
           setName(response.name); setPaymentMode(response.paymentMode); setLast4(response.last4); setExpirationMonth(response.expirationMonth); 
-          setExpirationYear(response.expirationYear)
-          setCurrency(response.currency)
+          setExpirationYear(response.expirationYear); setInstitution(response.institution); setTransit(response.transit); setAccountNumber(response.accountNumber)
+          setCurrency(currencies.find(currency => currency._id === response.currency))
+          setBillingAddress(response.billingAddress)
         }
       })
     }
@@ -138,20 +144,24 @@ const PaymentMethod = (props: IPaymentMethod) => {
     }
 
     const newpaymentMethod = {
+      ...paymentMethod,
       name,
       paymentMode,
-      last4,
-      expirationMonth,
-      expirationYear,
-      currency: currency._id,
-      contact: user.profile.contact,
-      customerType: 'Contact',
+
       institution, transit, accountNumber,
-      billingAddress
+      last4, expirationMonth, expirationYear,
+
+      contact: user.profile.contact,
+
+      currency: currency._id,
+      billingAddress,
+
+      customerType: 'Contact',
     }
 
     setLoading(true)
     if (id) {
+      console.log('paymentMethod', newpaymentMethod)
       remote.call('paymentMethods.update', newpaymentMethod, error => {
         if (error) Toast.error('Error updating paymentMethod ' + error.message)
         else Toast.success('paymentMethod has been updated')
@@ -284,10 +294,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
 
         <CustomSelector 
           label='Currency'
-          options={[
-            { _id: 'ca', name: '$ca' },
-            { _id: 'us', name: '$us' }
-          ]}
+          options={currencies}
           getOptionName={(option: any) => option.name ?? ''}
           onChange={onCurrencyChange}
           value={currency}

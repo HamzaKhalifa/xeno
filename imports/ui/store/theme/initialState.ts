@@ -1,4 +1,7 @@
 const initialState = {
+  general: {
+    highlightColor: '#38c172'
+  },
   button: {
     backgroundColor: '#3CD2C8',
     color: 'white',
@@ -130,7 +133,8 @@ const initialState = {
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
-      width: '100%',
+      maxWidth: '100%',
+      flex: 1,
       backgroundColor: 'rgb(244, 244, 244)',
       boxShadow: '20px -22px 89px rgba(171, 165, 167, 0.08)',
       borderRadius: 8,
@@ -741,7 +745,7 @@ const initialState = {
       backgroundColor: 'transparent',
       height: 610,
       marginRight: 46.18
-    }
+    },
   },
   sideMenu: {
     sideMenuContainer: {
@@ -757,6 +761,10 @@ const initialState = {
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center'
+    },
+    paramsButton: {
+      width: '100%',
+      backgroundColor: 'transparent'
     },
     dot: {
       backgroundColor: '#BD00C9',
@@ -1224,12 +1232,15 @@ const initialState = {
       maxWidth: 270,
     },
     columnAction: {
-      minWidth: 200,
-      maxWidth: 200,
+      minWidth: 250,
+      maxWidth: 250,
       display: 'flex',
       alignItems: 'center',
       padding: 0,
       justifyContent: 'flex-end'
+    },
+    editButton: {
+
     },
     deleteIcon: {
       cursor: 'pointer',
@@ -1373,7 +1384,9 @@ const initialState = {
     }
   },
   addressForm: {
+    addressFormContainer: {
 
+    }
   },
   business: {
     businessContainer: {
@@ -1633,6 +1646,53 @@ const initialState = {
       cursor: 'pointer',
       paddingRight: 15,
       paddingLeft: 15,
+    },
+  },
+  address: {
+    addressContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    tabs: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    selectedSubTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    subTitle: {
+      color: '#ABA5A7',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 80,
+      height: 2,
+      marginLeft: 310
+    },
+    information: {
+      display: 'flex',
+      width: '100%',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      backgroundColor: 'white',
+      padding: 32,
+      boxSizing: 'border-box'
     },
   },
 }

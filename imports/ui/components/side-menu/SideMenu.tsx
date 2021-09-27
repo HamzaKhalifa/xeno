@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 import HomeIcon from '/imports/ui/icons/HomeIcon'
@@ -9,6 +9,9 @@ import PaymentMethodIcon from '/imports/ui/icons/PaymentMethodIcon'
 import ParametersIcon from '/imports/ui/icons/ParametersIcon'
 
 import Toast from '/imports/ui/components/toast'
+import CustomButton from '/imports/ui/components/custom-button'
+
+import { setVisualBuilderVisible } from '/imports/ui/store/visual-builder/actions'
 
 import useStyles from './styles'
 
@@ -16,11 +19,16 @@ interface ISideMenu {
 }
 
 const SideMenu = (props: ISideMenu) => {
-  const { sideMenu: sideMenuStyles } = useSelector(state => state.theme)
+  const { sideMenu: sideMenuStyles }: any = useSelector<any>(state => state.theme)
+
+  const visualBuilderVisible = useSelector<any>(state => state.visualBuilder.visible)
 
   const styles = useStyles()
+  const dispatch = useDispatch()
 
   const location = useLocation()
+
+  const onSettingsClicked = React.useCallback(() => dispatch(setVisualBuilderVisible(!visualBuilderVisible)), [visualBuilderVisible])
 
   return (
     <div className={styles.sideMenuContainer} style={{ ...sideMenuStyles.sideMenuContainer }}>
@@ -40,7 +48,9 @@ const SideMenu = (props: ISideMenu) => {
       </div>
 
       <div className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
-        <Link to='#'><ParametersIcon onClick={() => Toast.error('coming soon')} fill='red' /></Link>
+        <CustomButton style={{ ...sideMenuStyles.paramsButton }} onClick={onSettingsClicked}>
+          <ParametersIcon fill='red' />
+        </CustomButton>
       </div>
       
     </div>
