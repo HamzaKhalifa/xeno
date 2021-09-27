@@ -24,7 +24,7 @@ const PaymentMethods = () => {
   const [deleteModalVisible, setDeleteModalVisible] = React.useState(false)
   const [paymentMethodToDelete, setPaymentMethodToDelete] = React.useState(null)
 
-  const { paymentMethods: paymentMethodsStyles, deleteModal: deleteModalStyles } = useSelector(state => state.theme)
+  const { paymentMethods: paymentMethodsStyles, deleteModal: deleteModalStyles }: any = useSelector<any>(state => state.theme)
   //#endregion State
 
   //#region Hooks
@@ -41,7 +41,7 @@ const PaymentMethods = () => {
   const toggleDeleteModalVisible = React.useCallback(() => setDeleteModalVisible(!deleteModalVisible), [deleteModalVisible])
   const setDeleteModalVisibleValue = React.useCallback((visible) => setDeleteModalVisible(visible), [])
   const deleteElement = React.useCallback(() => {
-    remote.call('paymentMethods.remove', [paymentMethodToDelete._id] error => {
+    remote.call('paymentMethods.remove', [paymentMethodToDelete._id], error => {
       if (error) Toast.error('Error deleting the payment method: ' + error.message) 
       else {
         setDeleteModalVisibleValue(false)

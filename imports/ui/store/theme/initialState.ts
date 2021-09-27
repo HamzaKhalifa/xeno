@@ -836,7 +836,7 @@ const initialState = {
     },
     line: {
       backgroundColor: '#3CD2C8',
-      width: 162,
+      width: 125,
       height: 2
     },
     tableContainer: {
@@ -1121,7 +1121,7 @@ const initialState = {
     },
     line: {
       backgroundColor: '#3CD2C8',
-      width: 162,
+      width: 205,
       height: 2
     },
     tableContainer: {
@@ -1408,7 +1408,7 @@ const initialState = {
     },
     line: {
       backgroundColor: '#3CD2C8',
-      width: 180,
+      width: 195,
       height: 2
     },
     information: {
@@ -1456,6 +1456,184 @@ const initialState = {
       display: 'flex',
       alignItems: 'center'
     } 
+  },
+  addresses: {
+    addressesContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    tabs: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    selectedSubTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    subTitle: {
+      color: '#ABA5A7',
+      fontSize: 20.25,
+      marginBottom: 10,
+      fontWeight: '100',
+      marginRight: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 100,
+      height: 2,
+      marginLeft: 205
+    },
+    tableContainer: {
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      display: 'flex',
+    },
+    addAddress1: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    addAddress2: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 250,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnNickName: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnCity: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnCivicNumber: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnCountry: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnPostalCode: {
+      minWidth: 110,
+      maxWidth: 110,
+    },
+    columnProvince: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnStreetName: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnLatitude: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnLongitude: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnStreetType: {
+      minWidth: 130,
+      maxWidth: 130,
+    },
+    columnAction: {
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    deleteIcon: {
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
   },
 }
 

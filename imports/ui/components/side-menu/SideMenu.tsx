@@ -8,6 +8,8 @@ import InvoiceIcon from '/imports/ui/icons/InvoiceIcon'
 import PaymentMethodIcon from '/imports/ui/icons/PaymentMethodIcon'
 import ParametersIcon from '/imports/ui/icons/ParametersIcon'
 
+import Toast from '/imports/ui/components/toast'
+
 import useStyles from './styles'
 
 interface ISideMenu {
@@ -31,14 +33,14 @@ const SideMenu = (props: ISideMenu) => {
         <div className={styles.options} style={{ ...sideMenuStyles.options }}>
           <Link style={{ ...sideMenuStyles.option }} to='/home'><HomeIcon fill={location.pathname === '/home' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='/contacts'><UserIcon fill={location.pathname === '/contacts' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='#'><InvoiceIcon fill={location.pathname === '/invoices' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
+          <Link style={{ ...sideMenuStyles.option }} to='#'><InvoiceIcon onClick={() => Toast.error('Coming soon')} fill={location.pathname === '/invoices' ? 'red' : 'red'} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='/paymentMethods'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
         </div>
 
       </div>
 
       <div className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
-        <Link to='#'><ParametersIcon /></Link>
+        <Link to='#'><ParametersIcon onClick={() => Toast.error('coming soon')} fill='red' /></Link>
       </div>
       
     </div>

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useTracker } from 'meteor/react-meteor-data'
 import { Link, useHistory } from 'react-router-dom'
 
-import remote, { AddressCollection } from '/imports/api/remote'
+import remote, { AddressCollection, ContactCollection } from '/imports/api/remote'
 
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
@@ -12,6 +12,7 @@ import withSideMenu from '/imports/ui/hoc/with-side-menu'
 import Toast from '/imports/ui/components/toast'
 import CustomInput from '/imports/ui/components/custom-input'
 import CustomSelector from '/imports/ui/components/custom-selector'
+import CustomSelectorWithSearch from '/imports/ui/components/custom-selector-with-search'
 import CustomButton from '/imports/ui/components/custom-button'
 
 import getAddressName from '/imports/ui/utils/getAddressName'
@@ -30,7 +31,8 @@ const Business = (props: IBusiness) => {
   const [business, setbusiness] = React.useState<any>({})
 
   const [name, setName] = React.useState('')
-  const [mainAddress, setMainAddress] = React.useState('')
+  const [addresses, setAddresses] = React.useState([])
+  const [mainAddress, setMainAddress] = React.useState(null)
 
   const [formErrors, setFormErrors] = React.useState<any>({})
 
@@ -49,27 +51,24 @@ const Business = (props: IBusiness) => {
           setbusiness(response)
 
           setName(response.name);
+          setAddresses(response.addresses)
           setMainAddress(response.mainAddress)
         }
       })
     }
   }, [])
-  const addresses: any = useTracker(() => {
-    remote.subscribe('addresses.paginated', { _id: { $in: business?.addresses?.map(address => address._id) ?? [] } }, 999, 0)
-
-    return AddressCollection.find( { _id: { $in: business?.addresses?.map(address => address._id) ?? [] } }).fetch()
-  }) 
   //#endregion Hooks
   
-  const onNameChange = React.useCallback((e) => setName(e.target.value),[])
-  const onMainAddressChange = React.useCallback((e) => setMainAddress(e.target.value),[])
+  //#region Change handlers
+  const onNameChange = React.useCallback((e) => setName(e.target.value), [])
+  const onMainAddressChange = React.useCallback((mainAddress) => setMainAddress(mainAddress), [])
+  const onAddressesChange = React.useCallback((addresses) => setAddresses(addresses), [])
+  //#endregion Change handlers
 
   const save = (e) => {
     e.preventDefault()
 
-    const newBusiness = { ...business, name, mainAddress }
-
-    console.log('newBusiness', newBusiness)
+    const newBusiness = { ...business, name, mainAddress, addresses }
 
     setLoading(true)
     if (id) {
@@ -92,7 +91,6 @@ const Business = (props: IBusiness) => {
         history.push('/businesses/' + businessId)
       })
     }
-
   }
 
   return (
@@ -117,17 +115,25 @@ const Business = (props: IBusiness) => {
         <span className={styles.informationSubTitle} style={{ ...businessStyles.informationSubTitle }}>We would like to know your company better.</span>
 
         <CustomInput value={name} style={{ ...businessStyles.name }} label='Name' placeholder='Name' onChange={onNameChange} />
+ 
+        <CustomSelectorWithSearch
+          label='Addresses'
+          elementsName='addresses'
+          searchMethod='addresses.search'
+          getOptionName={getAddressName}
+          onChange={onAddressesChange}
+          value={addresses}
+          multiple
+        />
 
-        {addresses && 
-          <CustomSelector
-            label='Billing Address'
-            options={addresses}
-            getOptionName={getAddressName}
-            onChange={onMainAddressChange}
-            value={mainAddress}
-            error={formErrors.mainAddress}
-          />
-        }
+        <CustomSelector
+          label='Main Address'
+          options={addresses ?? []}
+          getOptionName={getAddressName}
+          onChange={onMainAddressChange}
+          value={mainAddress}
+          error={formErrors.mainAddress}
+        />
 
       </div>
 
