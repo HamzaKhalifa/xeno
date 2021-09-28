@@ -57,9 +57,6 @@ const AccountCompletitionIndicator = (props: ICustomButton) => {
     return score
   }, [contact, businesses, paymentMethods])
   
-
-  console.log('businesses', contact?.projectRoles)
-  
   return (
     <div style={{ ...indicatorStyles.accountCompletitionIndicatorContainer }}>
       <ProgressCheckIcon />

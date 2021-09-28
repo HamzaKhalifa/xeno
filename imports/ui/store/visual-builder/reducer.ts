@@ -6,7 +6,6 @@ import {
 import initialState from './initialState'
 
 const setVisualBuilderVisible = (state, action) => {
-  console.log('visible', action.payload)
   return {
     ...state,
     visible: action.payload

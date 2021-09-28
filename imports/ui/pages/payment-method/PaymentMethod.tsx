@@ -161,7 +161,6 @@ const PaymentMethod = (props: IPaymentMethod) => {
 
     setLoading(true)
     if (id) {
-      console.log('paymentMethod', newpaymentMethod)
       remote.call('paymentMethods.update', newpaymentMethod, error => {
         if (error) Toast.error('Error updating paymentMethod ' + error.message)
         else Toast.success('paymentMethod has been updated')
