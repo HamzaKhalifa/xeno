@@ -41,7 +41,7 @@ const SideMenu = (props: ISideMenu) => {
         <div className={styles.options} style={{ ...sideMenuStyles.options }}>
           <Link style={{ ...sideMenuStyles.option }} to='/home'><HomeIcon fill={location.pathname === '/home' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='/contacts'><UserIcon fill={location.pathname === '/contacts' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='#'><InvoiceIcon onClick={() => Toast.error('Coming soon')} fill={location.pathname === '/invoices' ? 'red' : 'red'} /></Link>
+          <Link style={{ ...sideMenuStyles.option }} to='/invoices'><InvoiceIcon fill={location.pathname === '/invoices' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
           <Link style={{ ...sideMenuStyles.option }} to='/paymentMethods'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
         </div>
 

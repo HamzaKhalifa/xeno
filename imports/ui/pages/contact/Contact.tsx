@@ -63,7 +63,7 @@ const Contact = (props: IContact) => {
   const onFirstNameChange = React.useCallback((e) => setFirstName(e.target.value),[])
   const onLastNameChange = React.useCallback((e) => setLastName(e.target.value),[])
   const onPostChange = React.useCallback((e) => setPost(e.target.value),[])
-  const onBirthdayChange = React.useCallback((e) => setBirthday(e.target.value),[])
+  const onBirthdayChange = React.useCallback((birthday) => setBirthday(birthday),[])
   const onProjectRolesChange = React.useCallback(projectRoles => setProjectRoles(projectRoles), [])
   const onEmailChange = React.useCallback(e => setEmail(e.target.value), [])
   const onPhone1Change = React.useCallback(phone1 => setPhone1(phone1), [])
@@ -74,9 +74,6 @@ const Contact = (props: IContact) => {
     const newUser = { ...contact.user, firstName, lastName, post, birthday, email }
     const newContact = { ...contact, firstName, lastName, projectRoles, email, phone1 }
     delete newContact.user
-
-    console.log('new user', newUser)
-    console.log('new contact', newContact)
 
     setLoading(true)
 

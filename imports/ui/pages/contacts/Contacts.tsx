@@ -114,7 +114,7 @@ const contacts = () => {
           <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}></div>
         </div>
         
-        {contacts.map((contact, index) => {
+        {contacts?.map((contact, index) => {
           const isSocialMediaAccount = ['Facebook', 'Google', 'Linkedin'].indexOf(contact.user?.profile?.loginMethod) !== -1
           const invited = Boolean(contact.user) || isSocialMediaAccount
           const verified = Boolean(contact.user?.emails[0].verified) || isSocialMediaAccount

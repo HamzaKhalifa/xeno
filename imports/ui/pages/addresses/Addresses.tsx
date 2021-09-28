@@ -107,7 +107,7 @@ const Addresses = (props: IAddresses) => {
           <div className={styles.column} style={{ ...addressesStyles.column, ...addressesStyles.columnAction }}></div>
         </div>
         
-        {elements.map((address, index) => {
+        {elements?.map((address, index) => {
           return (
             <div className={styles.tableColumns} style={{ ...addressesStyles.tableRow }} key={index}>
               <div className={styles.column} style={{ ...addressesStyles.column, ...addressesStyles.columnNickName }}>{address.nickName ?? '-'}</div>

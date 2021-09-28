@@ -15,5 +15,6 @@ export const AddressCollection = new Mongo.Collection('addresses', { connection:
 export const BusinessCollection = new Mongo.Collection('businesses', { connection: apiehubConnection })
 export const SettingCollection = new Mongo.Collection('settings', { connection: apiehubConnection })
 export const PaymentMethodCollection = new Mongo.Collection('paymentMethods', { connection: apiehubConnection })
+export const InvoiceCollection = new Mongo.Collection('invoices', { connection: apiehubConnection })
 
 export default apiehubConnection

@@ -6,15 +6,17 @@ import { Link, useLocation, useHistory } from 'react-router-dom'
 import CustomButton from '/imports/ui/components/custom-button'
 import CustomLoader from '/imports/ui/components/custom-loader'
 import ProfileButton from '/imports/ui/components/profile-button'
+import AccountCompletitionIndicator from '/imports/ui/components/account-completion-indicator'
 
 import useAuth from '/imports/ui/hooks/useAuth'
 
 import HeaderIcon from '/imports/ui/icons/HeaderIcon'
+import LogoutIcon from '/imports/ui/icons/LogoutIcon'
 
 import useStyles from './styles'
 
 const Header = () => {
-  const { header: headerStyles } = useSelector(state => state.theme)
+  const { header: headerStyles }: any = useSelector<any>(state => state.theme)
   const [logoutLoading, setLogoutLoading] = React.useState(false)
 
   const user = useAuth()
@@ -23,7 +25,6 @@ const Header = () => {
   const history = useHistory()
 
   // Store location for the splash screen to know where to redirect to
-  console.log('storing', location.pathname)
   localStorage.setItem('location', location.pathname)
 
   const logout = () => {
@@ -49,15 +50,19 @@ const Header = () => {
       </div>
 
       <div style={{ ...headerStyles.right }}>
+
+        {user && <AccountCompletitionIndicator />}
+        
+        {user && <ProfileButton />}
+
         {user &&
           <div className={styles.logoutButton} style={{ ...headerStyles.logoutButton }} onClick={logout}>
 
-            {!logoutLoading && 'Logout'}
+            {!logoutLoading && <LogoutIcon style={{ ...headerStyles.logoutIcon }} />}
     
             {logoutLoading && <CustomLoader />}
           </div>
         }
-        {user && <ProfileButton />}
 
         {!user && (location.pathname === '/login' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <Link to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</Link>}
         {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest' || location.pathname === '/forgotPassword') && <Link to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</Link>}

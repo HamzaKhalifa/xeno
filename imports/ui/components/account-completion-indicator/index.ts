@@ -1,0 +1,3 @@
+import AccountCompletitionIndicator from './AccountCompletitionIndicator'
+
+export default AccountCompletitionIndicator

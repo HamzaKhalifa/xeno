@@ -18,6 +18,32 @@ const initialState = {
     paddingLeft: 24,
     borderRadius: 4
   },
+  accountCompletitionIndicator: {
+    accountCompletitionIndicatorContainer: {
+      borderWidth: 3, 
+      borderStyle: 'solid',
+      borderColor: '#3CD2C8',
+      display: 'flex',
+      alignItems: 'center',
+      padding: 12,
+      borderRadius: 40,
+      backgroundColor: 'white', 
+      justifyContent: 'space-between',
+      cursor: 'pointer',
+    },
+    text: {
+      color: '#2E2226',
+      fontSize: 14,
+      whiteSpace: 'nowrap',
+      marginRight: 10,
+      marginLeft: 10
+    },
+    percentage: {
+      color: '#3CD2C8',
+      fontSize: 14,
+      whiteSpace: 'nowrap',
+    }
+  },
   deleteModal: {
     deleteTitle: {
       color: '#2E2226',
@@ -201,7 +227,13 @@ const initialState = {
       borderWidth: 0
     },
     logoutButton: {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      marginLeft: 16,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 14,
+      backgroundColor: 'white'
     },
     createAccountRequestButton: {
       textAlign: 'center',
@@ -230,6 +262,9 @@ const initialState = {
       paddingRight: 16,
       paddingLeft: 16,
       marginLeft: 10
+    },
+    logoutIcon: {
+      
     }
   },
   footer: {
@@ -1694,6 +1729,179 @@ const initialState = {
       padding: 32,
       boxSizing: 'border-box'
     },
+  },
+  invoices: {
+    invoicesContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      backgroundColor: '#3CD2C8',
+      width: 125,
+      height: 2
+    },
+    tableContainer: {
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      display: 'flex',
+    },
+    inviteButton1: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 184,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnName: {
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnPhone: {
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnEmail: {
+      minWidth: 250,
+      maxWidth: 250,
+    },
+    columnPost: {
+      minWidth: 100,
+      maxWidth: 100,
+    },
+    columnProjectRoles: {
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnStatus: {
+      minWidth: 150,
+      maxWidth: 150,
+    },
+    columnAction: {
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    status: {
+      fontSize: 14.12,
+      color: 'rgba(119, 103, 108, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    statusIcon: {
+      marginLeft: 8.88,
+    },
+    inviteButton: {
+      width: 150,
+      color: 'white',
+      backgroundColor: '#6EB0DD',
+      boxSizing: 'border-box',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    inviteButtonLoadingStyles: {
+      width: 150,
+    },
+    deleteIcon: {
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
+    you: {
+      padding: 10
+    }
   },
 }
 
