@@ -10,6 +10,7 @@ const AutomaticLogin = () => {
   React.useEffect(() => {
     const token = params.token ?? localStorage.getItem('token')
     
+    console.log('logging in with token')
     if (token) {
       setTimeout(() => {
         Meteor.loginWithToken(token, error => {
@@ -24,6 +25,8 @@ const AutomaticLogin = () => {
           }
         })
       }, 2000)
+    } else {
+      history.push('/login')
     }
   }, [])
 
