@@ -8,13 +8,14 @@ import remote, { BusinessCollection } from '/imports/api/remote'
 
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
+import Toast from '/imports/ui/components/toast'
 
 import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
 import useStyles from './styles'
 
 const Home = () => {
-  const { home: homeStyles } = useSelector(state => state.theme)
+  const { home: homeStyles }: any = useSelector<any>(state => state.theme)
 
   const styles = useStyles()
   const user: any = useTracker(() => Meteor.user())
@@ -66,13 +67,17 @@ const Home = () => {
           <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my company's profile</p>
         </Link>
 
-        <Link className={styles.section} style={{ ...homeStyles.section }} to='#'>
+        <Link 
+          className={styles.section} 
+          style={{ ...homeStyles.section, borderColor: 'red', borderWidth: 1, borderStyle: 'solid' }} 
+          onClick={() => Toast.error('Coming soon')} to='#'
+        >
           <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Account Completion</h3>
           <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult the necessary information to complete the account</p>
           
           <div style={{ ...homeStyles.progressCheckContainer }}>
-            <span style={{ ...homeStyles.progressPercentage }}>70%</span>
-            <ProgressCheckIcon style={{ ...homeStyles.progressCheck }} />
+            <span style={{ ...homeStyles.progressPercentage, color: 'red' }}>coming soon.. 70%</span>
+            <ProgressCheckIcon style={{ ...homeStyles.progressCheck }} fill='red' />
           </div>
 
         </Link>

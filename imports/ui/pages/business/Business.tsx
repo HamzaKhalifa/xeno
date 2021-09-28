@@ -30,7 +30,7 @@ const Business = (props: IBusiness) => {
   const { business: businessStyles }: any = useSelector<any>(state => state.theme)
   const [business, setbusiness] = React.useState<any>({})
 
-  const [name, setName] = React.useState('')
+  const [legalName, setLegalName] = React.useState('')
   const [addresses, setAddresses] = React.useState([])
   const [mainAddress, setMainAddress] = React.useState(null)
 
@@ -50,7 +50,7 @@ const Business = (props: IBusiness) => {
         else {
           setbusiness(response)
 
-          setName(response.name);
+          setLegalName(response.legalName);
           setAddresses(response.addresses)
           setMainAddress(response.mainAddress)
         }
@@ -60,7 +60,7 @@ const Business = (props: IBusiness) => {
   //#endregion Hooks
   
   //#region Change handlers
-  const onNameChange = React.useCallback((e) => setName(e.target.value), [])
+  const onLegalNameChange = React.useCallback((e) => setLegalName(e.target.value), [])
   const onMainAddressChange = React.useCallback((mainAddress) => setMainAddress(mainAddress), [])
   const onAddressesChange = React.useCallback((addresses) => setAddresses(addresses), [])
   //#endregion Change handlers
@@ -68,7 +68,7 @@ const Business = (props: IBusiness) => {
   const save = (e) => {
     e.preventDefault()
 
-    const newBusiness = { ...business, name, mainAddress, addresses }
+    const newBusiness = { ...business, legalName, mainAddress, addresses }
 
     setLoading(true)
     if (id) {
@@ -114,7 +114,7 @@ const Business = (props: IBusiness) => {
         <h2 className={styles.informationTitle} style={{ ...businessStyles.informationTitle }}>Important Information</h2>
         <span className={styles.informationSubTitle} style={{ ...businessStyles.informationSubTitle }}>We would like to know your company better.</span>
 
-        <CustomInput value={name} style={{ ...businessStyles.name }} label='Name' placeholder='Name' onChange={onNameChange} />
+        <CustomInput value={legalName} style={{ ...businessStyles.name }} label='Name' placeholder='Name' onChange={onLegalNameChange} />
  
         <CustomSelectorWithSearch
           label='Addresses'

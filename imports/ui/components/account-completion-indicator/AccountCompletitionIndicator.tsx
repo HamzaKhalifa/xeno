@@ -44,7 +44,7 @@ const AccountCompletitionIndicator = (props: ICustomButton) => {
     let score = 0
     score += (contact?.firstName ? 1 : 0) + (contact?.lastName ? 1 : 0) + (user?.profile?.post ? 1 : 0) + (user?.profile?.birthday ? 1 : 0) 
       + (contact?.projectRoles && contact?.projectRoles?.length > 0 ? 1 : 0) + (contact?.email ? 1 : 0)
-      + (contact?.phone1 ? 1 : 0) + (paymentMethods?.length > 0 ? 1 : 0) + (businesses.length > 0 && businesses[0].name ? 1 : 0) 
+      + (contact?.phone1 ? 1 : 0) + (paymentMethods?.length > 0 ? 1 : 0) + (businesses.length > 0 && businesses[0].legalName ? 1 : 0) 
       + (businesses.length > 0 && businesses[0].mainAddress ? 1 : 0) 
     return score
   }, [contact, businesses, paymentMethods])
