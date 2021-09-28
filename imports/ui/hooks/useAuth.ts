@@ -19,6 +19,11 @@ const useAuth = () => {
       Meteor.logout()
     }
 
+    if (user && user.emails && user.emails.length > 0 && !user.emails[0].verified) {
+      Toast.error('Your account hasn\'t yet been verified')
+      Meteor.logout()
+    }
+
     if (user === null 
       && ['/login', '/forgotPassword', '/createAccountRequest', '/createAccountRequestConfirmation', '/createAccount', '/confirmEmail', '/createAccountConfirmation'].indexOf(history.location.pathname) === -1 
       && !history.location.pathname.includes('/enrollAccount')

@@ -3,11 +3,9 @@ import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
 import { useTracker } from 'meteor/react-meteor-data'
 
-import remote, { PaymentMethodCollection, BusinessCollection } from '/imports/api/remote'
+import remote, { PaymentMethodCollection, BusinessCollection, ContactCollection } from '/imports/api/remote'
 
 import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
-
-import Toast from '/imports/ui/components/toast'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
@@ -28,18 +26,12 @@ interface ICustomButton {
 const AccountCompletitionIndicator = (props: ICustomButton) => {
   const { accountCompletitionIndicator: indicatorStyles }: any = useSelector<any>(state => state.theme)
 
-  const [contact, setContact] = React.useState(null)
-
   const user = useTracker(() => Meteor.user())
-  // get the contact
-  React.useEffect(() => {
-    remote.call('contacts.getOneWithUser', user?.profile.contact?._id, (error, response) => {
-      if (error) Toast.error('Error fetching contact ' + error.message)
-      else {
-        setContact(response)
-      }
-    })
-  }, [])
+  const contact: any = useTracker(() => {
+    remote.subscribe('contacts.findOne', user?.profile.contact?._id)
+
+    return ContactCollection.findOne(user?.profile.contact?._id)
+  })
   // get the business
   const businesses: any[] = useTracker(() => {
     remote.subscribe('businesses.paginated', { contacts: { $elemMatch: { _id: user?.profile.contact._id } } }, 99, 0)
