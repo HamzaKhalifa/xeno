@@ -29,6 +29,9 @@ const Business = (props: IBusiness) => {
   //#region State
   const { business: businessStyles }: any = useSelector<any>(state => state.theme)
   const [business, setbusiness] = React.useState<any>({})
+  // After we create a business and we are inside the same page where id isn't defined. Next time we push, we are going to be updating the business
+  // based on the new id instead of creating a new one
+  const [businessId, setBusinessId] = React.useState(id)
 
   const [legalName, setLegalName] = React.useState('')
   const [addresses, setAddresses] = React.useState([])
@@ -44,8 +47,8 @@ const Business = (props: IBusiness) => {
   const history = useHistory()
   const user = useTracker(() => Meteor.user())
   React.useEffect(() => {
-    if (id) {
-      remote.call('businesses.findOne', id, (error, response) => {
+    if (businessId) {
+      remote.call('businesses.findOne', businessId, (error, response) => {
         if (error) Toast.error('Error fetching business ' + error.message)
         else {
           setbusiness(response)
@@ -56,7 +59,7 @@ const Business = (props: IBusiness) => {
         }
       })
     }
-  }, [])
+  }, [businessId])
   //#endregion Hooks
   
   //#region Change handlers
@@ -70,9 +73,10 @@ const Business = (props: IBusiness) => {
 
     const newBusiness = { ...business, legalName, mainAddress, addresses }
 
+    console.log('business', business)
     setLoading(true)
-    if (id) {
-      remote.call('businesses.update', newBusiness, error => {
+    if (businessId) {
+      remote.call('businesses.update', { ...newBusiness, _id: businessId }, error => {
         if (error) Toast.error('Error updating Business ' + error.message)
         else Toast.success('Business has been updated')
 
@@ -87,6 +91,8 @@ const Business = (props: IBusiness) => {
         else Toast.success('Business has been added')
 
         setLoading(false)
+
+        setBusinessId(businessId)
 
         history.push('/businesses/' + businessId)
       })
