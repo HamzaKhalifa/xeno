@@ -11,6 +11,8 @@ import CustomButton from '/imports/ui/components/custom-button'
 import CustomInput from '/imports/ui/components/custom-input'
 import Toast from '/imports/ui/components/toast'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IResetPassword {
@@ -63,7 +65,7 @@ const ResetPassword = (props: IResetPassword) => {
       style={{ ...resetPasswordStyles.resetPasswordContainer }}
       onSubmit={resetPassword}
     >
-      <h2 style={{ ...resetPasswordStyles.title }}>Reinitialize password</h2>
+      <VBH2 style={{ ...resetPasswordStyles.title }}>Reinitialize password</VBH2>
       
       <CustomInput
         required

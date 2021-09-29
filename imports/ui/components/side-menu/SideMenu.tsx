@@ -13,6 +13,8 @@ import CustomButton from '/imports/ui/components/custom-button'
 
 import { setVisualBuilderVisible } from '/imports/ui/store/visual-builder/actions'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ISideMenu {
@@ -31,29 +33,29 @@ const SideMenu = (props: ISideMenu) => {
   const onSettingsClicked = React.useCallback(() => dispatch(setVisualBuilderVisible(!visualBuilderVisible)), [visualBuilderVisible])
 
   return (
-    <div className={styles.sideMenuContainer} style={{ ...sideMenuStyles.sideMenuContainer }}>
-      <div className={styles.top} style={{ ...sideMenuStyles.top }}>
+    <VBDiv className={styles.sideMenuContainer} style={{ ...sideMenuStyles.sideMenuContainer }}>
+      <VBDiv className={styles.top} style={{ ...sideMenuStyles.top }}>
 
-        <div className={styles.dot} style={{ ...sideMenuStyles.dot }}></div>
+        <VBDiv className={styles.dot} style={{ ...sideMenuStyles.dot }}></VBDiv>
 
-        <div style={{ ...sideMenuStyles.line }}></div>
+        <VBDiv style={{ ...sideMenuStyles.line }}></VBDiv>
 
-        <div className={styles.options} style={{ ...sideMenuStyles.options }}>
-          <Link style={{ ...sideMenuStyles.option }} to='/home'><HomeIcon fill={location.pathname === '/home' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='/contacts'><UserIcon fill={location.pathname === '/contacts' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='/invoices'><InvoiceIcon fill={location.pathname === '/invoices' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-          <Link style={{ ...sideMenuStyles.option }} to='/paymentMethods'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></Link>
-        </div>
+        <VBDiv className={styles.options} style={{ ...sideMenuStyles.options }}>
+          <VBLink style={{ ...sideMenuStyles.option }} to='/home'><HomeIcon fill={location.pathname === '/home' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></VBLink>
+          <VBLink style={{ ...sideMenuStyles.option }} to='/contacts'><UserIcon fill={location.pathname === '/contacts' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></VBLink>
+          <VBLink style={{ ...sideMenuStyles.option }} to='/invoices'><InvoiceIcon fill={location.pathname === '/invoices' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></VBLink>
+          <VBLink style={{ ...sideMenuStyles.option }} to='/paymentMethods'><PaymentMethodIcon fill={location.pathname === '/paymentMethods' ? sideMenuStyles.selectedOptionColor : sideMenuStyles.unselectedOptionColor} /></VBLink>
+        </VBDiv>
 
-      </div>
+      </VBDiv>
 
-      <div className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
+      <VBDiv className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
         <CustomButton style={{ ...sideMenuStyles.paramsButton }} onClick={onSettingsClicked}>
           <ParametersIcon fill={visualBuilderVisible ? '#3CD2C8' : '#ABA5A7'} />
         </CustomButton>
-      </div>
+      </VBDiv>
       
-    </div>
+    </VBDiv>
   )
 }
 

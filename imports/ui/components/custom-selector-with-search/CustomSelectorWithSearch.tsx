@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 
 import remote from '/imports/api/remote'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomSelectorWithSearch {
@@ -87,11 +89,11 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 	//#region View
 	const value = React.useMemo(() => props.value ?? { _id: -1 }, [props.value])
 	return (
-		<div className={styles.customSelectorWithSearchContainer} style={{ ...(props.style ?? {}) }}>
-			<div className={styles.header}>
-				<span className={styles.label}>{props.label}: </span>
+		<VBDiv className={styles.customSelectorWithSearchContainer} style={{ ...(props.style ?? {}) }}>
+			<VBDiv className={styles.header}>
+				<VBSpan className={styles.label}>{props.label}: </VBSpan>
 				<Pagination width='100%' page={page} count={Math.floor(total / limit)} onChange={onPageChange} variant='outlined' shape='rounded' />
-			</div>
+			</VBDiv>
 
 			<Autocomplete
 				loading={loading}
@@ -106,13 +108,13 @@ const CustomSelectorWithSearch = (props: ICustomSelectorWithSearch) => {
 				}
 				renderOption={params => {
 					const className = (multiple && props.value?.find(potential => potential._id === params._id)) ? styles.selectedOption : styles.option
-					return (<span className={className}>{params._id !== -1 ? props.getOptionName(params) : '-----'}</span>)
+					return (<VBSpan className={className}>{params._id !== -1 ? props.getOptionName(params) : '-----'}</VBSpan>)
 				}}
 				multiple={multiple}
 				disabled={props.disabled}
 			/>
-      {props.error && <span style={{ ...inputStyles.error }}>x {props.error}</span>}
-		</div>
+      {props.error && <VBSpan style={{ ...inputStyles.error }}>x {props.error}</VBSpan>}
+		</VBDiv>
 		//#endregion View
 	)
 }

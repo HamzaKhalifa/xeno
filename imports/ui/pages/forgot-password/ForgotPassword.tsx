@@ -14,6 +14,8 @@ import Toast from '/imports/ui/components/toast'
 
 import BlueGuyIcon from '/imports/ui/icons/BlueGuyIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const ForgotPassword = () => {
@@ -50,11 +52,11 @@ const ForgotPassword = () => {
   //#endregion Event listeners
 
   return (
-    <div 
+    <VBDiv 
       className={styles.forgotPasswordContainer} 
       style={{ ...forgotPasswordStyles.forgotPasswordContainer }}
     >
-      <h2 style={{ ...forgotPasswordStyles.title }}>Reinitialize password</h2>
+      <VBH2 style={{ ...forgotPasswordStyles.title }}>Reinitialize password</VBH2>
       
       <CustomInput
         required={false} 
@@ -66,9 +68,9 @@ const ForgotPassword = () => {
         error={emailError}
       />
 
-      {sent && !loading && <span style={{ ...forgotPasswordStyles.didntReceivePassword }}>You didn't receive it?</span>}
+      {sent && !loading && <VBSpan style={{ ...forgotPasswordStyles.didntReceivePassword }}>You didn't receive it?</VBSpan>}
       <CustomButton loading={loading} onClick={sendForgotPasswordInvitation} style={{ ...forgotPasswordStyles.button }}>{sent ? 'Resend recovery email' : 'Send me a reinitialization email'}</CustomButton>
-    </div>
+    </VBDiv>
   )
 }
 

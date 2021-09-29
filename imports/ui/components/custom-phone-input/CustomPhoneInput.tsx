@@ -1,6 +1,8 @@
 import React from 'react'
 import MuiPhoneNumber from 'material-ui-phone-number'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomPhoneInput {
@@ -18,7 +20,7 @@ const CustomPhoneInput = (props: ICustomPhoneInput) => {
   const styles = useStyles()
   
   return (
-    <div className={styles.customPhoneInputContainer}>
+    <VBDiv className={styles.customPhoneInputContainer}>
       <MuiPhoneNumber
         defaultCountry={'ca'}
 
@@ -32,7 +34,7 @@ const CustomPhoneInput = (props: ICustomPhoneInput) => {
         onChange={props.onChange} 
         autoComplete='new-password'
       />
-    </div>
+    </VBDiv>
   )
 }
 

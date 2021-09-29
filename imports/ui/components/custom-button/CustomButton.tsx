@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 
 import CustomLoader from '/imports/ui/components/custom-loader'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomButton {
@@ -28,11 +30,11 @@ const CustomButton = (props: ICustomButton) => {
 
   if (props.loading) {
     return(
-      <div style={{ 
+      <VBDiv style={{ 
         ...(props.loadingStyle ?? {})
       }}>
         <CustomLoader />
-      </div>
+      </VBDiv>
     )
   }
   
@@ -47,9 +49,9 @@ const CustomButton = (props: ICustomButton) => {
         ...(props.style ?? {})
       }}
     >
-      <div className={styles.content}>
+      <VBDiv className={styles.content}>
         {props.children}
-      </div>
+      </VBDiv>
     </button>
   )
 }

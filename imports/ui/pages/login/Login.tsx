@@ -7,6 +7,8 @@ import LoginForm from './login-form'
 
 import BlueGuyIcon from '../../icons/BlueGuyIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const Login = () => {
@@ -15,13 +17,13 @@ const Login = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.loginContainer} style={{ ...loginStyles.loginContainer }}>
+    <VBDiv className={styles.loginContainer} style={{ ...loginStyles.loginContainer }}>
       <LoginForm />
 
-      <div className={styles.iconContainer} style={{ ...loginStyles.iconContainer }}>
+      <VBDiv className={styles.iconContainer} style={{ ...loginStyles.iconContainer }}>
         <BlueGuyIcon />
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

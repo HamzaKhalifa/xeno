@@ -1,6 +1,8 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomLoader {
@@ -15,7 +17,7 @@ const CustomLoader = (props: ICustomLoader) => {
   const styles = useStyles()
   
   return (
-    <div className={styles.customLoaderContainer} style={{ ...(props.style ?? {}) }}>
+    <VBDiv className={styles.customLoaderContainer} style={{ ...(props.style ?? {}) }}>
       <Loader
         type='Puff'
         color='#00BFFF'
@@ -23,7 +25,7 @@ const CustomLoader = (props: ICustomLoader) => {
         width={width}
         timeout={999999}
       />
-    </div>
+    </VBDiv>
   )
 }
 

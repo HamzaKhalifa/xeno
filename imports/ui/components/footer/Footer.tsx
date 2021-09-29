@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import ToolyIcon from '/imports/ui/icons/ToolyIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const Footer = () => {
@@ -12,8 +14,8 @@ const Footer = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.footerContainer} style={{ ...footerStyles.footerContainer }}>
-      <div style={{ ...footerStyles.left }}>
+    <VBDiv className={styles.footerContainer} style={{ ...footerStyles.footerContainer }}>
+      <VBDiv style={{ ...footerStyles.left }}>
         <ToolyIcon />
         <p style={{ ...footerStyles.paragraph }}>
           Tooly est une entreprise Montréalaise spécialisée en transformation numérique. Nous sommes des experts en intégration et formation avec un approche agile 
@@ -21,51 +23,51 @@ const Footer = () => {
           de trouver la recommandation adaptée 
           à vos besoins.
         </p>
-      </div>
+      </VBDiv>
 
-      <div style={{ ...footerStyles.right }}>
+      <VBDiv style={{ ...footerStyles.right }}>
         
-        <div style={{ ...footerStyles.rightSection }}>
+        <VBDiv style={{ ...footerStyles.rightSection }}>
           <h3 style={{ ...footerStyles.sectionTitle }}>Join Us</h3>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Headquarters</h4>
             <p style={{ ...footerStyles.linkText }}>205 - 5570 rue Cartier, Montréal, QC H2H 1X9</p>
-          </div>
+          </VBDiv>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Phone</h4>
             <p style={{ ...footerStyles.linkText }}>438-823-3487</p>
-          </div>
+          </VBDiv>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Email</h4>
             <p style={{ ...footerStyles.linkText }}>info@tooly.services</p>
-          </div>
-        </div>
+          </VBDiv>
+        </VBDiv>
 
-        <div style={{ ...footerStyles.rightSection }}>
+        <VBDiv style={{ ...footerStyles.rightSection }}>
           <h3 style={{ ...footerStyles.sectionTitle }}>Menu</h3>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
-            <Link to='#'><p style={{ ...footerStyles.linkText }}>Recommandation</p></Link>
-          </div>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
+            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Recommandation</p></VBLink>
+          </VBDiv>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
-            <Link to='#'><p style={{ ...footerStyles.linkText }}>Integration and formation</p></Link>
-          </div>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
+            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Integration and formation</p></VBLink>
+          </VBDiv>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
-            <Link to='#'><p style={{ ...footerStyles.linkText }}>ToolyHub</p></Link>
-          </div>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
+            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>ToolyHub</p></VBLink>
+          </VBDiv>
 
-          <div style={{ ...footerStyles.titleAndLink }}>
-            <Link to='#'><p style={{ ...footerStyles.linkText }}>Investors</p></Link>
-          </div>
-        </div>
+          <VBDiv style={{ ...footerStyles.titleAndLink }}>
+            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Investors</p></VBLink>
+          </VBDiv>
+        </VBDiv>
 
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

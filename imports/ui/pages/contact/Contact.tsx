@@ -14,6 +14,8 @@ import CustomPhoneNumber from '/imports/ui/components/custom-phone-input'
 import CustomCheckBoxes from '/imports/ui/components/custom-checkboxes'
 import CustomButton from '/imports/ui/components/custom-button'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IContact {
@@ -92,42 +94,42 @@ const Contact = (props: IContact) => {
       style={{ ...contactStyles.contactContainer }}
       onSubmit={save}
     >
-      <h2 className={styles.title} style={{ ...contactStyles.title }}>Profil</h2>
+      <VBH2 className={styles.title} style={{ ...contactStyles.title }}>Profil</VBH2>
 
-      <h2 className={styles.subTitle} style={{ ...contactStyles.subTitle }}>Personal Information</h2>
+      <VBH2 className={styles.subTitle} style={{ ...contactStyles.subTitle }}>Personal Information</VBH2>
 
-      <div className={styles.line} style={{ ...contactStyles.line }}></div>
+      <VBDiv className={styles.line} style={{ ...contactStyles.line }}></VBDiv>
 
-      <div className={styles.information} style={{ ...contactStyles.information }}>
+      <VBDiv className={styles.information} style={{ ...contactStyles.information }}>
 
-        <div className={styles.personalInformation} style={{ ...contactStyles.personalInformation }}>
-          <h2 className={styles.personalInformationTitle} style={{ ...contactStyles.personalInformationTitle }}>Personal Information</h2>
-          <span className={styles.personalInformationSubTitle} style={{ ...contactStyles.personalInformationSubTitle }}>Tell us more about you.</span>
+        <VBDiv className={styles.personalInformation} style={{ ...contactStyles.personalInformation }}>
+          <VBH2 className={styles.personalInformationTitle} style={{ ...contactStyles.personalInformationTitle }}>Personal Information</VBH2>
+          <VBSpan className={styles.personalInformationSubTitle} style={{ ...contactStyles.personalInformationSubTitle }}>Tell us more about you.</VBSpan>
 
-          <div className={styles.firstNameAndLastName} style={{ ...contactStyles.firstNameAndLastName }}>
+          <VBDiv className={styles.firstNameAndLastName} style={{ ...contactStyles.firstNameAndLastName }}>
             <CustomInput value={firstName} style={{ ...contactStyles.firstName }} label='Firstname' placeholder='Firstname' onChange={onFirstNameChange} />
             <CustomInput value={lastName} style={{ ...contactStyles.lastName }} label='Lastname' placeholder='Lastname' onChange={onLastNameChange} />
-          </div>
+          </VBDiv>
 
           <CustomInput value={post ?? ''} style={{ ...contactStyles.post }} label='Post in the company' placeholder='Post' onChange={onPostChange} />
           <CustomDatePicker value={birthday ?? ''} label='Birthday' onChange={onBirthdayChange} />
-        </div>
+        </VBDiv>
         
-        <div className={styles.contactInformation} style={{ ...contactStyles.contactInformation }}>
-          <h2 className={styles.contactInformationTitle} style={{ ...contactStyles.contactInformationTitle }}>Contact Information</h2>
-          <span className={styles.contactInformationSubTitle} style={{ ...contactStyles.contactInformationSubTitle }}>How can we contact you?</span>
+        <VBDiv className={styles.contactInformation} style={{ ...contactStyles.contactInformation }}>
+          <VBH2 className={styles.contactInformationTitle} style={{ ...contactStyles.contactInformationTitle }}>Contact Information</VBH2>
+          <VBSpan className={styles.contactInformationSubTitle} style={{ ...contactStyles.contactInformationSubTitle }}>How can we contact you?</VBSpan>
 
           <CustomCheckBoxes multiple={true} label='Participates in' onChange={onProjectRolesChange} checkBoxes={remoteProjectRoles} selectedCheckBoxes={projectRoles} />
 
           <CustomInput value={email ?? ''} style={{ ...contactStyles.email }} type='email' label='Email' placeholder='Email' onChange={onEmailChange} />
           <CustomPhoneNumber value={phone1 ?? ''} onChange={onPhone1Change} placeholder='Phone Number' label='Phone Number' />
-        </div>
+        </VBDiv>
 
-      </div>
+      </VBDiv>
 
-      <div style={{ ...contactStyles.actionsContainer }}>
+      <VBDiv style={{ ...contactStyles.actionsContainer }}>
         <CustomButton loadingStyle={{ ...contactStyles.loading }} loading={loading} type='submit' style={{ ...contactStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
-      </div>
+      </VBDiv>
     </form>
   )
 }

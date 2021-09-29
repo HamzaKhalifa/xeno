@@ -17,6 +17,8 @@ import validateEmail from '/imports/ui/utils/validateEmail'
 
 import remote from '/imports/api/remote'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const LoginForm = () => {
@@ -101,9 +103,9 @@ const LoginForm = () => {
   }
 
   return (
-    <div className={styles.loginFormContainer} style={{ ...loginFormStyles.loginFormContainer }}>
-      <h2 className={styles.title} style={{ ...loginFormStyles.title }}>Welcome!</h2>
-      <span className={styles.description} style={{ ...loginFormStyles.description }}>Welcome to Tooly Service :)</span>
+    <VBDiv className={styles.loginFormContainer} style={{ ...loginFormStyles.loginFormContainer }}>
+      <VBH2 className={styles.title} style={{ ...loginFormStyles.title }}>Welcome!</VBH2>
+      <VBSpan className={styles.description} style={{ ...loginFormStyles.description }}>Welcome to Tooly Service :)</VBSpan>
 
       <form onSubmit={submit} className={styles.form} style={{ ...loginFormStyles.form }}>
         <CustomInput
@@ -126,7 +128,7 @@ const LoginForm = () => {
           error={formErrors.password}
         />
 
-        <div className={styles.buttonsContainer} style={{ ...loginFormStyles.buttonsContainer }}>
+        <VBDiv className={styles.buttonsContainer} style={{ ...loginFormStyles.buttonsContainer }}>
           <CustomButton loading={loading} type='submit'>Login</CustomButton>
 
           <FacebookLogin
@@ -139,13 +141,13 @@ const LoginForm = () => {
             )}
           />
           {/* <GoogleIcon style={{ ...loginFormStyles.googleButton }} />
-          <LinkedinIcon style={{ ...loginFormStyles.linkedinButton }} /> */}
-        </div>
+          <VBLinkedinIcon style={{ ...loginFormStyles.linkedinButton }} /> */}
+        </VBDiv>
 
-        <Link to='/forgotPassword' style={{ ...loginFormStyles.forgotPasswordText }}>Did you forget your password? Click here.</Link>
+        <VBLink to='/forgotPassword' style={{ ...loginFormStyles.forgotPasswordText }}>Did you forget your password? Click here.</VBLink>
 
       </form>
-    </div>
+    </VBDiv>
   )
 }
 

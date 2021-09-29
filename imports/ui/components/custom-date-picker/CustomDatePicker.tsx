@@ -3,6 +3,8 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -24,15 +26,15 @@ const CustomDatePicker = (props: ICustomDatePicker) => {
   const value = React.useMemo(() => props.value ? moment(props.value).toDate() : moment().toDate(), [props.value])
   
   return (
-    <div className={styles.customDatePickerContainer}>
-      <span className={styles.label} style={{ ...inputStyles.label }}>{props.label}</span>
+    <VBDiv className={styles.customDatePickerContainer}>
+      <VBSpan className={styles.label} style={{ ...inputStyles.label }}>{props.label}</VBSpan>
       <DatePicker 
         selected={value} 
         onChange={onChange} 
         className={styles.datePicker}
         style={{ ...inputStyles.input }} 
       />
-    </div>
+    </VBDiv>
   )
 }
 

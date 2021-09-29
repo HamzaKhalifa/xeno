@@ -17,6 +17,8 @@ import DeleteIcon from '/imports/ui/icons/DeleteIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const PaymentMethods = () => {
@@ -52,74 +54,74 @@ const PaymentMethods = () => {
   //#endregion Event listeners
 
   return (
-    <div 
+    <VBDiv 
       className={styles.paymentMethodsContainer} 
       style={{ ...paymentMethodsStyles.paymentMethodsContainer }}
     >
-      <h2 style={{ ...paymentMethodsStyles.title }}>Billing related information</h2>
+      <VBH2 style={{ ...paymentMethodsStyles.title }}>Billing related information</VBH2>
 
-      <h2 style={{ ...paymentMethodsStyles.subTitle }}>My payment methods</h2>
+      <VBH2 style={{ ...paymentMethodsStyles.subTitle }}>My payment methods</VBH2>
 
-      <div style={{ ...paymentMethodsStyles.line }}></div>
+      <VBDiv style={{ ...paymentMethodsStyles.line }}></VBDiv>
 
-      <div style={{ ...paymentMethodsStyles.tableContainer }}>
+      <VBDiv style={{ ...paymentMethodsStyles.tableContainer }}>
         
-        <div style={{ ...paymentMethodsStyles.tableHeader }}>
+        <VBDiv style={{ ...paymentMethodsStyles.tableHeader }}>
 
-          <div style={{ ...paymentMethodsStyles.headerLeft }}>
-            <h2 style={{ ...paymentMethodsStyles.headerTitle }}>Payment Methods</h2>
+          <VBDiv style={{ ...paymentMethodsStyles.headerLeft }}>
+            <VBH2 style={{ ...paymentMethodsStyles.headerTitle }}>Payment Methods</VBH2>
             <p style={{ ...paymentMethodsStyles.headerDescription }}>Which payment mode would you like to use</p>
-          </div>
+          </VBDiv>
 
-          <div style={{ ...paymentMethodsStyles.headerRight }}>
-          <Link to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton></Link>
+          <VBDiv style={{ ...paymentMethodsStyles.headerRight }}>
+          <VBLink to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton></VBLink>
 
-            <Link to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton2 }}>Add a payment method</CustomButton></Link>
-          </div>
+            <VBLink to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton2 }}>Add a payment method</CustomButton></VBLink>
+          </VBDiv>
 
-        </div>
+        </VBDiv>
 
-        <div className={styles.tableColumns} style={{ ...paymentMethodsStyles.tableColumns }}>
-          <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnName }}>Name</div>
-          <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnPaymentMode }}>Payment Mode</div>
-          <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnLast4 }}>Last 4</div>
-          <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnAction }}></div>
-        </div>
+        <VBDiv className={styles.tableColumns} style={{ ...paymentMethodsStyles.tableColumns }}>
+          <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnName }}>Name</VBDiv>
+          <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnPaymentMode }}>Payment Mode</VBDiv>
+          <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnLast4 }}>Last 4</VBDiv>
+          <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnAction }}></VBDiv>
+        </VBDiv>
         
         {elements.map((paymentMethod, index) => {
           return (
-            <div className={styles.tableColumns} style={{ ...paymentMethodsStyles.tableRow }} key={index}>
-              <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnName }}>{paymentMethod.name ?? '-'}</div>
-              <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnPaymentMode }}>{paymentMethod.paymentMode ?? '-'}</div>
-              <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnLast4 }}>{paymentMethod.last4 ? 'XXXX.. ' + paymentMethod.last4 : '-'}</div>
-              <div className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnAction }}>
-                <Link to={'/paymentMethods/' + paymentMethod._id}><CustomButton style={{ ...paymentMethodsStyles.editButton }}>Edit</CustomButton></Link>
+            <VBDiv className={styles.tableColumns} style={{ ...paymentMethodsStyles.tableRow }} key={index}>
+              <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnName }}>{paymentMethod.name ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnPaymentMode }}>{paymentMethod.paymentMode ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnLast4 }}>{paymentMethod.last4 ? 'XXXX.. ' + paymentMethod.last4 : '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...paymentMethodsStyles.column, ...paymentMethodsStyles.columnAction }}>
+                <VBLink to={'/paymentMethods/' + paymentMethod._id}><CustomButton style={{ ...paymentMethodsStyles.editButton }}>Edit</CustomButton></VBLink>
                 <DeleteIcon style={{ ...paymentMethodsStyles.deleteIcon }} onClick={() => deletePaymentMethodWarning(paymentMethod)} />
-              </div>
-            </div>
+              </VBDiv>
+            </VBDiv>
           )
         })}
-      </div>
+      </VBDiv>
 
       <Modal
         open={deleteModalVisible}
         onClose={toggleDeleteModalVisible}
       >
-        <div className={styles.deleteModalContainer}>
+        <VBDiv className={styles.deleteModalContainer}>
 
-          <h2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this Payment Method</h2>
+          <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this Payment Method</VBH2>
 
           <p style={{ ...deleteModalStyles.deleteDescription }}>
             Are you sure?
           </p>
-          <div className={styles.deleteActionButtons}>
+          <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
-            <div className={styles.space} />
+            <VBDiv className={styles.space} />
             <CustomButton style={{ ...deleteModalStyles.cancelButton }} onClick={toggleDeleteModalVisible}>Cancel</CustomButton>
-          </div>
-        </div>
+          </VBDiv>
+        </VBDiv>
       </Modal>
-    </div>
+    </VBDiv>
   )
 }
 

@@ -3,6 +3,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { useSelector } from 'react-redux'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomCheckboxes {
@@ -38,10 +40,10 @@ const CustomCheckboxes = (props: ICustomCheckboxes) => {
   }
   
   return (
-    <div className={styles.customCheckboxesContainer} style={{ ...(props.style ?? {}) }}>
-      <span className={styles.label} style={{ ...inputStyles.label }}>{props.label}</span>
+    <VBDiv className={styles.customCheckboxesContainer} style={{ ...(props.style ?? {}) }}>
+      <VBSpan className={styles.label} style={{ ...inputStyles.label }}>{props.label}</VBSpan>
 
-      <div className={styles.checkBoxes}>
+      <VBDiv className={styles.checkBoxes}>
         {props.checkBoxes?.map((checkbox, index) => (
           <FormControlLabel
             key={index}
@@ -54,8 +56,8 @@ const CustomCheckboxes = (props: ICustomCheckboxes) => {
             label={checkbox.name}
           />
         ))}
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

@@ -10,6 +10,8 @@ import Toast from '/imports/ui/components/toast'
 import remote from '/imports/api/remote'
 import validateEmail from '/imports/ui/utils/validateEmail'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const CreateAccountRequestForm = () => {
@@ -65,9 +67,9 @@ const CreateAccountRequestForm = () => {
   }
 
   return (
-    <div className={styles.createAccountRequestFormContainer} style={{ ...createAccountRequestFormStyles.createAccountRequestFormContainer }}>
-      <h2 className={styles.title} style={{ ...createAccountRequestFormStyles.title }}>Create an account</h2>
-      <span className={styles.description} style={{ ...createAccountRequestFormStyles.description }}>To create an account, please contact us by filling the form</span>
+    <VBDiv className={styles.createAccountRequestFormContainer} style={{ ...createAccountRequestFormStyles.createAccountRequestFormContainer }}>
+      <VBH2 className={styles.title} style={{ ...createAccountRequestFormStyles.title }}>Create an account</VBH2>
+      <VBSpan className={styles.description} style={{ ...createAccountRequestFormStyles.description }}>To create an account, please contact us by filling the form</VBSpan>
 
       <form onSubmit={submit} className={styles.form} style={{ ...createAccountRequestFormStyles.form }}>
         <CustomInput
@@ -79,7 +81,7 @@ const CreateAccountRequestForm = () => {
           error={formErrors.legalName}
         />
 
-        <div className={styles.firstNameAndLastName} style={{ ...createAccountRequestFormStyles.firstNameAndLastName }}>
+        <VBDiv className={styles.firstNameAndLastName} style={{ ...createAccountRequestFormStyles.firstNameAndLastName }}>
           <CustomInput
             required 
             label='Firstname' 
@@ -97,7 +99,7 @@ const CreateAccountRequestForm = () => {
             onChange={onLastNameChange}
             error={formErrors.lastName}
           />
-        </div>
+        </VBDiv>
 
         <CustomInput
           required 
@@ -116,12 +118,12 @@ const CreateAccountRequestForm = () => {
           error={formErrors.message}
         />
 
-        <div className={styles.buttonsContainer}>
+        <VBDiv className={styles.buttonsContainer}>
           <CustomButton loading={loading} type='submit'>Send Demand</CustomButton>
-        </div>
+        </VBDiv>
 
       </form>
-    </div>
+    </VBDiv>
   )
 }
 

@@ -16,6 +16,8 @@ import DeleteIcon from '/imports/ui/icons/DeleteIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const Invoices = () => {
@@ -51,76 +53,76 @@ const Invoices = () => {
   //#endregion Event listeners
 
   return (
-    <div style={{ ...invoicesStyles.invoicesContainer }}>
-      <h2 style={{ ...invoicesStyles.title }}>Your Invoices</h2>
+    <VBDiv style={{ ...invoicesStyles.invoicesContainer }}>
+      <VBH2 style={{ ...invoicesStyles.title }}>Your Invoices</VBH2>
 
-      <h2 style={{ ...invoicesStyles.subTitle }}>All Invoices</h2>
+      <VBH2 style={{ ...invoicesStyles.subTitle }}>All Invoices</VBH2>
 
-      <div style={{ ...invoicesStyles.line }}></div>
+      <VBDiv style={{ ...invoicesStyles.line }}></VBDiv>
 
-      <div style={{ ...invoicesStyles.tableContainer }}>
+      <VBDiv style={{ ...invoicesStyles.tableContainer }}>
         
-        <div style={{ ...invoicesStyles.tableHeader }}>
+        <VBDiv style={{ ...invoicesStyles.tableHeader }}>
 
-          <div style={{ ...invoicesStyles.headerLeft }}>
-            <h2 style={{ ...invoicesStyles.headerTitle }}>Your Invoices</h2>
+          <VBDiv style={{ ...invoicesStyles.headerLeft }}>
+            <VBH2 style={{ ...invoicesStyles.headerTitle }}>Your Invoices</VBH2>
             <p style={{ ...invoicesStyles.headerDescription }}>Consult your invoices</p>
-          </div>
+          </VBDiv>
 
-        </div>
+        </VBDiv>
 
-        <div className={styles.tableColumns} style={{ ...invoicesStyles.tableColumns }}>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnName }}>Number</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnNumber }}>Number</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnSprint }}>Sprint</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnValue }}>Value</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnCurrency }}>Currency</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDeadline }}>Deadline</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDescription }}>Description</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnStatus }}>Status</div>
-          <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnAction }}></div>
-        </div>
+        <VBDiv className={styles.tableColumns} style={{ ...invoicesStyles.tableColumns }}>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnName }}>Number</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnNumber }}>Number</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnSprint }}>Sprint</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnValue }}>Value</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnCurrency }}>Currency</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDeadline }}>Deadline</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDescription }}>Description</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnStatus }}>Status</VBDiv>
+          <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnAction }}></VBDiv>
+        </VBDiv>
         
         {elements?.map((invoice, index) => {
           return (
-            <div className={styles.tableColumns} style={{ ...invoicesStyles.tableRow }} key={index}>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnNumber }}>{invoice.number ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnSprint }}>{invoice.sprint ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnValue }}>{invoice.value ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnCurrency }}>{invoice.currency ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDeadline }}>{invoice.deadline ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDescription }}>{invoice.description ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnStatus }}>{invoice.status ?? '-'}</div>
-              <div className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnAction }}>
-                <Link to='#'>
+            <VBDiv className={styles.tableColumns} style={{ ...invoicesStyles.tableRow }} key={index}>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnNumber }}>{invoice.number ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnSprint }}>{invoice.sprint ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnValue }}>{invoice.value ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnCurrency }}>{invoice.currency ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDeadline }}>{invoice.deadline ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnDescription }}>{invoice.description ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnStatus }}>{invoice.status ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...invoicesStyles.column, ...invoicesStyles.columnAction }}>
+                <VBLink to='#'>
                   See details
-                </Link>
+                </VBLink>
                 <DeleteIcon style={{ ...invoicesStyles.deleteIcon }} onClick={() => deleteInvoiceWarning(invoice)} />
-              </div>
-            </div>
+              </VBDiv>
+            </VBDiv>
           )
         })}
-      </div>
+      </VBDiv>
 
       <Modal
         open={deleteModalVisible}
         onClose={toggleDeleteModalVisible}
       >
-        <div className={styles.deleteModalContainer}>
+        <VBDiv className={styles.deleteModalContainer}>
 
-          <h2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this invoice</h2>
+          <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this invoice</VBH2>
 
           <p style={{ ...deleteModalStyles.deleteDescription }}>
             The invoice will no longer have access to his account and his information will be lost
           </p>
-          <div className={styles.deleteActionButtons}>
+          <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
-            <div className={styles.space} />
+            <VBDiv className={styles.space} />
             <CustomButton style={{ ...deleteModalStyles.cancelButton }} onClick={toggleDeleteModalVisible}>Cancel</CustomButton>
-          </div>
-        </div>
+          </VBDiv>
+        </VBDiv>
       </Modal>
-    </div>
+    </VBDiv>
   )
 }
 

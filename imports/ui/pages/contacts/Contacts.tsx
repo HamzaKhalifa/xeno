@@ -17,6 +17,8 @@ import ActiveUserIcon from '/imports/ui/icons/ActiveUserIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const contacts = () => {
@@ -77,42 +79,42 @@ const contacts = () => {
   //#endregion Event listeners
 
   return (
-    <div 
+    <VBDiv 
       className={styles.contactsContainer} 
       style={{ ...contactsStyles.contactsContainer }}
     >
-      <h2 style={{ ...contactsStyles.title }}>contacts</h2>
+      <VBH2 style={{ ...contactsStyles.title }}>contacts</VBH2>
 
-      <h2 style={{ ...contactsStyles.subTitle }}>User Profiles</h2>
+      <VBH2 style={{ ...contactsStyles.subTitle }}>User Profiles</VBH2>
 
-      <div style={{ ...contactsStyles.line }}></div>
+      <VBDiv style={{ ...contactsStyles.line }}></VBDiv>
 
-      <div style={{ ...contactsStyles.tableContainer }}>
+      <VBDiv style={{ ...contactsStyles.tableContainer }}>
         
-        <div style={{ ...contactsStyles.tableHeader }}>
+        <VBDiv style={{ ...contactsStyles.tableHeader }}>
 
-          <div style={{ ...contactsStyles.headerLeft }}>
-            <h2 style={{ ...contactsStyles.headerTitle }}>Collaborators profile</h2>
+          <VBDiv style={{ ...contactsStyles.headerLeft }}>
+            <VBH2 style={{ ...contactsStyles.headerTitle }}>Collaborators profile</VBH2>
             <p style={{ ...contactsStyles.headerDescription }}>Which payment mode would you like to use</p>
-          </div>
+          </VBDiv>
 
-          <div style={{ ...contactsStyles.headerRight }}>
+          <VBDiv style={{ ...contactsStyles.headerRight }}>
             <CustomButton style={{ ...contactsStyles.inviteButton1 }}><InvitationIcon /></CustomButton>
 
             <CustomButton style={{ ...contactsStyles.inviteButton2 }}>Invite Collaborator</CustomButton>
-          </div>
+          </VBDiv>
 
-        </div>
+        </VBDiv>
 
-        <div className={styles.tableColumns} style={{ ...contactsStyles.tableColumns }}>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>Name</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>Phone number</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>Email Address</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>Post</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>Attributed At</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>Status</div>
-          <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}></div>
-        </div>
+        <VBDiv className={styles.tableColumns} style={{ ...contactsStyles.tableColumns }}>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>Name</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>Phone number</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>Email Address</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>Post</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>Attributed At</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>Status</VBDiv>
+          <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}></VBDiv>
+        </VBDiv>
         
         {contacts?.map((contact, index) => {
           const isSocialMediaAccount = ['Facebook', 'Google', 'Linkedin'].indexOf(contact.user?.profile?.loginMethod) !== -1
@@ -120,18 +122,18 @@ const contacts = () => {
           const verified = Boolean(contact.user?.emails[0].verified) || isSocialMediaAccount
 
           return (
-            <div className={styles.tableColumns} style={{ ...contactsStyles.tableRow }} key={index}>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>{(contact.firstName ?? '') + ' ' + (contact?.lastName ?? '')}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>{contact.phone1 ?? '-'}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>{contact.email ?? '-'}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>{contact.user?.profile.post ?? '-'}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>{contact.projectRoles?.map((projectRole, index) => projectRole.name + (index === contact.projectRoles?.length - 1 ? '' : ', '))}</div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>
-                {(invited && verified) && <span style={{ ...contactsStyles.status }}>Active <ActiveUserIcon style={{ ...contactsStyles.statusIcon }} /></span>}
-                {(invited && !verified) && <span style={{ ...contactsStyles.status }}>Invited <InvitationIcon style={{ ...contactsStyles.statusIcon }} /></span>}
-                {(!invited) && <span style={{ ...contactsStyles.status }}>No Account <InvitationIcon style={{ ...contactsStyles.statusIcon }} /></span>}
-              </div>
-              <div className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}>
+            <VBDiv className={styles.tableColumns} style={{ ...contactsStyles.tableRow }} key={index}>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnName }}>{(contact.firstName ?? '') + ' ' + (contact?.lastName ?? '')}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPhone }}>{contact.phone1 ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnEmail }}>{contact.email ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnPost }}>{contact.user?.profile.post ?? '-'}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnProjectRoles }}>{contact.projectRoles?.map((projectRole, index) => projectRole.name + (index === contact.projectRoles?.length - 1 ? '' : ', '))}</VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnStatus }}>
+                {(invited && verified) && <VBSpan style={{ ...contactsStyles.status }}>Active <ActiveUserIcon style={{ ...contactsStyles.statusIcon }} /></VBSpan>}
+                {(invited && !verified) && <VBSpan style={{ ...contactsStyles.status }}>Invited <InvitationIcon style={{ ...contactsStyles.statusIcon }} /></VBSpan>}
+                {(!invited) && <VBSpan style={{ ...contactsStyles.status }}>No Account <InvitationIcon style={{ ...contactsStyles.statusIcon }} /></VBSpan>}
+              </VBDiv>
+              <VBDiv className={styles.column} style={{ ...contactsStyles.column, ...contactsStyles.columnAction }}>
                 {!verified && 
                   <CustomButton 
                     loading={invitationsLoading.find(potential => potential.contactId === contact._id)?.loading} 
@@ -143,32 +145,32 @@ const contacts = () => {
                   </CustomButton>
                 }
                 {contact.user._id !== user._id && <DeleteIcon style={{ ...contactsStyles.deleteIcon }} onClick={() => deleteContactWarning(contact)} />}
-                {contact.user._id === user._id && <span style={{ ...contactsStyles.you }}>You</span>}
-              </div>
-            </div>
+                {contact.user._id === user._id && <VBSpan style={{ ...contactsStyles.you }}>You</VBSpan>}
+              </VBDiv>
+            </VBDiv>
           )
         })}
-      </div>
+      </VBDiv>
 
       <Modal
         open={deleteModalVisible}
         onClose={toggleDeleteModalVisible}
       >
-        <div className={styles.deleteModalContainer}>
+        <VBDiv className={styles.deleteModalContainer}>
 
-          <h2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this contact</h2>
+          <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this contact</VBH2>
 
           <p style={{ ...deleteModalStyles.deleteDescription }}>
             The contact will no longer have access to his account and his information will be lost
           </p>
-          <div className={styles.deleteActionButtons}>
+          <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
-            <div className={styles.space} />
+            <VBDiv className={styles.space} />
             <CustomButton style={{ ...deleteModalStyles.cancelButton }} onClick={toggleDeleteModalVisible}>Cancel</CustomButton>
-          </div>
-        </div>
+          </VBDiv>
+        </VBDiv>
       </Modal>
-    </div>
+    </VBDiv>
   )
 }
 

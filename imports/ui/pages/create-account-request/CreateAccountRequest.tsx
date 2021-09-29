@@ -7,6 +7,8 @@ import CreateAccountRequesttForm from './create-account-request-form'
 
 import BlueGuyIcon from '../../icons/BlueGuyIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const CreateAccountRequest = () => {
@@ -15,13 +17,13 @@ const CreateAccountRequest = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.createAccountRequestContainer} style={{ ...createAccountRequestStyles.createAccountRequestContainer }}>
+    <VBDiv className={styles.createAccountRequestContainer} style={{ ...createAccountRequestStyles.createAccountRequestContainer }}>
       <CreateAccountRequesttForm />
 
-      <div className={styles.iconContainer} style={{ ...createAccountRequestStyles.iconContainer }}>
+      <VBDiv className={styles.iconContainer} style={{ ...createAccountRequestStyles.iconContainer }}>
         <BlueGuyIcon />
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

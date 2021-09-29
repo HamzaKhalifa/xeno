@@ -11,6 +11,8 @@ import AccordionIcon from '/imports/ui/icons/AccordionIcon'
 import { setThemeValue } from '/imports/ui/store/theme/actions'
 import { setPages } from '/imports/ui/store/visual-builder/actions'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const VisualBuilder = () => {
@@ -63,7 +65,7 @@ const VisualBuilder = () => {
               className={styles.pageTitleIcon}
             />
             
-            <h2 className={styles.pageTitle}>{page.title}</h2>
+            <VBH2 className={styles.pageTitle}>{page.title}</VBH2>
             
           </div>
 
@@ -115,11 +117,11 @@ const VisualBuilder = () => {
             )
           })}
 
-          <Link to={page.to}>
+          <VBLink to={page.to}>
             <div className={styles.showButton}>{location.pathname === page.to ? 
               <CheckIcon style={{ color: highlightColor }} /> : 'Go'}
             </div>
-          </Link>
+          </VBLink>
         </div>
       ))}
     </div>

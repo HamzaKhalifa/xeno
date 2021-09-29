@@ -9,6 +9,8 @@ import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 interface ICustomButton {
 }
 
@@ -50,11 +52,11 @@ const AccountCompletitionIndicator = (props: ICustomButton) => {
   }, [contact, businesses, paymentMethods])
   
   return (
-    <div style={{ ...indicatorStyles.accountCompletitionIndicatorContainer }}>
+    <VBDiv style={{ ...indicatorStyles.accountCompletitionIndicatorContainer }}>
       <ProgressCheckIcon />
-      <span style={{ ...indicatorStyles.text }}>Account Completion</span>
-      <span style={{ ...indicatorStyles.percentage }}>{percentage / 10 * 100}  %</span>
-    </div>
+      <VBSpan style={{ ...indicatorStyles.text }}>Account Completion</VBSpan>
+      <VBSpan style={{ ...indicatorStyles.percentage }}>{percentage / 10 * 100}  %</VBSpan>
+    </VBDiv>
   )
 }
 

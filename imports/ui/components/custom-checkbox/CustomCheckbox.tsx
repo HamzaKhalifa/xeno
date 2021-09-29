@@ -2,6 +2,8 @@ import React from 'react'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomCheckbox {
@@ -15,7 +17,7 @@ const CustomCheckbox = (props: ICustomCheckbox) => {
   const styles = useStyles()
   
   return (
-    <div className={styles.customCheckboxContainer}>
+    <VBDiv className={styles.customCheckboxContainer}>
       <FormControlLabel
         control={
           <Checkbox
@@ -25,7 +27,7 @@ const CustomCheckbox = (props: ICustomCheckbox) => {
         }
         label={props.label}
       />
-    </div>
+    </VBDiv>
   )
 }
 

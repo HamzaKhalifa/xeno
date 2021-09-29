@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomTextarea {
@@ -18,11 +20,11 @@ const CustomTextarea = (props: ICustomTextarea) => {
   const styles = useStyles()
 
   return (
-    <div className={styles.textareaContainer} style={{ ...textareaStyles.textareaContainer, ...(props.style ?? {}) }}>
-      <span className={styles.label} style={{ ...textareaStyles.label }}>{props.label ?? ''}</span>
+    <VBDiv className={styles.textareaContainer} style={{ ...textareaStyles.textareaContainer, ...(props.style ?? {}) }}>
+      <VBSpan className={styles.label} style={{ ...textareaStyles.label }}>{props.label ?? ''}</VBSpan>
 
       <textarea rows={6} placeholder={props.placeholder} className={styles.textarea} style={{ ...textareaStyles.textarea }} />
-    </div>
+    </VBDiv>
   )
 }
 

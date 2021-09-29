@@ -28,9 +28,9 @@ const EnrollAccount = (props: IEnrollAccount) => {
   }, [])
 
   return (
-    <div style={{ height: '100vh', width: '100vh', alignItems: 'center', justifyContent: 'center' }}>
+    <VBDiv style={{ height: '100vh', width: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <CustomLoader />
-    </div>
+    </VBDiv>
   )
 }
 

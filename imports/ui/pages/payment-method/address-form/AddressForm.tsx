@@ -8,6 +8,8 @@ import CustomInput from '/imports/ui/components/custom-input'
 import CustomButton from '/imports/ui/components/custom-button'
 import Toast from '/imports/ui/components/toast'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IAddressForm {
@@ -132,7 +134,7 @@ const AddressForm = (props: IAddressForm) => {
   //#endregion Event listeners
 
   return (
-    <div className={styles.addressForm} style={{ ...addressFormStyles.addressFormContainer }}>
+    <VBDiv className={styles.addressForm} style={{ ...addressFormStyles.addressFormContainer }}>
       <LocationSearchInput 
         label='Address'
         placeholder='Type your full address'
@@ -150,7 +152,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.nickName}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Country'
@@ -161,7 +163,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.country}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Province'
@@ -172,7 +174,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.province}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='City'
@@ -183,7 +185,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.city}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
       
       <CustomInput 
         placeholder='Postal Code'
@@ -194,7 +196,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.postalCode}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Street Name'
@@ -205,7 +207,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.streetName}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Civic Number'
@@ -216,7 +218,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.civicNumber}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Street Type'
@@ -227,7 +229,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.streetType}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput 
         placeholder='Latitude'
@@ -238,7 +240,7 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.latitude}
       />
 
-      <div className={styles.gap}></div>
+      <VBDiv className={styles.gap}></VBDiv>
 
       <CustomInput placeholder='Longitude'
         label='Longitude' 
@@ -248,10 +250,10 @@ const AddressForm = (props: IAddressForm) => {
         error={formErrors.longitude}
       />
 
-      <div className={styles.buttonsContainer}>
+      <VBDiv className={styles.buttonsContainer}>
         <CustomButton onClick={save} loading={props.loading}>Save Address</CustomButton>
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

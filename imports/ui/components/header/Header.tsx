@@ -13,6 +13,8 @@ import useAuth from '/imports/ui/hooks/useAuth'
 import HeaderIcon from '/imports/ui/icons/HeaderIcon'
 import LogoutIcon from '/imports/ui/icons/LogoutIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const Header = () => {
@@ -36,40 +38,40 @@ const Header = () => {
   }
   
   return (
-    <div style={{ ...(user ? headerStyles.loggedInHeaderContainer : headerStyles.headerContainer) }}>
-      <div style={{ ...headerStyles.left }}>
-        <Link to={user ? '/home' : '/login'}><HeaderIcon /></Link>
+    <VBDiv style={{ ...(user ? headerStyles.loggedInHeaderContainer : headerStyles.headerContainer) }}>
+      <VBDiv style={{ ...headerStyles.left }}>
+        <VBLink to={user ? '/home' : '/login'}><HeaderIcon /></VBLink>
 
-        <div className={styles.links} style={{ ...headerStyles.links }}>
-          <Link to='#'><span style={{ ...headerStyles.link }}>Our Story</span></Link>
-          <Link to='#'><span style={{ marginRight: 16, marginLeft: 16, ...headerStyles.link }}>Our Services</span></Link>
-          <Link to='#'><span style={{ ...headerStyles.link }}>Our Products</span></Link>
-        </div>
+        <VBDiv className={styles.links} style={{ ...headerStyles.links }}>
+          <VBLink to='#'><VBSpan style={{ ...headerStyles.link }}>Our Story</VBSpan></VBLink>
+          <VBLink to='#'><VBSpan style={{ marginRight: 16, marginLeft: 16, ...headerStyles.link }}>Our Services</VBSpan></VBLink>
+          <VBLink to='#'><VBSpan style={{ ...headerStyles.link }}>Our Products</VBSpan></VBLink>
+        </VBDiv>
 
         <CustomButton style={{ ...headerStyles.contactUsButton }}>Contact us</CustomButton>
-      </div>
+      </VBDiv>
 
-      <div style={{ ...headerStyles.right }}>
+      <VBDiv style={{ ...headerStyles.right }}>
 
         {user && <AccountCompletitionIndicator />}
         
         {user && <ProfileButton />}
 
         {user &&
-          <div className={styles.logoutButton} style={{ ...headerStyles.logoutButton }} onClick={logout}>
+          <VBDiv className={styles.logoutButton} style={{ ...headerStyles.logoutButton }} onClick={logout}>
 
             {!logoutLoading && <LogoutIcon style={{ ...headerStyles.logoutIcon }} />}
     
             {logoutLoading && <CustomLoader />}
-          </div>
+          </VBDiv>
         }
 
-        {!user && (location.pathname === '/login' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <Link to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</Link>}
-        {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest' || location.pathname === '/forgotPassword') && <Link to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</Link>}
-        {!user && (location.pathname === '/createAccountRequest' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <Link to='/login' style={{ ...headerStyles.loginButton }}>Login</Link>}
-      </div>
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <VBLink to='/createAccountRequest' style={{ ...headerStyles.createAccountRequestButton }}>Request Account Creation</VBLink>}
+        {!user && (location.pathname === '/login' || location.pathname === '/createAccountRequest' || location.pathname === '/forgotPassword') && <VBLink to='/createAccount' style={{ ...headerStyles.createaAccountButton }}>Create Account</VBLink>}
+        {!user && (location.pathname === '/createAccountRequest' || location.pathname === '/createAccount' || location.pathname === '/forgotPassword') && <VBLink to='/login' style={{ ...headerStyles.loginButton }}>Login</VBLink>}
+      </VBDiv>
 
-    </div>
+    </VBDiv>
   )
 }
 

@@ -12,6 +12,8 @@ import withSideMenu from '/imports/ui/hoc/with-side-menu'
 import AddressForm from '/imports/ui/pages/payment-method/address-form'
 import Toast from '/imports/ui/components/toast'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IAddress {
@@ -83,19 +85,19 @@ const Address = (props: IAddress) => {
       style={{ ...addressStyles.addressContainer }}
       onSubmit={save}
     >
-      <h2 style={{ ...addressStyles.title }}>{addressId ? 'Edit Address' : 'Add Address'}</h2>
+      <VBH2 style={{ ...addressStyles.title }}>{addressId ? 'Edit Address' : 'Add Address'}</VBH2>
 
-      <div style={{ ...addressStyles.tabs }}>
-        <Link to={'/businesses/' + businessId}><h2 style={{ ...addressStyles.subTitle }}>Important Information</h2></Link>
-        <Link to={'/businesses/' + businessId + '/addresses'}><h2 style={{ ...addressStyles.subTitle }}>Addresses</h2></Link>
-        <Link to={'/businesses/' + businessId + (addressId ? '/addresses/' + addressId : '/addAddress')}><h2 style={{ ...addressStyles.selectedSubTitle }}>Address</h2></Link>
-      </div>
+      <VBDiv style={{ ...addressStyles.tabs }}>
+        <VBLink to={'/businesses/' + businessId}><VBH2 style={{ ...addressStyles.subTitle }}>Important Information</VBH2></VBLink>
+        <VBLink to={'/businesses/' + businessId + '/addresses'}><VBH2 style={{ ...addressStyles.subTitle }}>Addresses</VBH2></VBLink>
+        <VBLink to={'/businesses/' + businessId + (addressId ? '/addresses/' + addressId : '/addAddress')}><VBH2 style={{ ...addressStyles.selectedSubTitle }}>Address</VBH2></VBLink>
+      </VBDiv>
 
-      <div style={{ ...addressStyles.line }}></div>
+      <VBDiv style={{ ...addressStyles.line }}></VBDiv>
 
-      <div style={{ ...addressStyles.information }}>
+      <VBDiv style={{ ...addressStyles.information }}>
         <AddressForm save={save} loading={loading} id={addressId} />
-      </div>
+      </VBDiv>
     </form>
   )
 }

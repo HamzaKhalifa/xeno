@@ -6,6 +6,8 @@ import Footer from '/imports/ui/components/footer'
 
 import withVisualBuilder from '/imports/ui/hoc/with-visual-builder/withVisualBuilder'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const withLayout = (Component) => withVisualBuilder(props => {
@@ -14,15 +16,15 @@ const withLayout = (Component) => withVisualBuilder(props => {
   const styles = useStyles()
 
   return (
-    <div className={styles.layoutContainer} style={{ ...layoutStyles.layoutContainer }}>
+    <VBDiv className={styles.layoutContainer} style={{ ...layoutStyles.layoutContainer }}>
       <Header />
 
-      <div className={styles.pageContainer} style={{ ...layoutStyles.pageContainer }}>
+      <VBDiv className={styles.pageContainer} style={{ ...layoutStyles.pageContainer }}>
         <Component {...props} />
-      </div>
+      </VBDiv>
 
       <Footer />
-    </div>
+    </VBDiv>
   )
 })
 

@@ -19,6 +19,8 @@ import AddressForm from '/imports/ui/pages/payment-method/address-form'
 
 import getAddressName from '/imports/ui/utils/getAddressName'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IPaymentMethod {
@@ -201,15 +203,15 @@ const PaymentMethod = (props: IPaymentMethod) => {
       style={{ ...paymentMethodStyles.paymentMethodContainer }}
       onSubmit={save}
     >
-      <h2 className={styles.title} style={{ ...paymentMethodStyles.title }}>{id ? name : 'Add a payment method'}</h2>
+      <VBH2 className={styles.title} style={{ ...paymentMethodStyles.title }}>{id ? name : 'Add a payment method'}</VBH2>
 
-      <Link to='/paymentMethods' className={styles.goBack} style={{ ...paymentMethodStyles.goBack }}>Go back to payment methods</Link>
+      <VBLink to='/paymentMethods' className={styles.goBack} style={{ ...paymentMethodStyles.goBack }}>Go back to payment methods</VBLink>
 
-      <div className={styles.line} style={{ ...paymentMethodStyles.line }}></div>
+      <VBDiv className={styles.line} style={{ ...paymentMethodStyles.line }}></VBDiv>
 
-      <div className={styles.information} style={{ ...paymentMethodStyles.information }}>
-        <h2 className={styles.informationTitle} style={{ ...paymentMethodStyles.informationTitle }}>Information</h2>
-        <span className={styles.informationSubTitle} style={{ ...paymentMethodStyles.informationSubTitle }}>Information on the payment method</span>
+      <VBDiv className={styles.information} style={{ ...paymentMethodStyles.information }}>
+        <VBH2 className={styles.informationTitle} style={{ ...paymentMethodStyles.informationTitle }}>Information</VBH2>
+        <VBSpan className={styles.informationSubTitle} style={{ ...paymentMethodStyles.informationSubTitle }}>Information on the payment method</VBSpan>
         
         <CustomInput 
           value={name} 
@@ -230,7 +232,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
         />
 
         {paymentMode === 'Card' && 
-          <div style={{ ...paymentMethodStyles.cardContainer }}>
+          <VBDiv style={{ ...paymentMethodStyles.cardContainer }}>
             <CustomInput 
               value={last4 ?? ''} 
               style={{ ...paymentMethodStyles.last4 }} 
@@ -255,13 +257,13 @@ const PaymentMethod = (props: IPaymentMethod) => {
               onChange={onExpirationYearChange}
               error={formErrors.expirationYear}
             />
-          </div>
+          </VBDiv>
         }
 
         {paymentMode === 'PreAuthorizedPayment' &&
-          <div style={{ ...paymentMethodStyles.preAuthorizedPaymentContainer }}>
+          <VBDiv style={{ ...paymentMethodStyles.preAuthorizedPaymentContainer }}>
             
-            <div style={{ ...paymentMethodStyles.institutionAndTransit }}>
+            <VBDiv style={{ ...paymentMethodStyles.institutionAndTransit }}>
               <CustomInput
                 value={institution ?? ''} 
                 style={{ ...paymentMethodStyles.institution }} 
@@ -278,7 +280,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
                 onChange={onTransitChange} 
                 error={formErrors.transit} 
               />
-            </div>
+            </VBDiv>
 
             <CustomInput 
               value={accountNumber ?? ''} 
@@ -288,7 +290,7 @@ const PaymentMethod = (props: IPaymentMethod) => {
               onChange={onAccountNumberChange} 
               error={formErrors.accountNumber} 
             />
-          </div>
+          </VBDiv>
         }
 
         <CustomSelector 
@@ -298,12 +300,12 @@ const PaymentMethod = (props: IPaymentMethod) => {
           onChange={onCurrencyChange}
           value={currency}
         />
-      </div>
+      </VBDiv>
 
-      <div style={{ ...paymentMethodStyles.billingAddressContainer }}>
+      <VBDiv style={{ ...paymentMethodStyles.billingAddressContainer }}>
 
-        <h2 style={{ ...paymentMethodStyles.billingAddressTitle }}>Billing Address</h2>
-        <span style={{ ...paymentMethodStyles.billingAddressDescription }}>Address at which you'll receive the bill</span>
+        <VBH2 style={{ ...paymentMethodStyles.billingAddressTitle }}>Billing Address</VBH2>
+        <VBSpan style={{ ...paymentMethodStyles.billingAddressDescription }}>Address at which you'll receive the bill</VBSpan>
 
         <CustomCheckBoxes 
           checkBoxes={[
@@ -327,12 +329,12 @@ const PaymentMethod = (props: IPaymentMethod) => {
         }
 
         {addressCheckbox._id === 'addAddress' && <AddressForm save={saveAddress} loading={saveAddressLoading} />}
-      </div>
+      </VBDiv>
 
-      <div style={{ ...paymentMethodStyles.actionsContainer }}>
-        <Link to='/paymentMethods'><CustomButton style={{ ...paymentMethodStyles.cancelButton }}>Cancel</CustomButton></Link>
+      <VBDiv style={{ ...paymentMethodStyles.actionsContainer }}>
+        <VBLink to='/paymentMethods'><CustomButton style={{ ...paymentMethodStyles.cancelButton }}>Cancel</CustomButton></VBLink>
         <CustomButton loadingStyle={{ ...paymentMethodStyles.loading }} loading={loading} type='submit' style={{ ...paymentMethodStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
-      </div>
+      </VBDiv>
     </form>
   )
 }

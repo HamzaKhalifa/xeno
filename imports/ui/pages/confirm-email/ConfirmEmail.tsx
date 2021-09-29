@@ -10,6 +10,8 @@ import CustomButton from '/imports/ui/components/custom-button'
 import CustomInput from '/imports/ui/components/custom-input'
 import Toast from '/imports/ui/components/toast'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const ConfirmEmail = () => {
@@ -51,22 +53,22 @@ const ConfirmEmail = () => {
   //#endregion Event listeners
 
   return (
-    <div 
+    <VBDiv 
       className={styles.confirmEmailContainer} 
       style={{ ...confirmEmailStyles.confirmEmailContainer }}
     >
-      <h2 className={styles.title} style={{ ...confirmEmailStyles.title }}>Confirm your email address</h2>
-      <h2 className={styles.title} style={{ ...confirmEmailStyles.description }}>We have sent a confirmation code to the below email</h2>
-      <h2 className={styles.description} style={{ ...confirmEmailStyles.email }}>{localStorage.getItem('email')}</h2>
+      <VBH2 className={styles.title} style={{ ...confirmEmailStyles.title }}>Confirm your email address</VBH2>
+      <VBH2 className={styles.title} style={{ ...confirmEmailStyles.description }}>We have sent a confirmation code to the below email</VBH2>
+      <VBH2 className={styles.description} style={{ ...confirmEmailStyles.email }}>{localStorage.getItem('email')}</VBH2>
 
       <form onSubmit={confirmEmail} style={{ ...confirmEmailStyles.form }}>
         <CustomInput onChange={onCodeChange} placeholder='Code' label='Enter the code that was sent to you by email' style={{ ...confirmEmailStyles.codeInput }} />
         <CustomButton type='submit' loading={resendCodeLoading} style={{ ...confirmEmailStyles.validateButton }}>Validate</CustomButton>
       </form>
 
-      <span style={{ ...confirmEmailStyles.resendCodeLabel }}>You haven't received it?</span>
+      <VBSpan style={{ ...confirmEmailStyles.resendCodeLabel }}>You haven't received it?</VBSpan>
       <CustomButton loading={resendCodeLoading} onClick={resendCode} style={{ ...confirmEmailStyles.resendButton }}>Resend code</CustomButton>
-    </div>
+    </VBDiv>
   )
 }
 

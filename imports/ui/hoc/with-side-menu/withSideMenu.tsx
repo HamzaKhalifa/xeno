@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 
 import SideMenu from '/imports/ui/components/side-menu'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const withSideMenu = (Component) => props => {
@@ -11,15 +13,15 @@ const withSideMenu = (Component) => props => {
   const styles = useStyles()
 
   return (
-    <div className={styles.pageWithSideMenu} style={{ ...withSideMenuStyles.pageWithSideMenu }}>
+    <VBDiv className={styles.pageWithSideMenu} style={{ ...withSideMenuStyles.pageWithSideMenu }}>
       
-      <div style={{ ...withSideMenuStyles.sideMenuContainer }}>
+      <VBDiv style={{ ...withSideMenuStyles.sideMenuContainer }}>
         <SideMenu />
-      </div>
+      </VBDiv>
 
       <Component {...props} />
 
-    </div>
+    </VBDiv>
   )
 }
 

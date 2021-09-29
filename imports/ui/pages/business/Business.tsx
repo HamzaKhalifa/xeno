@@ -17,6 +17,8 @@ import CustomButton from '/imports/ui/components/custom-button'
 
 import getAddressName from '/imports/ui/utils/getAddressName'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface IBusiness {
@@ -105,20 +107,20 @@ const Business = (props: IBusiness) => {
       style={{ ...businessStyles.businessContainer }}
       onSubmit={save}
     >
-      <h2 className={styles.title} style={{ ...businessStyles.title }}>Company Profile</h2>
+      <VBH2 className={styles.title} style={{ ...businessStyles.title }}>Company Profile</VBH2>
 
-      <div style={{ ...businessStyles.tabs }}>
+      <VBDiv style={{ ...businessStyles.tabs }}>
 
-        <Link to={'/businesses/' + id}><h2 className={styles.subTitle} style={{ ...businessStyles.selectedSubTitle }}>Important Information</h2></Link>
-        <Link to={'/businesses/' + id + '/addresses'}><h2 className={styles.subTitle} style={{ ...businessStyles.subTitle }}>Addresses</h2></Link>
-      </div>
+        <VBLink to={'/businesses/' + id}><VBH2 className={styles.subTitle} style={{ ...businessStyles.selectedSubTitle }}>Important Information</VBH2></VBLink>
+        <VBLink to={'/businesses/' + id + '/addresses'}><VBH2 className={styles.subTitle} style={{ ...businessStyles.subTitle }}>Addresses</VBH2></VBLink>
+      </VBDiv>
 
-      <div className={styles.line} style={{ ...businessStyles.line }}></div>
+      <VBDiv className={styles.line} style={{ ...businessStyles.line }}></VBDiv>
 
-      <div className={styles.information} style={{ ...businessStyles.information }}>
+      <VBDiv className={styles.information} style={{ ...businessStyles.information }}>
 
-        <h2 className={styles.informationTitle} style={{ ...businessStyles.informationTitle }}>Important Information</h2>
-        <span className={styles.informationSubTitle} style={{ ...businessStyles.informationSubTitle }}>We would like to know your company better.</span>
+        <VBH2 className={styles.informationTitle} style={{ ...businessStyles.informationTitle }}>Important Information</VBH2>
+        <VBSpan className={styles.informationSubTitle} style={{ ...businessStyles.informationSubTitle }}>We would like to know your company better.</VBSpan>
 
         <CustomInput value={legalName} style={{ ...businessStyles.name }} label='Name' placeholder='Name' onChange={onLegalNameChange} />
  
@@ -141,11 +143,11 @@ const Business = (props: IBusiness) => {
           error={formErrors.mainAddress}
         />
 
-      </div>
+      </VBDiv>
 
-      <div style={{ ...businessStyles.actionsContainer }}>
+      <VBDiv style={{ ...businessStyles.actionsContainer }}>
         <CustomButton loadingStyle={{ ...businessStyles.loading }} loading={loading} type='submit' style={{ ...businessStyles.saveModifcationsButton }}>Save Modifications</CustomButton>
-      </div>
+      </VBDiv>
     </form>
   )
 }

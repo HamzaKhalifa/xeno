@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import RequiredFieldIcon from '/imports/ui/icons/RequiredFieldIcon'
 import CheckIcon from '/imports/ui/icons/CheckIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomInput {
@@ -24,12 +26,12 @@ const CustomInput = (props: ICustomInput) => {
   const styles = useStyles()
 
   return (
-    <div className={styles.inputContainer} style={{ ...inputStyles.inputContainer, ...(props.style ?? {}) }}>
-      <span className={styles.label} style={{ ...inputStyles.label }}>
+    <VBDiv className={styles.inputContainer} style={{ ...inputStyles.inputContainer, ...(props.style ?? {}) }}>
+      <VBSpan className={styles.label} style={{ ...inputStyles.label }}>
         {props.check && <CheckIcon />}
         {props.label ?? ''} 
         {props.required && <RequiredFieldIcon style={{ ...inputStyles.requiredFieldIcon }} />}
-      </span>
+      </VBSpan>
 
       <input 
         value={props.value} 
@@ -40,8 +42,8 @@ const CustomInput = (props: ICustomInput) => {
         style={{ ...inputStyles.input }} 
       />
 
-      {props.error && <span style={{ ...inputStyles.error }}>x {props.error}</span>}
-    </div>
+      {props.error && <VBSpan style={{ ...inputStyles.error }}>x {props.error}</VBSpan>}
+    </VBDiv>
   )
 }
 

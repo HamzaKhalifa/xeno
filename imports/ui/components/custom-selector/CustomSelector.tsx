@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { useSelector } from 'react-redux'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ICustomSelector {
@@ -42,10 +44,10 @@ const CustomSelector = (props: ICustomSelector) => {
 	//#endregion Event listeners
 
 	return (
-		<div className={styles.customSelectorContainer}>
-			<div className={styles.header}>
-				<span className={styles.label}>{props.label}: </span>
-			</div>
+		<VBDiv className={styles.customSelectorContainer}>
+			<VBDiv className={styles.header}>
+				<VBSpan className={styles.label}>{props.label}: </VBSpan>
+			</VBDiv>
 			
 			<Autocomplete
 				onChange={onChange}
@@ -56,12 +58,12 @@ const CustomSelector = (props: ICustomSelector) => {
 				renderInput={(params) => <TextField {...params} variant='outlined' style={{ ...selectorStyles.input }} />}
 				renderOption={params => {
 					const className = (multiple && props.value?.find(potential => potential._id === params._id)) ? selectorStyles.selectedOption : selectorStyles.option
-					return (<span className={className}>{props.getOptionName(params)}</span>)
+					return (<VBSpan className={className}>{props.getOptionName(params)}</VBSpan>)
 				}}
 				multiple={multiple}
 				disabled={props.disabled}
 			/>
-		</div>
+		</VBDiv>
 	)
 }
 

@@ -9,6 +9,8 @@ import { Meteor } from 'meteor/meteor'
 
 import CustomInput from '/imports/ui/components/custom-input'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 interface ILocationSearchInput {
@@ -65,7 +67,7 @@ const LocationSearchInput = (props: ILocationSearchInput) => {
   //#endregion Helper methods
 
   const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
-    <div className={styles.autoCompleteRoot}>
+    <VBDiv className={styles.autoCompleteRoot}>
       <CustomInput 
         value={props.address} 
         placeholder={props.placeholder} 
@@ -76,16 +78,16 @@ const LocationSearchInput = (props: ILocationSearchInput) => {
         {...getInputProps()}
       />
       
-      <div 
+      <VBDiv 
         style={{ border: suggestions.length > 0 ? '1px solid #d9d9d9': 'none' }} 
         className={styles.autoCompleteDropdownContainer}>
         {suggestions.map((suggestion, index) => (
-          <div key={index} className={styles.suggestion} key={index} {...getSuggestionItemProps(suggestion)}>
-            <span>{suggestion.description}</span>
-          </div>
+          <VBDiv key={index} className={styles.suggestion} key={index} {...getSuggestionItemProps(suggestion)}>
+            <VBSpan>{suggestion.description}</VBSpan>
+          </VBDiv>
         ))}
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 
   return (

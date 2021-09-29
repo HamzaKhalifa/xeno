@@ -7,6 +7,8 @@ import CreateAccountForm from './create-account-form'
 
 import BlueGuyIcon from '../../icons/BlueGuyIcon'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 import useStyles from './styles'
 
 const CreateAccount = () => {
@@ -15,13 +17,13 @@ const CreateAccount = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.createAccountContainer} style={{ ...createAccountStyles.createAccountContainer }}>
+    <VBDiv className={styles.createAccountContainer} style={{ ...createAccountStyles.createAccountContainer }}>
       <CreateAccountForm />
 
-      <div className={styles.iconContainer} style={{ ...createAccountStyles.iconContainer }}>
+      <VBDiv className={styles.iconContainer} style={{ ...createAccountStyles.iconContainer }}>
         <BlueGuyIcon />
-      </div>
-    </div>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

@@ -8,9 +8,10 @@ import remote, { BusinessCollection } from '/imports/api/remote'
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
 import Toast from '/imports/ui/components/toast'
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
 
 import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
+
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
 
 import useStyles from './styles'
 

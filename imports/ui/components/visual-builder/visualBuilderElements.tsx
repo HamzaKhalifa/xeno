@@ -2,16 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const VBDiv = (props) => {
-  const { vbTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <div {...props}>
+    <div style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
         {vbTitle}
       </span>
@@ -22,18 +22,18 @@ export const VBDiv = (props) => {
 }
 
 export const VBH2 = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <h2 {...props}>
+    <h2 style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
@@ -42,38 +42,38 @@ export const VBH2 = (props) => {
 }
 
 export const VBH3 = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <h2 {...props}>
+    <h3 style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
-    </h2>
+    </h3>
   )
 }
 
 export const VBLink = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <Link {...props}>
+    <Link style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
@@ -82,18 +82,18 @@ export const VBLink = (props) => {
 }
 
 export const VBSpan = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <span {...props}>
+    <span style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
@@ -102,41 +102,41 @@ export const VBSpan = (props) => {
 }
 
 export const VBP = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <h2 {...props}>
+    <p style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
-    </h2>
+    </p>
   )
 }
 
 export const VBForm = (props) => {
-  const { vsTitle, style } = props
+  const { vbTitle, style, ...rest } = props
   
   return (
-    <h2 {...props}>
+    <form style={style} {...rest} >
       <div className='page_indicator' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }} 
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: style.pageIndicator?.visible ? 'flex' : 'none' }}
+        style={{ display: style?.pageIndicator?.visible ? 'flex' : 'none' }}
       >
-        {vsTitle}
+        {vbTitle}
       </span>
 
       {props.children}
-    </h2>
+    </form>
   )
 }
