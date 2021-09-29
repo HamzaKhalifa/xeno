@@ -95,7 +95,7 @@ const contacts = () => {
 
           <VBDiv style={{ ...contactsStyles.headerLeft }}>
             <VBH2 style={{ ...contactsStyles.headerTitle }}>Collaborators profile</VBH2>
-            <p style={{ ...contactsStyles.headerDescription }}>Which payment mode would you like to use</p>
+            <VBP style={{ ...contactsStyles.headerDescription }}>Which payment mode would you like to use</VBP>
           </VBDiv>
 
           <VBDiv style={{ ...contactsStyles.headerRight }}>
@@ -160,9 +160,9 @@ const contacts = () => {
 
           <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this contact</VBH2>
 
-          <p style={{ ...deleteModalStyles.deleteDescription }}>
+          <VBP style={{ ...deleteModalStyles.deleteDescription }}>
             The contact will no longer have access to his account and his information will be lost
-          </p>
+          </VBP>
           <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
             <VBDiv className={styles.space} />

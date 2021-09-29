@@ -2,7 +2,7 @@ import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
   visualBuilderContainer: {
-    width: '30%',
+    width: 500,
     top: '10%',
     backgroundColor: 'white',
     padding: 30,

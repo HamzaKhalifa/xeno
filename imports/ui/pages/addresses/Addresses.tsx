@@ -2,7 +2,6 @@ import React from 'react'
 import { useTracker } from 'meteor/react-meteor-data'
 import { useSelector } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
-import { Link } from 'react-router-dom'
 
 import remote, { AddressCollection, BusinessCollection } from '/imports/api/remote'
 
@@ -83,7 +82,7 @@ const Addresses = (props: IAddresses) => {
 
           <VBDiv style={{ ...addressesStyles.headerLeft }}>
             <VBH2 style={{ ...addressesStyles.headerTitle }}>Addresses</VBH2>
-            <p style={{ ...addressesStyles.headerDescription }}>Company addresses</p>
+            <VBP style={{ ...addressesStyles.headerDescription }}>Company addresses</VBP>
           </VBDiv>
 
           <VBDiv style={{ ...addressesStyles.headerRight }}>
@@ -137,9 +136,9 @@ const Addresses = (props: IAddresses) => {
 
           <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this Address</VBH2>
 
-          <p style={{ ...deleteModalStyles.deleteDescription }}>
+          <VBP style={{ ...deleteModalStyles.deleteDescription }}>
             Are you sure?
-          </p>
+          </VBP>
           <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
             <VBDiv className={styles.space} />

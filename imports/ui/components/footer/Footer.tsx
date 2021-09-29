@@ -17,12 +17,12 @@ const Footer = () => {
     <VBDiv className={styles.footerContainer} style={{ ...footerStyles.footerContainer }}>
       <VBDiv style={{ ...footerStyles.left }}>
         <ToolyIcon />
-        <p style={{ ...footerStyles.paragraph }}>
+        <VBP style={{ ...footerStyles.paragraph }}>
           Tooly est une entreprise Montréalaise spécialisée en transformation numérique. Nous sommes des experts en intégration et formation avec un approche agile 
           qui s’adapte à votre vitesse de croissance. Nous n’avons pas de logiciels préférés. Nos mandats commencent sans idées préconçues. Notre première mission est 
           de trouver la recommandation adaptée 
           à vos besoins.
-        </p>
+        </VBP>
       </VBDiv>
 
       <VBDiv style={{ ...footerStyles.right }}>
@@ -32,17 +32,17 @@ const Footer = () => {
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Headquarters</h4>
-            <p style={{ ...footerStyles.linkText }}>205 - 5570 rue Cartier, Montréal, QC H2H 1X9</p>
+            <VBP style={{ ...footerStyles.linkText }}>205 - 5570 rue Cartier, Montréal, QC H2H 1X9</VBP>
           </VBDiv>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Phone</h4>
-            <p style={{ ...footerStyles.linkText }}>438-823-3487</p>
+            <VBP style={{ ...footerStyles.linkText }}>438-823-3487</VBP>
           </VBDiv>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
             <h4 style={{ ...footerStyles.title }}>Email</h4>
-            <p style={{ ...footerStyles.linkText }}>info@tooly.services</p>
+            <VBP style={{ ...footerStyles.linkText }}>info@tooly.services</VBP>
           </VBDiv>
         </VBDiv>
 
@@ -50,19 +50,19 @@ const Footer = () => {
           <h3 style={{ ...footerStyles.sectionTitle }}>Menu</h3>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
-            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Recommandation</p></VBLink>
+            <VBLink to='#'><VBP style={{ ...footerStyles.linkText }}>Recommandation</VBP></VBLink>
           </VBDiv>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
-            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Integration and formation</p></VBLink>
+            <VBLink to='#'><VBP style={{ ...footerStyles.linkText }}>Integration and formation</VBP></VBLink>
           </VBDiv>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
-            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>ToolyHub</p></VBLink>
+            <VBLink to='#'><VBP style={{ ...footerStyles.linkText }}>ToolyHub</VBP></VBLink>
           </VBDiv>
 
           <VBDiv style={{ ...footerStyles.titleAndLink }}>
-            <VBLink to='#'><p style={{ ...footerStyles.linkText }}>Investors</p></VBLink>
+            <VBLink to='#'><VBP style={{ ...footerStyles.linkText }}>Investors</VBP></VBLink>
           </VBDiv>
         </VBDiv>
 

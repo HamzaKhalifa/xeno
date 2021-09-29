@@ -30,7 +30,6 @@ const Home = () => {
     <VBDiv 
       className={styles.homeContainer}
       style={{ ...homeStyles.homeContainer }}
-      vbTitle='Home Container'
     >
       <VBH2 style={{ ...homeStyles.title }}>Welcome to your client portal</VBH2>
 

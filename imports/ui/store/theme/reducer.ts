@@ -8,12 +8,29 @@ const setThemeValue = (state, action) => {
   const { path, value } = action.payload
   const newTheme = { ...state }
 
+  console.log('path', path, 'value', value)
   let looper = { ...newTheme }
   path.forEach((key, index) => {
-    if (index < path.length - 1)
+    if (index < path.length - 1) {
+      if (!looper[key] || looper[key] === undefined) {
+        looper[key] = {}
+      }
       looper = looper[key]
-    else looper[key] = value
+      console.log('looper', looper)
+    }
+    else {
+      if (!looper) {
+        looper = { [key]: value }
+      } else {
+        looper[key] = value
+        looper.marginBottom = '40px'
+        console.log('HERE', key, looper)
+      }
+    }
   })
+
+  console.log('new theme', newTheme.home.homeContainer.vbData.before)
+  
 
   return newTheme
 }

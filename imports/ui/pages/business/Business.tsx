@@ -75,7 +75,6 @@ const Business = (props: IBusiness) => {
 
     const newBusiness = { ...business, legalName, mainAddress, addresses }
 
-    console.log('business', business)
     setLoading(true)
     if (businessId) {
       remote.call('businesses.update', { ...newBusiness, _id: businessId }, error => {

@@ -14,7 +14,6 @@ const ActiveUserIcon = (props) => {
       </clipPath>
       </defs>
     </svg>
-
   )
 }
 

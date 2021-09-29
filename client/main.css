@@ -15,12 +15,11 @@ a {
 .page_indicator {
   background-color: #006bf3;
   position: absolute;
-  width: calc(100% + 40px);
+  width: 100%;
   height: 100%;
   z-index: 99;
   opacity: .1;
-  left: -20px;
-  border: 6px solid #001cff;
+  left: 0px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -31,7 +30,6 @@ a {
   z-index: 100;
   color: rgb(29, 29, 223);
   position: absolute;
-  left: -10px;
   top: -20px;
   font-size: 17px;
 }

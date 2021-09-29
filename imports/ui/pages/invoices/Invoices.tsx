@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor'
 import { useTracker } from 'meteor/react-meteor-data'
 import { useSelector } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
-import { Link } from 'react-router-dom'
 
 import remote, { InvoiceCollection } from '/imports/api/remote'
 
@@ -25,7 +24,7 @@ const Invoices = () => {
   const [deleteModalVisible, setDeleteModalVisible] = React.useState(false)
   const [invoiceToDelete, setInvoiceToDelete] = React.useState(null)
 
-  const { invoices: invoicesStyles, deleteModal: deleteModalStyles } = useSelector(state => state.theme)
+  const { invoices: invoicesStyles, deleteModal: deleteModalStyles }: any = useSelector<any>(state => state.theme)
   //#endregion State
 
   //#region Hooks
@@ -42,7 +41,7 @@ const Invoices = () => {
   const toggleDeleteModalVisible = React.useCallback(() => setDeleteModalVisible(!deleteModalVisible), [deleteModalVisible])
   const setDeleteModalVisibleValue = React.useCallback((visible) => setDeleteModalVisible(visible), [])
   const deleteElement = React.useCallback(() => {
-    remote.call('invoices.remove', [invoiceToDelete._id] error => {
+    remote.call('invoices.remove', [invoiceToDelete._id], error => {
       if (error) Toast.error('Error deleting the invoice: ' + error.message) 
       else {
         setDeleteModalVisibleValue(false)
@@ -66,7 +65,7 @@ const Invoices = () => {
 
           <VBDiv style={{ ...invoicesStyles.headerLeft }}>
             <VBH2 style={{ ...invoicesStyles.headerTitle }}>Your Invoices</VBH2>
-            <p style={{ ...invoicesStyles.headerDescription }}>Consult your invoices</p>
+            <VBP style={{ ...invoicesStyles.headerDescription }}>Consult your invoices</VBP>
           </VBDiv>
 
         </VBDiv>
@@ -112,9 +111,9 @@ const Invoices = () => {
 
           <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this invoice</VBH2>
 
-          <p style={{ ...deleteModalStyles.deleteDescription }}>
+          <VBP style={{ ...deleteModalStyles.deleteDescription }}>
             The invoice will no longer have access to his account and his information will be lost
-          </p>
+          </VBP>
           <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
             <VBDiv className={styles.space} />

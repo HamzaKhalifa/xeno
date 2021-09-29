@@ -70,7 +70,7 @@ const PaymentMethods = () => {
 
           <VBDiv style={{ ...paymentMethodsStyles.headerLeft }}>
             <VBH2 style={{ ...paymentMethodsStyles.headerTitle }}>Payment Methods</VBH2>
-            <p style={{ ...paymentMethodsStyles.headerDescription }}>Which payment mode would you like to use</p>
+            <VBP style={{ ...paymentMethodsStyles.headerDescription }}>Which payment mode would you like to use</VBP>
           </VBDiv>
 
           <VBDiv style={{ ...paymentMethodsStyles.headerRight }}>
@@ -111,9 +111,9 @@ const PaymentMethods = () => {
 
           <VBH2 className={styles.deleteTitle} style={{ ...deleteModalStyles.deleteTitle }}>You are about to delete this Payment Method</VBH2>
 
-          <p style={{ ...deleteModalStyles.deleteDescription }}>
+          <VBP style={{ ...deleteModalStyles.deleteDescription }}>
             Are you sure?
-          </p>
+          </VBP>
           <VBDiv className={styles.deleteActionButtons}>
             <CustomButton style={{ ...deleteModalStyles.deleteButton }} onClick={deleteElement}>Confirm</CustomButton>
             <VBDiv className={styles.space} />

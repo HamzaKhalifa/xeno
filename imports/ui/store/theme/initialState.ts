@@ -1,3 +1,13 @@
+export interface ISection {
+  // ...CSS styles here for each section
+  vbData?: IVBData
+}
+
+export interface IVBData {
+  visible: boolean
+  title: string
+}
+
 const initialState = {
   general: {
     position: 'relative',
@@ -801,6 +811,34 @@ const initialState = {
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
+      vbData: {
+        extended: false,
+        title: 'Home Container',
+        before: [
+          {
+            sectionName: 'Test before',
+            tag: 'div',
+            children: 'TEEEEEESSSSTTTT',
+            style: {
+              position: 'relative',
+              backgroundColor: 'red',
+              marginTop: 10
+            }
+          }
+        ],
+        after: [
+          {
+            sectionName: 'Test after',
+            tag: 'span',
+            children: 'Im a span',
+            style: {
+              position: 'relative',
+              fontSize: 40,
+              backgroundColor: 'green'
+            }
+          }
+        ]
+      }
     },
     title: {
       position: 'relative',

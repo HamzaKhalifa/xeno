@@ -14,7 +14,7 @@ const withVisualBuilder = Component => props => {
 
   return (
     <VBDiv className={styles.withVisualBuilderContainer}>
-      <VBDiv style={{ width: visualBuilderVisible ? '70%' : '100%' }}>
+      <VBDiv style={{ width: visualBuilderVisible ? 'calc(100% - 500px)' : '100%' }}>
         <Component {...props} />
       </VBDiv>
       
