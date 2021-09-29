@@ -26,7 +26,7 @@ const LoginForm = () => {
   const [formErrors, setFormErrors] = React.useState({ email: '', password: '', confirmPassword: '' })
   const [loading, setLoading] = React.useState(false)
   
-  const { login: { loginForm: loginFormStyles } } = useSelector(state => state.theme)
+  const { loginForm: loginFormStyles } = useSelector(state => state.theme)
   //#endregion State
 
   //#region Hooks

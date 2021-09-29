@@ -1,7 +1,6 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { useTracker } from 'meteor/react-meteor-data'
 
 import remote, { BusinessCollection } from '/imports/api/remote'
@@ -9,6 +8,7 @@ import remote, { BusinessCollection } from '/imports/api/remote'
 import withLayout from '/imports/ui/hoc/with-layout'
 import withSideMenu from '/imports/ui/hoc/with-side-menu'
 import Toast from '/imports/ui/components/toast'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
 
 import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
@@ -26,63 +26,64 @@ const Home = () => {
   })
 
   return (
-    <div 
-      className={styles.homeContainer} 
+    <VBDiv 
+      className={styles.homeContainer}
       style={{ ...homeStyles.homeContainer }}
+      vbTitle='Home Container'
     >
-      <h2 style={{ ...homeStyles.title }}>Welcome to your client portal</h2>
+      <VBH2 style={{ ...homeStyles.title }}>Welcome to your client portal</VBH2>
 
-      <div className={styles.sections} style={{ ...homeStyles.sections }}>
-        <Link className={styles.section} style={{ ...homeStyles.section }} to='#'>
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Your Invoices</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my invoices</p>
-        </Link>
+      <VBDiv className={styles.sections} style={{ ...homeStyles.sections }}>
+        <VBLink className={styles.section} style={{ ...homeStyles.section }} to='#'>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Your Invoices</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my invoices</VBP>
+        </VBLink>
 
-        <Link className={styles.section} style={{ ...homeStyles.section }} to='/paymentMethods'>
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Payment Methods</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my invoices</p>
-        </Link>
-      </div>
+        <VBLink className={styles.section} style={{ ...homeStyles.section }} to='/paymentMethods'>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Payment Methods</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my invoices</VBP>
+        </VBLink>
+      </VBDiv>
 
-      <div className={styles.sections} style={{ ...homeStyles.sections }}>
-        <div className={styles.section} style={{ ...homeStyles.section }}>
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Company Profile</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my company's profile</p>
+      <VBDiv className={styles.sections} style={{ ...homeStyles.sections }}>
+        <VBDiv className={styles.section} style={{ ...homeStyles.section }}>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Company Profile</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my company's profile</VBP>
 
-          <div className={styles.subLinks} style={{ ...homeStyles.subLinks }}>
-            <Link className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id : '')}>Important Information</Link>
-            <Link className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id + '/addresses' : '')}>Addresses</Link>
-          </div>
-        </div>
+          <VBDiv className={styles.subLinks} style={{ ...homeStyles.subLinks }}>
+            <VBLink className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id : '')}>Important Information</VBLink>
+            <VBLink className={styles.subLink} style={{ ...homeStyles.subLink }} to={'businesses' + (businesses?.length > 0 ? '/' + businesses[0]._id + '/addresses' : '')}>Addresses</VBLink>
+          </VBDiv>
+        </VBDiv>
 
-        <Link className={styles.section} style={{ ...homeStyles.section }} to={'/contacts/' + user?.profile?.contact?._id}>
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>My Profile</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my personal profile</p>
-        </Link>
-      </div>
+        <VBLink className={styles.section} style={{ ...homeStyles.section }} to={'/contacts/' + user?.profile?.contact?._id}>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>My Profile</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my personal profile</VBP>
+        </VBLink>
+      </VBDiv>
 
-      <div className={styles.sections} style={{ ...homeStyles.sections }}>
-        <Link className={styles.section} style={{ ...homeStyles.section }} to='/contacts'>
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Users</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my company's profile</p>
-        </Link>
+      <VBDiv className={styles.sections} style={{ ...homeStyles.sections }}>
+        <VBLink className={styles.section} style={{ ...homeStyles.section }} to='/contacts'>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Users</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my company's profile</VBP>
+        </VBLink>
 
-        <Link 
+        <VBLink 
           className={styles.section} 
           style={{ ...homeStyles.section, borderColor: 'red', borderWidth: 1, borderStyle: 'solid' }} 
           onClick={() => Toast.error('Coming soon')} to='#'
         >
-          <h3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Account Completion</h3>
-          <p className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult the necessary information to complete the account</p>
+          <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Account Completion</VBH3>
+          <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult the necessary information to complete the account</VBP>
           
-          <div style={{ ...homeStyles.progressCheckContainer }}>
-            <span style={{ ...homeStyles.progressPercentage, color: 'red' }}>coming soon.. 70%</span>
+          <VBDiv style={{ ...homeStyles.progressCheckContainer }}>
+            <VBSpan style={{ ...homeStyles.progressPercentage, color: 'red' }}>coming soon.. 70%</VBSpan>
             <ProgressCheckIcon style={{ ...homeStyles.progressCheck }} fill='red' />
-          </div>
+          </VBDiv>
 
-        </Link>
-      </div>
-    </div>
+        </VBLink>
+      </VBDiv>
+    </VBDiv>
   )
 }
 

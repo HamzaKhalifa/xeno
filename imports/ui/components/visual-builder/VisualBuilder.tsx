@@ -14,6 +14,7 @@ import { setPages } from '/imports/ui/store/visual-builder/actions'
 import useStyles from './styles'
 
 const VisualBuilder = () => {
+
   //#region State
   const theme = useSelector<any>(state => state.theme)
   const pages: any = useSelector<any>(state => state.visualBuilder.pages)
@@ -34,7 +35,12 @@ const VisualBuilder = () => {
   }
   const togglePageSectionCollapsed = (index, property) => {
     const newPages = [...pages]
+
+    const pageIndictator = { ...theme[newPages[index].key][property].pageIndicator }
+
     newPages[index][property + 'Collapsed'] = !Boolean(newPages[index][property + 'Collapsed'])
+    dispatch(setThemeValue([newPages[index].key, property, 'pageIndicator'], { ...pageIndictator, visible: !Boolean(pageIndictator?.visible) }))
+    
     dispatch(setPages(newPages))
   }
   //#endregion Event listeners
@@ -44,13 +50,6 @@ const VisualBuilder = () => {
     <div className={styles.visualBuilderContainer}>
       {pages.map((page, pageIndex) => (
         <div className={styles.page} key={pageIndex}>
-
-          <Link to={page.to}>
-            <div className={styles.showButton}>{location.pathname === page.to ? 
-              <CheckIcon style={{ color: highlightColor }} /> : 'Go'}
-            </div>
-          </Link>
-
           <div 
             style={{ marginTop: pageIndex === 0 ? 0 : 40 }} 
             className={styles.pageTitleContainer} 
@@ -68,44 +67,59 @@ const VisualBuilder = () => {
             
           </div>
 
-          {!page.collapsed && Object.keys(theme[page.key]).map((pageSection, index) => (
-            <div className={styles.pageSection} key={index}>
-              
-              <div 
-                className={styles.sectionTitleContainer} 
-                onClick={() => togglePageSectionCollapsed(pageIndex, pageSection)} 
-              >
-                <AccordionIcon 
-                  reversed={Boolean(page[pageSection + 'Collapsed'])} 
-                  width={15} height={15} 
-                  fill={highlightColor} 
-                  className={styles.pageSectionTitleIcon} 
-                />
-                <h3 className={styles.pageSectionTitle}>{pageSection}</h3>
-              </div>
+          {!page.collapsed && Object.keys(theme[page.key]).map((pageSection, index) => {
+            // We don't show the page indicator section as an editable section
+            if (pageSection === 'pageIndicator') return null
 
-              {page[pageSection + 'Collapsed'] && 
-                <div className={styles.propertiesContainer}>
-                  {[
-                    'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'position', 'display', 'flexDirection',
-                    'background-color', 'border', 'top', 'bottom', 'left', 'right', 'color', 'cursor', 'font-weight', 'height', 'width', 'maxWidth',
-                    'maxHeight',
-                  ].map(((property, index) => (
-                    <CustomInput 
-                      key={index}
-                      style={{ marginTop: 5 }}
-                      label={property}
-                      placeholder={property} 
-                      type='text'
-                      value={theme[page.key][pageSection][property] ?? ''} 
-                      onChange={(e) => dispatch(setThemeValue([page.key, pageSection, property], e.target.value ?? ''))} 
-                    />
-                  )))}
+            const sectionValue = theme[page.key][pageSection]
+            const sectionInPageIndicators = theme[page.key].pageIndicator
+
+            return (
+              <div className={styles.pageSection} key={index}>
+                
+                {/* Accordion, highlight and toggle */}
+                <div
+                  className={styles.sectionTitleContainer} 
+                  onClick={() => togglePageSectionCollapsed(pageIndex, pageSection)} 
+                >
+                  <AccordionIcon 
+                    reversed={Boolean(page[pageSection + 'Collapsed'])} 
+                    width={15} height={15} 
+                    fill={highlightColor} 
+                    className={styles.pageSectionTitleIcon} 
+                  />
+                  <h3 className={styles.pageSectionTitle}>{pageSection}</h3>
                 </div>
-              }
-            </div>
-          ))}
 
+                {/* CSS properties */}
+                {page[pageSection + 'Collapsed'] && 
+                  <div className={styles.propertiesContainer}>
+                    {[
+                      'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'position', 'display', 'flexDirection',
+                      'background-color', 'border', 'top', 'bottom', 'left', 'right', 'color', 'cursor', 'font-weight', 'height', 'width', 'maxWidth',
+                      'maxHeight',
+                    ].map(((property, index) => (
+                      <CustomInput 
+                        key={index}
+                        style={{ marginTop: 5 }}
+                        label={property}
+                        placeholder={property} 
+                        type='text'
+                        value={sectionValue[property] ?? ''} 
+                        onChange={(e) => dispatch(setThemeValue([page.key, pageSection, property], e.target.value ?? ''))} 
+                      />
+                    )))}
+                  </div>
+                }
+              </div>
+            )
+          })}
+
+          <Link to={page.to}>
+            <div className={styles.showButton}>{location.pathname === page.to ? 
+              <CheckIcon style={{ color: highlightColor }} /> : 'Go'}
+            </div>
+          </Link>
         </div>
       ))}
     </div>

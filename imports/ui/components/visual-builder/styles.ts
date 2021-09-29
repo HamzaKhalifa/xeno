@@ -8,7 +8,8 @@ const useStyles = createUseStyles({
     padding: 30,
     overflow: 'auto',
     height: '100vh',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    zIndex: 999
   },
   pages: {},
   page: {
@@ -57,7 +58,7 @@ const useStyles = createUseStyles({
     fontSize: 16,
     paddingBottom: 5,
     fontWeight: 'initial',
-  }
+  },
 })
 
 export default useStyles

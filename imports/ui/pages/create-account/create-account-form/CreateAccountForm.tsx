@@ -20,7 +20,7 @@ const CreateAccountForm = () => {
   const [loading, setLoading] = React.useState(false)
   const [validConfirmPassword, setValidConfirmaPassword] = React.useState(false)
   
-  const { createAccount: { createAccountForm: createAccountFormStyles } } = useSelector(state => state.theme)
+  const { createAccountForm: createAccountFormStyles }: any = useSelector<any>(state => state.theme)
   //#endregion State
 
   //#region Hooks

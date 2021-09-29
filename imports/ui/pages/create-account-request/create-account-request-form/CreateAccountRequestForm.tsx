@@ -22,7 +22,7 @@ const CreateAccountRequestForm = () => {
   const [formErrors, setFormErrors] = React.useState({ legalName: '', firstName: '', lastName: '', email: '', message: ''})
   const [loading, setLoading] = React.useState(false)
   
-  const { createAccountRequest: { createAccountRequestForm: createAccountRequestFormStyles } } = useSelector(state => state.theme)
+  const { createAccountRequestForm: createAccountRequestFormStyles } = useSelector(state => state.theme)
   //#endregion State
 
   //#region Hooks

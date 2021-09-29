@@ -11,12 +11,6 @@ import withSideMenu from '/imports/ui/hoc/with-side-menu'
 
 import AddressForm from '/imports/ui/pages/payment-method/address-form'
 import Toast from '/imports/ui/components/toast'
-import CustomInput from '/imports/ui/components/custom-input'
-import CustomSelector from '/imports/ui/components/custom-selector'
-import CustomSelectorWithSearch from '/imports/ui/components/custom-selector-with-search'
-import CustomButton from '/imports/ui/components/custom-button'
-
-import getAddressName from '/imports/ui/utils/getAddressName'
 
 import useStyles from './styles'
 
