@@ -1,14 +1,118 @@
 export interface ISection {
   // ...CSS styles here for each section
-  vbData?: IVBData
-}
-
-export interface IVBData {
-  visible: boolean
-  title: string
+  tag?: string
+  childre?: any
+  vbData?: {
+    visible: boolean
+    title: string
+  }
 }
 
 const initialState = {
+  home: {
+    homeContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      vbData: {
+        extended: false,
+        title: 'Home Container',
+        before: [
+          {
+            tag: 'div',
+            children: 'TEEEEEESSSSTTTT',
+            style: {
+              position: 'relative',
+              backgroundColor: 'red',
+              marginTop: 10
+              vbData: { 
+                title: 'Test before' 
+              }
+            }
+          }
+        ],
+        after: [
+          {
+            sectionName: 'Test after',
+            tag: 'span',
+            children: 'Im a span',
+            style: {
+              position: 'relative',
+              fontSize: 40,
+              backgroundColor: 'green'
+            }
+          }
+        ]
+      }
+    },
+    title: {
+      position: 'relative',
+      color: '#000000',
+      fontSize: 32.44,
+      textAlign: 'center',
+      width: '100%',
+      marginBottom: 46,
+      marginTop: 45
+    },
+    sections: {
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    },
+    section: {
+      position: 'relative',
+      display: 'flex',
+      backgroundColor: 'white',
+      padding: 32.44,
+      width: '49%',
+      flexDirection: 'column',
+      boxSizing: 'border-box',
+      marginBottom: 26,
+    },
+    sectionTitle: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 22.78,
+      fontWeight: 400,
+    },
+    sectionDescription: {
+      position: 'relative',
+      color: '#ABA5A7',
+      fontSize: 16,
+      fontWeight: 100,
+      marginTop: 3
+    },
+    subLinks: {
+      position: 'relative',
+      marginTop: 16,
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    subLink: {
+      position: 'relative',
+      color: '#5F5659',
+      fontWeight: 400,
+      fontSize: 16,
+      marginBottom: 10
+    },
+    progressCheckContainer: {
+      position: 'absolute',
+      top: 30,
+      right: 20,
+      display: 'flex',
+      alignItems: 'center'
+    },
+    progressPercentage: {
+      position: 'relative',
+      color: '#3CD2C8',
+      fontSize: 18,
+      marginRight: 5
+    },
+    progressCheck: {
+    }
+  },
   general: {
     position: 'relative',
     highlightColor: '#38c172',
@@ -803,108 +907,6 @@ const initialState = {
       fontSize: 14,
       textAlign: 'center',
       marginTop: 22.4
-    }
-  },
-  home: {
-    homeContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      vbData: {
-        extended: false,
-        title: 'Home Container',
-        before: [
-          {
-            sectionName: 'Test before',
-            tag: 'div',
-            children: 'TEEEEEESSSSTTTT',
-            style: {
-              position: 'relative',
-              backgroundColor: 'red',
-              marginTop: 10
-            }
-          }
-        ],
-        after: [
-          {
-            sectionName: 'Test after',
-            tag: 'span',
-            children: 'Im a span',
-            style: {
-              position: 'relative',
-              fontSize: 40,
-              backgroundColor: 'green'
-            }
-          }
-        ]
-      }
-    },
-    title: {
-      position: 'relative',
-      color: '#000000',
-      fontSize: 32.44,
-      textAlign: 'center',
-      width: '100%',
-      marginBottom: 46,
-      marginTop: 45
-    },
-    sections: {
-      position: 'relative',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-    },
-    section: {
-      position: 'relative',
-      display: 'flex',
-      backgroundColor: 'white',
-      padding: 32.44,
-      width: '49%',
-      flexDirection: 'column',
-      boxSizing: 'border-box',
-      marginBottom: 26,
-    },
-    sectionTitle: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 22.78,
-      fontWeight: 400,
-    },
-    sectionDescription: {
-      position: 'relative',
-      color: '#ABA5A7',
-      fontSize: 16,
-      fontWeight: 100,
-      marginTop: 3
-    },
-    subLinks: {
-      position: 'relative',
-      marginTop: 16,
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    subLink: {
-      position: 'relative',
-      color: '#5F5659',
-      fontWeight: 400,
-      fontSize: 16,
-      marginBottom: 10
-    },
-    progressCheckContainer: {
-      position: 'absolute',
-      top: 30,
-      right: 20,
-      display: 'flex',
-      alignItems: 'center'
-    },
-    progressPercentage: {
-      position: 'relative',
-      color: '#3CD2C8',
-      fontSize: 18,
-      marginRight: 5
-    },
-    progressCheck: {
     }
   },
   enrollmentPage: {

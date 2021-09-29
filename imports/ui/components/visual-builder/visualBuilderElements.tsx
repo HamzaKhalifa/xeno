@@ -4,114 +4,127 @@ import { Link } from 'react-router-dom'
 const BeforeOrAfter = ({ element }) => {
   switch(element.tag) {
     case 'div': 
-      return <VBDiv vbData={element.vbData} style={element.style}>{element.children}</VBDiv>
+      return <VBDiv style={element.style}>{element.children}</VBDiv>
     case 'h2': 
-      return <VBH2 vbData={element.vbData} style={element.style}>{element.children}</VBH2>
+      return <VBH2 style={element.style}>{element.children}</VBH2>
     case 'h3': 
-      return <VBH3 vbData={element.vbData} style={element.style}>{element.children}</VBH3>
+      return <VBH3 style={element.style}>{element.children}</VBH3>
     case 'link': 
-      return <VBLink vbData={element.vbData} style={element.style}>{element.children}</VBLink>
+      return <VBLink style={element.style}>{element.children}</VBLink>
     case 'span': 
-      return <VBSpan vbData={element.vbData} style={element.style}>{element.children}</VBSpan>
+      return <VBSpan style={element.style}>{element.children}</VBSpan>
     case 'p': 
-      return <VBP vbData={element.vbData} style={element.style}>{element.children}</VBP>
+      return <VBP style={element.style}>{element.children}</VBP>
     case 'form': 
-      return <VBForm vbData={element.vbData} style={element.style}>{element.children}</VBForm>
+      return <VBForm style={element.style}>{element.children}</VBForm>
     default:
-      return <VBDiv vbData={element.vbData} style={element.style}>{element.children}</VBDiv>
+      return <VBDiv style={element.style}>{element.children}</VBDiv>
   }
 }
 
-const VBElement = ({ children, vbData }) => {
+const VBElement = ({ children, style }) => {
   return (
     <>
-      {vbData?.before?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
+      {style?.vbData?.before?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
       <div 
         className='page_indicator'
-        style={{ display: vbData?.extended ? 'flex' : 'none' }} 
+        style={{ display: style?.vbData?.extended ? 'flex' : 'none' }} 
       />
       <span 
         className='page_indicator_title' 
-        style={{ display: vbData?.extended ? 'flex' : 'none' }}
+        style={{ display: style?.vbData?.extended ? 'flex' : 'none' }}
       >
-        {vbData?.title}
+        {style?.vbData?.title}
       </span>
 
       {children}
 
-      {vbData?.after?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
+      {style?.vbData?.after?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
     </>
   )
 }
 
 export const VBDiv = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  // We remove vbData from the style because the browser adds a "preventExtensions" to the style object, when we want to be freely able to change anything inside vbData
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
     <div style={newStyle} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </div>
   )
 }
 
 export const VBH2 = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <h2 style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </h2>
   )
 }
 
 export const VBH3 = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <h3 style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </h3>
   )
 }
 
 export const VBLink = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <Link style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </Link>
   )
 }
 
 export const VBSpan = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <span style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </span>
   )
 }
 
 export const VBP = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <p style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </p>
   )
 }
 
 export const VBForm = (props) => {
-  const { style, children, vbData, ...rest } = props
+  const { style, children, ...rest } = props
   
+  const newStyle = { ...style }
+  delete newStyle.vbData
   return (
     <form style={style} {...rest} >
-      <VBElement children={children} vbData={vbData ?? style?.vbData} />
+      <VBElement children={children} style={style} />
     </form>
   )
 }

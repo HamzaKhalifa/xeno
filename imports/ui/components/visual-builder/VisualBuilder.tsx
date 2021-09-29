@@ -57,18 +57,17 @@ const VisualBuilder = () => {
             
           </div>
 
-          {!page.collapsed && Object.keys(theme[page.key]).map((sectionName, index) => {
+          {!page.collapsed && Object.keys(theme[page.key]).map((sectionTitle, index) => {
             return (
               <div key={index}>
-                {theme[page.key][sectionName].vbData?.before?.map((beforeSection, index) => (
+                {theme[page.key][sectionTitle].vbData?.before?.map((beforeSection, index) => (
                   <EditableSection 
-                    isBeforeOrAfter={true}
                     key={index} 
-                    sectionName={beforeSection.sectionName} 
-                    pathToValue={[page.key, sectionName, 'vbData', 'before', index]} 
+                    sectionTitle={beforeSection.sectionTitle} 
+                    pathToValue={[page.key, sectionTitle, 'vbData', 'before', index, 'style']} 
                   />
                 ))}
-                <EditableSection isBeforeOrAfter={false} sectionName={sectionName} pathToValue={[page.key, sectionName]} />
+                <EditableSection sectionTitle={sectionTitle} pathToValue={[page.key, sectionTitle]} />
               </div>
             )
           })}
@@ -85,20 +84,12 @@ const VisualBuilder = () => {
   //#endregion View
 }
 
-const EditableSection = ({ sectionName, pathToValue, isBeforeOrAfter = true }) => {
-  
+const EditableSection = ({ sectionTitle, pathToValue }) => {
   
   //#region State
   const theme = useSelector<any>(state => state.theme)
   const highlightColor = useSelector<any>(state => state.theme.general.highlightColor)
   //#endregion State
-
-  let sectionValue = theme
-  pathToValue.forEach((step, index) => {
-    sectionValue = sectionValue?.[step]
-  })
-  let vbData = sectionValue.vbData
-  if (isBeforeOrAfter) sectionValue = sectionValue.style
 
   //#region Hooks
   const dispatch = useDispatch()
@@ -107,10 +98,14 @@ const EditableSection = ({ sectionName, pathToValue, isBeforeOrAfter = true }) =
 
   //#region Event listeners
   const toggleSectionCollapsed = () => {
-    dispatch(setThemeValue([...pathToValue, 'vbData', 'extended'], !Boolean(vbData?.extended)))
+    dispatch(setThemeValue([...pathToValue, 'vbData', 'extended'], !Boolean(sectionValue?.vbData?.extended)))
   }
   //#endregion Event listeners
 
+  let sectionValue = theme
+  pathToValue.forEach(step => {
+    sectionValue = sectionValue?.[step]
+  })
   
   return (
     <>
@@ -120,16 +115,16 @@ const EditableSection = ({ sectionName, pathToValue, isBeforeOrAfter = true }) =
         onClick={toggleSectionCollapsed} 
       >
         <AccordionIcon 
-          reversed={Boolean(vbData?.extended)} 
+          reversed={Boolean(sectionValue.vbData?.extended)} 
           width={15} height={15} 
           fill={highlightColor} 
           className={styles.pageSectionTitleIcon} 
         />
-        <h3 className={styles.pageSectionTitle}>{sectionName}</h3>
+        <h3 className={styles.pageSectionTitle}>{sectionValue?.vbData?.title ?? sectionTitle}</h3>
       </div>
 
       {/* CSS properties */}
-      {Boolean(vbData?.extended) && 
+      {Boolean(sectionValue.vbData?.extended) && 
         <div className={styles.propertiesContainer}>
           {[
             'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'position', 'display', 'flexDirection',
@@ -142,8 +137,8 @@ const EditableSection = ({ sectionName, pathToValue, isBeforeOrAfter = true }) =
               label={property}
               placeholder={property} 
               type='text'
-              value={(isBeforeOrAfter ? sectionValue.style?.[property] : sectionValue[property]) ?? ''} 
-              onChange={(e) => dispatch(setThemeValue(isBeforeOrAfter ? [...pathToValue, 'style', property] : [...pathToValue, property], e.target.value ?? ''))} 
+              value={sectionValue[property] ?? ''} 
+              onChange={(e) => dispatch(setThemeValue([...pathToValue, property], e.target.value ?? ''))} 
             />
           )))}
         </div>
