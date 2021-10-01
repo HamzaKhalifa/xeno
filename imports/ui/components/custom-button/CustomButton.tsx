@@ -45,7 +45,7 @@ const CustomButton = (props: ICustomButton) => {
       disabled={props.loading}
       className={styles.customButtonContainer}
       style={{ 
-        ...buttonStyles,
+        ...buttonStyles.buttonContainer,
         ...(props.style ?? {})
       }}
     >

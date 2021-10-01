@@ -10,40 +10,43 @@ export interface ISection {
 
 const initialState = {
   home: {
+    to: '/home',
     homeContainer: {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
       vbData: {
-        extended: false,
         title: 'Home Container',
-        before: [
-          {
-            tag: 'div',
-            children: 'TEEEEEESSSSTTTT',
-            style: {
-              position: 'relative',
-              backgroundColor: 'red',
-              marginTop: 10
-              vbData: { 
-                title: 'Test before' 
-              }
-            }
-          }
-        ],
-        after: [
-          {
-            sectionName: 'Test after',
-            tag: 'span',
-            children: 'Im a span',
-            style: {
-              position: 'relative',
-              fontSize: 40,
-              backgroundColor: 'green'
-            }
-          }
-        ]
+        // before: [
+        //   {
+        //     tag: 'div',
+        //     children: 'TEEEEEESSSSTTTT',
+        //     style: {
+        //       position: 'relative',
+        //       backgroundColor: 'red',
+        //       marginTop: 10
+        //       vbData: { 
+        //         title: 'Test before' 
+        //       }
+        //     }
+        //   }
+        // ],
+        // after: [
+        //   {
+        //     sectionName: 'Test after',
+        //     tag: 'span',
+        //     children: 'Im a span',
+        //     style: {
+        //       position: 'relative',
+        //       fontSize: 40,
+        //       backgroundColor: 'green',
+        //       vbData: {
+        //         title: 'Test after'
+        //       }
+        //     }
+        //   }
+        // ]
       }
     },
     title: {
@@ -113,26 +116,668 @@ const initialState = {
     progressCheck: {
     }
   },
+  contacts: {
+    to: '/contacts',
+    contactsContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      position: 'relative',
+      backgroundColor: '#3CD2C8',
+      width: 125,
+      height: 2
+    },
+    tableContainer: {
+      position: 'relative',
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      position: 'relative',
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      position: 'relative',
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      position: 'relative',
+      display: 'flex',
+    },
+    inviteButton1: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 184,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      position: 'relative',
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      position: 'relative',
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnName: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnPhone: {
+      position: 'relative',
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnEmail: {
+      position: 'relative',
+      minWidth: 250,
+      maxWidth: 250,
+    },
+    columnPost: {
+      position: 'relative',
+      minWidth: 100,
+      maxWidth: 100,
+    },
+    columnProjectRoles: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnStatus: {
+      position: 'relative',
+      minWidth: 150,
+      maxWidth: 150,
+    },
+    columnAction: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    status: {
+      position: 'relative',
+      fontSize: 14.12,
+      color: 'rgba(119, 103, 108, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    statusIcon: {
+      position: 'relative',
+      marginLeft: 8.88,
+    },
+    inviteButton: {
+      position: 'relative',
+      width: 150,
+      color: 'white',
+      backgroundColor: '#6EB0DD',
+      boxSizing: 'border-box',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    inviteButtonLoadingStyles: {
+      position: 'relative',
+      width: 150,
+    },
+    deleteIcon: {
+      position: 'relative',
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
+    you: {
+      position: 'relative',
+      padding: 10
+    }
+  },
+  invoices: {
+    to: '/invoices',
+    invoicesContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      position: 'relative',
+      backgroundColor: '#3CD2C8',
+      width: 125,
+      height: 2
+    },
+    tableContainer: {
+      position: 'relative',
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      position: 'relative',
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      position: 'relative',
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      position: 'relative',
+      display: 'flex',
+    },
+    inviteButton1: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 184,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      position: 'relative',
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      position: 'relative',
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnName: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnPhone: {
+      position: 'relative',
+      minWidth: 170,
+      maxWidth: 170,
+    },
+    columnEmail: {
+      position: 'relative',
+      minWidth: 250,
+      maxWidth: 250,
+    },
+    columnPost: {
+      position: 'relative',
+      minWidth: 100,
+      maxWidth: 100,
+    },
+    columnProjectRoles: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+    },
+    columnStatus: {
+      position: 'relative',
+      minWidth: 150,
+      maxWidth: 150,
+    },
+    columnAction: {
+      position: 'relative',
+      minWidth: 200,
+      maxWidth: 200,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    status: {
+      position: 'relative',
+      fontSize: 14.12,
+      color: 'rgba(119, 103, 108, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    statusIcon: {
+      position: 'relative',
+      marginLeft: 8.88,
+    },
+    inviteButton: {
+      position: 'relative',
+      width: 150,
+      color: 'white',
+      backgroundColor: '#6EB0DD',
+      boxSizing: 'border-box',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    inviteButtonLoadingStyles: {
+      position: 'relative',
+      width: 150,
+    },
+    deleteIcon: {
+      position: 'relative',
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
+    you: {
+      position: 'relative',
+      padding: 10
+    }
+  },
+  paymentMethods: {
+    to: '/paymentMethods',
+    paymentMethodsContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      overflow: 'auto',
+    },
+    title: {
+      position: 'relative',
+      color: '#2E2226',
+      fontSize: 32.44,
+      marginTop: 13,
+      marginBottom: 13
+    },
+    subTitle: {
+      position: 'relative',
+      color: '#2E2226',
+      marginTop: 13,
+      fontSize: 20.25,
+      marginBottom: 10
+    },
+    line: {
+      position: 'relative',
+      backgroundColor: '#3CD2C8',
+      width: 205,
+      height: 2
+    },
+    tableContainer: {
+      position: 'relative',
+      padding: 32,
+      backgroundColor: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: 25.63,
+      overflow: 'auto',
+    },
+    tableHeader: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between'
+    },
+    headerLeft: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    headerTitle: {
+      position: 'relative',
+      fontSize: 23,
+      color: '#2E2226'
+    },
+    headerDescription: {
+      position: 'relative',
+      color: '#ABA5A7',
+      fontSize: 16,
+      marginTop: 7,
+      fontWeight: 100
+    },
+    headerRight: {
+      position: 'relative',
+      display: 'flex',
+    },
+    inviteButton1: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 52,
+      height: 40,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      backgroundColor: 'white',
+      borderRightWidth: 0,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0
+    },
+    inviteButton2: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: 250,
+      borderWidth: 1,
+      borderColor: '#6EB0DD',
+      borderTopRightRadius: 4,
+      borderBottomRightRadius: 4,
+      backgroundColor: 'white',
+      color: '#6EB0DD',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0
+    },
+    tableColumns: {
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    tableRow: {
+      position: 'relative',
+      marginTop: 10,
+      backgroundColor: '#F9F8F9',
+      borderRadius: 12,
+      boxSizing: 'border-box',
+      height: 45.5,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '100%',
+      overflow: 'auto'
+    },
+    column: {
+      position: 'relative',
+      paddingTop: 14.2,
+      paddingBottom: 14.2,
+      paddingLeft: 22.7,
+      paddingRight: 22.7,
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    columnName: {
+      position: 'relative',
+      minWidth: 250,
+      maxWidth: 250,
+    },
+    columnPaymentMode: {
+      position: 'relative',
+      minWidth: 250,
+      maxWidth: 250,
+    },
+    columnLast4: {
+      position: 'relative',
+      minWidth: 270,
+      maxWidth: 270,
+    },
+    columnAction: {
+      position: 'relative',
+      minWidth: 250,
+      maxWidth: 250,
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0,
+      justifyContent: 'flex-end'
+    },
+    editButton: {
+
+    },
+    deleteIcon: {
+      position: 'relative',
+      cursor: 'pointer',
+      paddingRight: 15,
+      paddingLeft: 15,
+    },
+  },
   general: {
-    position: 'relative',
-    highlightColor: '#38c172',
+    generalStyles: {
+      position: 'relative',
+      highlightColor: '#38c172',
+    }
   },
   button: {
-    position: 'relative',
-    backgroundColor: '#3CD2C8',
-    color: 'white',
-    border: 'none',
-    boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderBlock: 'solid',
-    cursor: 'pointer',
-    fontSize: 16,
-    width: 200,
-    paddingTop: 18,
-    paddingRight: 24,
-    paddingBottom: 18,
-    paddingLeft: 24,
-    borderRadius: 4
+    buttonContainer: {
+      position: 'relative',
+      backgroundColor: '#3CD2C8',
+      color: 'white',
+      border: 'none',
+      boxSizing: 'border-box',
+      borderStyle: 'solid',
+      borderBlock: 'solid',
+      cursor: 'pointer',
+      fontSize: 16,
+      width: 200,
+      paddingTop: 18,
+      paddingRight: 24,
+      paddingBottom: 18,
+      paddingLeft: 24,
+      borderRadius: 4
+    }
+  },
+  locationSearchInput: {
+    locationSearchInputContainer: {
+      position: 'relative',
+      hoverBackgroundColor: '#38c172'
+    }
+  },
+  input: {
+    inputContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      marginBottom: 15,
+      flex: 1,
+    },
+    input: {
+      position: 'relative',
+      paddingTop: 16,
+      paddingBottom: 16,
+      paddingLeft: 18,
+      paddingRight: 18,
+      boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
+      borderRadius: 4,
+      backgroundColor: '#FDFFFF',
+      borderWidth: .5,
+      borderStyle: 'solid'
+    },
+    label: {
+      position: 'relative',
+      fontSize: 16,
+      marginBottom: 8,
+      color: '#736D6F',
+    },
+    requiredFieldIcon: {
+      position: 'relative',
+      marginBottom: 5,
+      marginLeft: 5
+    },
+    error: {
+      position: 'relative',
+      color: '#F34C4F',
+      fontWeight: 500,
+      fontSize: 16,
+      marginTop: 10,
+      whiteSpace: 'nowrap'
+    },
+  },
+  textarea: {
+    textareaContainer: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      marginBottom: 15,
+      flex: 1,
+    },
+    textarea: {
+      position: 'relative',
+      paddingTop: 16,
+      paddingBottom: 16,
+      paddingLeft: 18,
+      paddingRight: 18,
+      boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
+      borderRadius: 4,
+      backgroundColor: '#FDFFFF',
+      borderWidth: .5,
+      borderStyle: 'solid'
+    },
+    label: {
+      position: 'relative',
+      fontSize: 16,
+      marginBottom: 8,
+      color: '#736D6F',
+    }
   },
   accountCompletitionIndicator: {
     accountCompletitionIndicatorContainer: {
@@ -216,77 +861,6 @@ const initialState = {
       backgroundColor: 'green',
       padding: 10,
       borderRadius: 5
-    }
-  },
-  locationSearchInput: {
-    position: 'relative',
-    hoverBackgroundColor: '#38c172'
-  },
-  input: {
-    inputContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      marginBottom: 15,
-      flex: 1,
-    },
-    input: {
-      position: 'relative',
-      paddingTop: 16,
-      paddingBottom: 16,
-      paddingLeft: 18,
-      paddingRight: 18,
-      boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
-      borderRadius: 4,
-      backgroundColor: '#FDFFFF',
-      borderWidth: .5,
-      borderStyle: 'solid'
-    },
-    label: {
-      position: 'relative',
-      fontSize: 16,
-      marginBottom: 8,
-      color: '#736D6F',
-    },
-    requiredFieldIcon: {
-      position: 'relative',
-      marginBottom: 5,
-      marginLeft: 5
-    },
-    error: {
-      position: 'relative',
-      color: '#F34C4F',
-      fontWeight: 500,
-      fontSize: 16,
-      marginTop: 10,
-      whiteSpace: 'nowrap'
-    },
-  },
-  textarea: {
-    textareaContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      marginBottom: 15,
-      flex: 1,
-    },
-    textarea: {
-      position: 'relative',
-      paddingTop: 16,
-      paddingBottom: 16,
-      paddingLeft: 18,
-      paddingRight: 18,
-      boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
-      borderRadius: 4,
-      backgroundColor: '#FDFFFF',
-      borderWidth: .5,
-      borderStyle: 'solid'
-    },
-    label: {
-      position: 'relative',
-      fontSize: 16,
-      marginBottom: 8,
-      color: '#736D6F',
     }
   },
   layout: {
@@ -1015,207 +1589,6 @@ const initialState = {
       color: '#2E2226'
     }
   },
-  contacts: {
-    contactsContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      overflow: 'auto',
-    },
-    title: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 32.44,
-      marginTop: 13,
-      marginBottom: 13
-    },
-    subTitle: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 20.25,
-      marginBottom: 10
-    },
-    line: {
-      position: 'relative',
-      backgroundColor: '#3CD2C8',
-      width: 125,
-      height: 2
-    },
-    tableContainer: {
-      position: 'relative',
-      padding: 32,
-      backgroundColor: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      marginTop: 25.63,
-      overflow: 'auto',
-    },
-    tableHeader: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      justifyContent: 'space-between'
-    },
-    headerLeft: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    headerTitle: {
-      position: 'relative',
-      fontSize: 23,
-      color: '#2E2226'
-    },
-    headerDescription: {
-      position: 'relative',
-      color: '#ABA5A7',
-      fontSize: 16,
-      marginTop: 7,
-      fontWeight: 100
-    },
-    headerRight: {
-      position: 'relative',
-      display: 'flex',
-    },
-    inviteButton1: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 52,
-      height: 40,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopLeftRadius: 4,
-      borderBottomLeftRadius: 4,
-      backgroundColor: 'white',
-      borderRightWidth: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0
-    },
-    inviteButton2: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 40,
-      width: 184,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopRightRadius: 4,
-      borderBottomRightRadius: 4,
-      backgroundColor: 'white',
-      color: '#6EB0DD',
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0
-    },
-    tableColumns: {
-      position: 'relative',
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    tableRow: {
-      position: 'relative',
-      marginTop: 10,
-      backgroundColor: '#F9F8F9',
-      borderRadius: 12,
-      boxSizing: 'border-box',
-      height: 45.5,
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    column: {
-      position: 'relative',
-      paddingTop: 14.2,
-      paddingBottom: 14.2,
-      paddingLeft: 22.7,
-      paddingRight: 22.7,
-      boxSizing: 'border-box',
-      display: 'flex',
-      alignItems: 'center',
-    },
-    columnName: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-    },
-    columnPhone: {
-      position: 'relative',
-      minWidth: 170,
-      maxWidth: 170,
-    },
-    columnEmail: {
-      position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
-    },
-    columnPost: {
-      position: 'relative',
-      minWidth: 100,
-      maxWidth: 100,
-    },
-    columnProjectRoles: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-    },
-    columnStatus: {
-      position: 'relative',
-      minWidth: 150,
-      maxWidth: 150,
-    },
-    columnAction: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-      display: 'flex',
-      alignItems: 'center',
-      padding: 0,
-      justifyContent: 'flex-end'
-    },
-    status: {
-      position: 'relative',
-      fontSize: 14.12,
-      color: 'rgba(119, 103, 108, 0.5)',
-      display: 'flex',
-      alignItems: 'center',
-    },
-    statusIcon: {
-      position: 'relative',
-      marginLeft: 8.88,
-    },
-    inviteButton: {
-      position: 'relative',
-      width: 150,
-      color: 'white',
-      backgroundColor: '#6EB0DD',
-      boxSizing: 'border-box',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    inviteButtonLoadingStyles: {
-      position: 'relative',
-      width: 150,
-    },
-    deleteIcon: {
-      position: 'relative',
-      cursor: 'pointer',
-      paddingRight: 15,
-      paddingLeft: 15,
-    },
-    you: {
-      position: 'relative',
-      padding: 10
-    }
-  },
   contact: {
     contactContainer: {
       position: 'relative',
@@ -1344,166 +1717,6 @@ const initialState = {
       display: 'flex',
       alignItems: 'center'
     } 
-  },
-  paymentMethods: {
-    paymentMethodsContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      overflow: 'auto',
-    },
-    title: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 32.44,
-      marginTop: 13,
-      marginBottom: 13
-    },
-    subTitle: {
-      position: 'relative',
-      color: '#2E2226',
-      marginTop: 13,
-      fontSize: 20.25,
-      marginBottom: 10
-    },
-    line: {
-      position: 'relative',
-      backgroundColor: '#3CD2C8',
-      width: 205,
-      height: 2
-    },
-    tableContainer: {
-      position: 'relative',
-      padding: 32,
-      backgroundColor: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      marginTop: 25.63,
-      overflow: 'auto',
-    },
-    tableHeader: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      justifyContent: 'space-between'
-    },
-    headerLeft: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    headerTitle: {
-      position: 'relative',
-      fontSize: 23,
-      color: '#2E2226'
-    },
-    headerDescription: {
-      position: 'relative',
-      color: '#ABA5A7',
-      fontSize: 16,
-      marginTop: 7,
-      fontWeight: 100
-    },
-    headerRight: {
-      position: 'relative',
-      display: 'flex',
-    },
-    inviteButton1: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 52,
-      height: 40,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopLeftRadius: 4,
-      borderBottomLeftRadius: 4,
-      backgroundColor: 'white',
-      borderRightWidth: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0
-    },
-    inviteButton2: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 40,
-      width: 250,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopRightRadius: 4,
-      borderBottomRightRadius: 4,
-      backgroundColor: 'white',
-      color: '#6EB0DD',
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0
-    },
-    tableColumns: {
-      position: 'relative',
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    tableRow: {
-      position: 'relative',
-      marginTop: 10,
-      backgroundColor: '#F9F8F9',
-      borderRadius: 12,
-      boxSizing: 'border-box',
-      height: 45.5,
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    column: {
-      position: 'relative',
-      paddingTop: 14.2,
-      paddingBottom: 14.2,
-      paddingLeft: 22.7,
-      paddingRight: 22.7,
-      boxSizing: 'border-box',
-      display: 'flex',
-      alignItems: 'center',
-    },
-    columnName: {
-      position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
-    },
-    columnPaymentMode: {
-      position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
-    },
-    columnLast4: {
-      position: 'relative',
-      minWidth: 270,
-      maxWidth: 270,
-    },
-    columnAction: {
-      position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
-      display: 'flex',
-      alignItems: 'center',
-      padding: 0,
-      justifyContent: 'flex-end'
-    },
-    editButton: {
-
-    },
-    deleteIcon: {
-      position: 'relative',
-      cursor: 'pointer',
-      paddingRight: 15,
-      paddingLeft: 15,
-    },
   },
   paymentMethod: {
     paymentMethodContainer: {
@@ -2023,207 +2236,6 @@ const initialState = {
       padding: 32,
       boxSizing: 'border-box'
     },
-  },
-  invoices: {
-    invoicesContainer: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      overflow: 'auto',
-    },
-    title: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 32.44,
-      marginTop: 13,
-      marginBottom: 13
-    },
-    subTitle: {
-      position: 'relative',
-      color: '#2E2226',
-      fontSize: 20.25,
-      marginBottom: 10
-    },
-    line: {
-      position: 'relative',
-      backgroundColor: '#3CD2C8',
-      width: 125,
-      height: 2
-    },
-    tableContainer: {
-      position: 'relative',
-      padding: 32,
-      backgroundColor: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      marginTop: 25.63,
-      overflow: 'auto',
-    },
-    tableHeader: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      justifyContent: 'space-between'
-    },
-    headerLeft: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    headerTitle: {
-      position: 'relative',
-      fontSize: 23,
-      color: '#2E2226'
-    },
-    headerDescription: {
-      position: 'relative',
-      color: '#ABA5A7',
-      fontSize: 16,
-      marginTop: 7,
-      fontWeight: 100
-    },
-    headerRight: {
-      position: 'relative',
-      display: 'flex',
-    },
-    inviteButton1: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 52,
-      height: 40,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopLeftRadius: 4,
-      borderBottomLeftRadius: 4,
-      backgroundColor: 'white',
-      borderRightWidth: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0
-    },
-    inviteButton2: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 40,
-      width: 184,
-      borderWidth: 1,
-      borderColor: '#6EB0DD',
-      borderTopRightRadius: 4,
-      borderBottomRightRadius: 4,
-      backgroundColor: 'white',
-      color: '#6EB0DD',
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0
-    },
-    tableColumns: {
-      position: 'relative',
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    tableRow: {
-      position: 'relative',
-      marginTop: 10,
-      backgroundColor: '#F9F8F9',
-      borderRadius: 12,
-      boxSizing: 'border-box',
-      height: 45.5,
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      overflow: 'auto'
-    },
-    column: {
-      position: 'relative',
-      paddingTop: 14.2,
-      paddingBottom: 14.2,
-      paddingLeft: 22.7,
-      paddingRight: 22.7,
-      boxSizing: 'border-box',
-      display: 'flex',
-      alignItems: 'center',
-    },
-    columnName: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-    },
-    columnPhone: {
-      position: 'relative',
-      minWidth: 170,
-      maxWidth: 170,
-    },
-    columnEmail: {
-      position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
-    },
-    columnPost: {
-      position: 'relative',
-      minWidth: 100,
-      maxWidth: 100,
-    },
-    columnProjectRoles: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-    },
-    columnStatus: {
-      position: 'relative',
-      minWidth: 150,
-      maxWidth: 150,
-    },
-    columnAction: {
-      position: 'relative',
-      minWidth: 200,
-      maxWidth: 200,
-      display: 'flex',
-      alignItems: 'center',
-      padding: 0,
-      justifyContent: 'flex-end'
-    },
-    status: {
-      position: 'relative',
-      fontSize: 14.12,
-      color: 'rgba(119, 103, 108, 0.5)',
-      display: 'flex',
-      alignItems: 'center',
-    },
-    statusIcon: {
-      position: 'relative',
-      marginLeft: 8.88,
-    },
-    inviteButton: {
-      position: 'relative',
-      width: 150,
-      color: 'white',
-      backgroundColor: '#6EB0DD',
-      boxSizing: 'border-box',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    inviteButtonLoadingStyles: {
-      position: 'relative',
-      width: 150,
-    },
-    deleteIcon: {
-      position: 'relative',
-      cursor: 'pointer',
-      paddingRight: 15,
-      paddingLeft: 15,
-    },
-    you: {
-      position: 'relative',
-      padding: 10
-    }
   },
 }
 

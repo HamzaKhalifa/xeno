@@ -9,8 +9,14 @@ const BeforeOrAfter = ({ element }) => {
       return <VBH2 style={element.style}>{element.children}</VBH2>
     case 'h3': 
       return <VBH3 style={element.style}>{element.children}</VBH3>
+    case 'h4': 
+      return <VBH4 style={element.style}>{element.children}</VBH4>
+    case 'h5': 
+      return <VBH5 style={element.style}>{element.children}</VBH5>
+    case 'h6': 
+      return <VBH6 style={element.style}>{element.children}</VBH6>
     case 'link': 
-      return <VBLink style={element.style}>{element.children}</VBLink>
+      return <VBLink to={element.to ?? '#'} style={element.style}>{element.children}</VBLink>
     case 'span': 
       return <VBSpan style={element.style}>{element.children}</VBSpan>
     case 'p': 
@@ -26,6 +32,7 @@ const VBElement = ({ children, style }) => {
   return (
     <>
       {style?.vbData?.before?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
+      
       <div 
         className='page_indicator'
         style={{ display: style?.vbData?.extended ? 'flex' : 'none' }} 
@@ -78,6 +85,42 @@ export const VBH3 = (props) => {
     <h3 style={style} {...rest} >
       <VBElement children={children} style={style} />
     </h3>
+  )
+}
+
+export const VBH4 = (props) => {
+  const { style, children, ...rest } = props
+  
+  const newStyle = { ...style }
+  delete newStyle.vbData
+  return (
+    <h4 style={style} {...rest} >
+      <VBElement children={children} style={style} />
+    </h4>
+  )
+}
+
+export const VBH5 = (props) => {
+  const { style, children, ...rest } = props
+  
+  const newStyle = { ...style }
+  delete newStyle.vbData
+  return (
+    <h5 style={style} {...rest} >
+      <VBElement children={children} style={style} />
+    </h5>
+  )
+}
+
+export const VBH6 = (props) => {
+  const { style, children, ...rest } = props
+  
+  const newStyle = { ...style }
+  delete newStyle.vbData
+  return (
+    <h6 style={style} {...rest} >
+      <VBElement children={children} style={style} />
+    </h6>
   )
 }
 

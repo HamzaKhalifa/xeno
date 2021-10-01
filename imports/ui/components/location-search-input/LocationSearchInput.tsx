@@ -26,7 +26,7 @@ const LocationSearchInput = (props: ILocationSearchInput) => {
 
   const { input: inputStyles, locationSearchInput: locationSearchInputStyles } = useSelector(state => state.theme)
 
-  const styles = useStyles({ inputStyles, locationSearchInputStyles })
+  const styles = useStyles({ inputStyles, locationSearchInputStyles: locationSearchInputStyles.locationSearchInputContainer })
 
   //#region Change handlers
   const handleChange = address => props.onChange(address)

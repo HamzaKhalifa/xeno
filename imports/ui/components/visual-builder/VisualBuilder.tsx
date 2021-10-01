@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom'
 import CheckIcon from '@material-ui/icons/Check'
 import { useLocation } from 'react-router-dom'
 
-import CustomInput from '/imports/ui/components/custom-input'
+import EditableSection from './EditableSection'
 
 import AccordionIcon from '/imports/ui/icons/AccordionIcon'
 
 import { setThemeValue } from '/imports/ui/store/theme/actions'
-import { setPages } from '/imports/ui/store/visual-builder/actions'
 
 import useStyles from './styles'
 
@@ -17,8 +16,8 @@ const VisualBuilder = () => {
 
   //#region State
   const theme = useSelector<any>(state => state.theme)
-  const pages: any = useSelector<any>(state => state.visualBuilder.pages)
-  const highlightColor = useSelector<any>(state => state.theme.general.highlightColor)
+  const themeElements: any = useSelector<any>(state => state.visualBuilder.themeElements)
+  const highlightColor = useSelector<any>(state => state.theme.general.generalStyles.highlightColor)
   //#endregion State
   
   //#region State
@@ -28,55 +27,72 @@ const VisualBuilder = () => {
   //#endregion State
 
   //#region Event listeners
-  const togglePageCollapsed = (index) => {
-    const newPages = [...pages]
-    newPages[index].collapsed = !newPages[index].collapsed
-    dispatch(setPages(newPages))
+  const toggleThemeElementExtended = (themeElement) => {
+    dispatch(setThemeValue([themeElement, 'extended'], !Boolean(theme[themeElement].extended)))
   }
   //#endregion Event listeners
 
   //#region View
   return (
     <div className={styles.visualBuilderContainer}>
-      {pages.map((page, pageIndex) => (
-        <div className={styles.page} key={pageIndex}>
+      {Object.keys(theme).map((themeElement, themeElementIndex) => (
+        <div className={styles.themeElement} key={themeElementIndex}>
           <div 
-            style={{ marginTop: pageIndex === 0 ? 0 : 40 }} 
-            className={styles.pageTitleContainer} 
-            onClick={() => togglePageCollapsed(pageIndex)} 
+            style={{ marginTop: themeElementIndex === 0 ? 0 : 40 }} 
+            className={styles.themeElementTitleContainer} 
+            onClick={() => toggleThemeElementExtended(themeElement)} 
           >
             <AccordionIcon 
-              reversed={!page.collapsed} 
+              reversed={Boolean(theme[themeElement].extended)} 
               width={15}
               height={15}
               fill={highlightColor}
-              className={styles.pageTitleIcon}
+              className={styles.themeElementTitleIcon}
             />
             
-            <h2 className={styles.pageTitle}>{page.title}</h2>
+            <h2 className={styles.themeElementTitle}>{themeElement}</h2>
             
           </div>
 
-          {!page.collapsed && Object.keys(theme[page.key]).map((sectionTitle, index) => {
+          {theme[themeElement].extended && Object.keys(theme[themeElement]).map((sectionTitle, index) => {
+            if (sectionTitle === 'to' || sectionTitle === 'extended') return null
+
             return (
-              <div key={index}>
-                {theme[page.key][sectionTitle].vbData?.before?.map((beforeSection, index) => (
+              <div className={styles.themeElementSections} key={index}>
+                {theme[themeElement][sectionTitle].vbData?.before?.map((beforeSection, index) => (
                   <EditableSection 
                     key={index} 
-                    sectionTitle={beforeSection.sectionTitle} 
-                    pathToValue={[page.key, sectionTitle, 'vbData', 'before', index, 'style']} 
+                    sectionTitle={beforeSection.style?.vbData?.title} 
+                    pathToValue={[themeElement, sectionTitle, 'vbData', 'before', index, 'style']} 
+                    isBefore
                   />
                 ))}
-                <EditableSection sectionTitle={sectionTitle} pathToValue={[page.key, sectionTitle]} />
+                <EditableSection sectionTitle={sectionTitle} pathToValue={[themeElement, sectionTitle]} />
+
+                {theme[themeElement][sectionTitle].vbData?.after?.map((afterSection, index) => (
+                  <EditableSection 
+                    key={index} 
+                    sectionTitle={afterSection.style?.vbData?.title} 
+                    pathToValue={[themeElement, sectionTitle, 'vbData', 'after', index, 'style']} 
+                    isAfter
+                  />
+                ))}
               </div>
             )
           })}
 
-          <Link to={page.to}>
-            <div className={styles.showButton}>{location.pathname === page.to ? 
-              <CheckIcon style={{ color: highlightColor }} /> : 'Go'}
-            </div>
-          </Link>
+          {/* Go to page button */}
+          {theme[themeElement].to && 
+            <Link to={theme[themeElement].to}>
+              <div className={styles.showButton}>
+                {location.pathname === theme[themeElement].to ? 
+                  <CheckIcon style={{ color: highlightColor }} /> 
+                  : 'Go'
+                }
+              </div>
+            </Link>
+          }
+
         </div>
       ))}
     </div>
@@ -84,67 +100,5 @@ const VisualBuilder = () => {
   //#endregion View
 }
 
-const EditableSection = ({ sectionTitle, pathToValue }) => {
-  
-  //#region State
-  const theme = useSelector<any>(state => state.theme)
-  const highlightColor = useSelector<any>(state => state.theme.general.highlightColor)
-  //#endregion State
-
-  //#region Hooks
-  const dispatch = useDispatch()
-  const styles = useStyles()
-  //#endregion Hooks
-
-  //#region Event listeners
-  const toggleSectionCollapsed = () => {
-    dispatch(setThemeValue([...pathToValue, 'vbData', 'extended'], !Boolean(sectionValue?.vbData?.extended)))
-  }
-  //#endregion Event listeners
-
-  let sectionValue = theme
-  pathToValue.forEach(step => {
-    sectionValue = sectionValue?.[step]
-  })
-  
-  return (
-    <>
-      {/* Accordion, highlight and toggle */}
-      <div
-        className={styles.sectionTitleContainer} 
-        onClick={toggleSectionCollapsed} 
-      >
-        <AccordionIcon 
-          reversed={Boolean(sectionValue.vbData?.extended)} 
-          width={15} height={15} 
-          fill={highlightColor} 
-          className={styles.pageSectionTitleIcon} 
-        />
-        <h3 className={styles.pageSectionTitle}>{sectionValue?.vbData?.title ?? sectionTitle}</h3>
-      </div>
-
-      {/* CSS properties */}
-      {Boolean(sectionValue.vbData?.extended) && 
-        <div className={styles.propertiesContainer}>
-          {[
-            'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'position', 'display', 'flexDirection',
-            'background-color', 'border', 'top', 'bottom', 'left', 'right', 'color', 'cursor', 'font-weight', 'height', 'width', 'maxWidth',
-            'maxHeight',
-          ].map(((property, index) => (
-            <CustomInput 
-              key={index}
-              style={{ marginTop: 5 }}
-              label={property}
-              placeholder={property} 
-              type='text'
-              value={sectionValue[property] ?? ''} 
-              onChange={(e) => dispatch(setThemeValue([...pathToValue, property], e.target.value ?? ''))} 
-            />
-          )))}
-        </div>
-      }
-    </>
-  )
-}
 
 export default VisualBuilder

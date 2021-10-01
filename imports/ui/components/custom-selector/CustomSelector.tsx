@@ -16,6 +16,8 @@ interface ICustomSelector {
 	error?: string
 	multiple?: boolean
 	disabled?: boolean
+	style?: any
+	labelStyle?: any
 }
 
 const CustomSelector = (props: ICustomSelector) => {
@@ -44,9 +46,9 @@ const CustomSelector = (props: ICustomSelector) => {
 	//#endregion Event listeners
 
 	return (
-		<VBDiv className={styles.customSelectorContainer}>
+		<VBDiv className={styles.customSelectorContainer} style={{ ...(props.style ?? {}) }}>
 			<VBDiv className={styles.header}>
-				<VBSpan className={styles.label}>{props.label}: </VBSpan>
+				<VBSpan className={styles.label} style={{ ...(props.labelStyle ?? {}) }}>{props.label}: </VBSpan>
 			</VBDiv>
 			
 			<Autocomplete

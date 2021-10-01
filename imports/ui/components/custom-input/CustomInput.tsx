@@ -18,6 +18,7 @@ interface ICustomInput {
   required?: boolean
   type?: string
   check?: boolean
+  labelStyle?: any
 }
 
 const CustomInput = (props: ICustomInput) => {
@@ -27,7 +28,7 @@ const CustomInput = (props: ICustomInput) => {
 
   return (
     <VBDiv className={styles.inputContainer} style={{ ...inputStyles.inputContainer, ...(props.style ?? {}) }}>
-      <VBSpan className={styles.label} style={{ ...inputStyles.label }}>
+      <VBSpan className={styles.label} style={{ ...inputStyles.label, ...(props.labelStyle ?? {}) }}>
         {props.check && <CheckIcon />}
         {props.label ?? ''} 
         {props.required && <RequiredFieldIcon style={{ ...inputStyles.requiredFieldIcon }} />}
