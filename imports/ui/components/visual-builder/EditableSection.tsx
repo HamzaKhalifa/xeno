@@ -139,6 +139,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
               onChange={tag => {
                 const newPathToValue = [...pathToValue]
                 newPathToValue.pop()
+                console.log('newPathToValue', newPathToValue)
                 dispatch(setThemeValue([...newPathToValue, 'tag'], tag))
               }}
             />
@@ -194,7 +195,12 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
                 label={property}
                 type='text'
                 value={sectionValue[property] ?? ''} 
-                onChange={(e) => dispatch(setThemeValue([...pathToValue, property], e.target.value ?? ''))} 
+                onChange={(e) => {
+                  console.log('pathToValue', pathToValue)
+                  console.log('e.target.value', e.target.value)
+                  console.log('sectionValue', sectionValue)
+                  dispatch(setThemeValue([...pathToValue, property], e.target.value ?? ''))}
+                } 
               />
             )))}
           </div>

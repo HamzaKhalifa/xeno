@@ -16,7 +16,6 @@ const VisualBuilder = () => {
 
   //#region State
   const theme = useSelector<any>(state => state.theme)
-  const themeElements: any = useSelector<any>(state => state.visualBuilder.themeElements)
   const highlightColor = useSelector<any>(state => state.theme.general.generalStyles.highlightColor)
   //#endregion State
   

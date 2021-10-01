@@ -5,6 +5,8 @@ const BeforeOrAfter = ({ element }) => {
   switch(element.tag) {
     case 'div': 
       return <VBDiv style={element.style}>{element.children}</VBDiv>
+    case 'h1': 
+      return <VBH1 style={element.style}>{element.children}</VBH1>
     case 'h2': 
       return <VBH2 style={element.style}>{element.children}</VBH2>
     case 'h3': 
@@ -64,13 +66,25 @@ export const VBDiv = (props) => {
   )
 }
 
+export const VBH1 = (props) => {
+  const { style, children, ...rest } = props
+  
+  const newStyle = { ...style }
+  delete newStyle.vbData
+  return (
+    <h1 style={newStyle} {...rest} >
+      <VBElement children={children} style={style} />
+    </h1>
+  )
+}
+
 export const VBH2 = (props) => {
   const { style, children, ...rest } = props
   
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <h2 style={style} {...rest} >
+    <h2 style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </h2>
   )
@@ -82,7 +96,7 @@ export const VBH3 = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <h3 style={style} {...rest} >
+    <h3 style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </h3>
   )
@@ -94,7 +108,7 @@ export const VBH4 = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <h4 style={style} {...rest} >
+    <h4 style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </h4>
   )
@@ -106,7 +120,7 @@ export const VBH5 = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <h5 style={style} {...rest} >
+    <h5 style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </h5>
   )
@@ -118,7 +132,7 @@ export const VBH6 = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <h6 style={style} {...rest} >
+    <h6 style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </h6>
   )
@@ -130,7 +144,7 @@ export const VBLink = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <Link style={style} {...rest} >
+    <Link style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </Link>
   )
@@ -142,7 +156,7 @@ export const VBSpan = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <span style={style} {...rest} >
+    <span style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </span>
   )
@@ -154,7 +168,7 @@ export const VBP = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <p style={style} {...rest} >
+    <p style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </p>
   )
@@ -166,7 +180,7 @@ export const VBForm = (props) => {
   const newStyle = { ...style }
   delete newStyle.vbData
   return (
-    <form style={style} {...rest} >
+    <form style={newStyle} {...rest} >
       <VBElement children={children} style={style} />
     </form>
   )

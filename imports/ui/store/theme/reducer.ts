@@ -20,7 +20,10 @@ const setThemeValue = (state, action) => {
       if (!looper) {
         looper = { [key]: value }
       } else {
+        console.log('looper', looper)
         looper[key] = value
+        Object.assign(looper, { key: value })
+        console.log('looper', looper)
       }
     }
   })  
