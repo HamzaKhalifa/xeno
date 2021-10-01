@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import CustomLoader from '/imports/ui/components/custom-loader'
 import Toast from '/imports/ui/components/toast'
 
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+
 interface IEnrollAccount {
   match?: any
 }
