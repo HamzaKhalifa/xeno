@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
-import { Link, useLocation, useHistory } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 
 import CustomButton from '/imports/ui/components/custom-button'
 import CustomLoader from '/imports/ui/components/custom-loader'
@@ -13,7 +13,7 @@ import useAuth from '/imports/ui/hooks/useAuth'
 import HeaderIcon from '/imports/ui/icons/HeaderIcon'
 import LogoutIcon from '/imports/ui/icons/LogoutIcon'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBLink, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
 
 import useStyles from './styles'
 

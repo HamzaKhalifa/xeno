@@ -9,7 +9,7 @@ import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
 
 interface ICustomButton {
 }
@@ -49,7 +49,7 @@ const AccountCompletitionIndicator = (props: ICustomButton) => {
       + (contact?.phone1 ? 1 : 0) + (paymentMethods?.length > 0 ? 1 : 0) + (businesses.length > 0 && businesses[0].legalName ? 1 : 0) 
       + (businesses.length > 0 && businesses[0].mainAddress ? 1 : 0) 
     return score
-  }, [contact, businesses, paymentMethods])
+  }, [contact, businesses, paymentMethods, user])
   
   return (
     <VBDiv style={{ ...indicatorStyles.accountCompletitionIndicatorContainer }}>

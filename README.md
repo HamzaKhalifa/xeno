@@ -21,21 +21,4 @@ It means that there shouldn't be a nesting of sections inside sections. It's alw
 
 <br>
 
-2- Never created normal html/jsx tags. Always go throug the visual builder elements
-
-
-
-## Sprint Review:
-From en environment from scratch
-1- Change the admin email in apiefront
-2- Login into Tooly services with Facebook
-3- Demonstrate everything related to the the visual builder. 
-4- Complete profile information to reach 100% 
-5- Logout
-6- Request account creation
-7- Approve in apiefront
-8- Log back
-9- Logout.
-10- Create account 
-11- Login after confirmation
-12- Forgot password
+2- Never create normal html/jsx tags. Always go through the visual builder elements
