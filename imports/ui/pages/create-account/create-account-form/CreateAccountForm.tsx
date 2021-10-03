@@ -9,7 +9,7 @@ import Toast from '/imports/ui/components/toast'
 import remote from '/imports/api/remote'
 import validateEmail from '/imports/ui/utils/validateEmail'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

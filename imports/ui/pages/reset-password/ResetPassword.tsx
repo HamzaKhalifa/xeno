@@ -11,7 +11,7 @@ import CustomButton from '/imports/ui/components/custom-button'
 import CustomInput from '/imports/ui/components/custom-input'
 import Toast from '/imports/ui/components/toast'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import SideMenu from '/imports/ui/components/side-menu'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

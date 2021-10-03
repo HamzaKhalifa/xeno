@@ -17,7 +17,7 @@ import ActiveUserIcon from '/imports/ui/icons/ActiveUserIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 
@@ -144,8 +144,8 @@ const contacts = () => {
                       Invite
                   </CustomButton>
                 }
-                {contact.user._id !== user._id && <DeleteIcon style={{ ...contactsStyles.deleteIcon }} onClick={() => deleteContactWarning(contact)} />}
-                {contact.user._id === user._id && <VBSpan style={{ ...contactsStyles.you }}>You</VBSpan>}
+                {contact.user?._id !== user._id && <DeleteIcon style={{ ...contactsStyles.deleteIcon }} onClick={() => deleteContactWarning(contact)} />}
+                {contact.user?.user._id === user._id && <VBSpan style={{ ...contactsStyles.you }}>You</VBSpan>}
               </VBDiv>
             </VBDiv>
           )

@@ -9,7 +9,7 @@ import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
 import usePaginatedElements from '/imports/ui/hooks/usePaginatedElements'
 
-import { VBDiv, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBSpan } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 interface ICustomButton {
 }

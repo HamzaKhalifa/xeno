@@ -1,13 +1,10 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import { useSelector } from 'react-redux'
-
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 
-interface ICustomSelector {
+interface IVisualBuilderSelector {
 	label?: string
 	options: any[]
 	getOptionName: (obj: object) => string,
@@ -20,12 +17,8 @@ interface ICustomSelector {
 	labelStyle?: any
 }
 
-const CustomSelector = (props: ICustomSelector) => {
+const CustomSelector = (props: IVisualBuilderSelector) => {
 	const { multiple = false } = props
-
-	//#region State
-	const { selector: selectorStyles } = useSelector(state => state.theme)
-	//#endregion State
 
 	//#region Hooks
 	const styles = useStyles()
@@ -44,12 +37,12 @@ const CustomSelector = (props: ICustomSelector) => {
 			props.onChange?.(value)
 	}, [])
 	//#endregion Event listeners
-
+	
 	return (
-		<VBDiv className={styles.customSelectorContainer} style={{ ...(props.style ?? {}) }}>
-			<VBDiv className={styles.header}>
-				<VBSpan className={styles.label} style={{ ...(props.labelStyle ?? {}) }}>{props.label}: </VBSpan>
-			</VBDiv>
+		<div className={styles.visualBuilderSelectorContainer} style={{ ...(props.style ?? {}) }}>
+			<div className={styles.header}>
+				<span className={styles.label} style={{ ...(props.labelStyle ?? {}) }}>{props.label}: </span>
+			</div>
 			
 			<Autocomplete
 				onChange={onChange}
@@ -57,15 +50,34 @@ const CustomSelector = (props: ICustomSelector) => {
 				options={props.options}
 				getOptionLabel={props.getOptionName}
 				style={{ width: '100%', marginTop: 10 }}
-				renderInput={(params) => <TextField {...params} variant='outlined' style={{ ...selectorStyles.input }} />}
+				renderInput={(params) => <TextField {...params} variant='outlined' 
+					style={{ 
+						position: 'relative',
+						boxShadow: '2px 4px 8px 4px rgba(1, 12, 22, 0.01)',
+						borderRadius: 4,
+						backgroundColor: '#FDFFFF',
+						borderStyle: 'solid'
+					}} />}
 				renderOption={params => {
-					const className = (multiple && props.value?.find(potential => potential._id === params._id)) ? selectorStyles.selectedOption : selectorStyles.option
-					return (<VBSpan className={className}>{props.getOptionName(params)}</VBSpan>)
+					const optionStyle = (multiple && props.value?.find(potential => potential._id === params._id)) ? 
+					{
+						position: 'relative',
+						color: 'white',
+						backgroundColor: 'green',
+						padding: 10,
+						borderRadius: 5
+					} : 
+					{
+						position: 'relative',
+						padding: 10,
+						borderRadius: 5
+					}
+					return (<span style={optionStyle}>{props.getOptionName(params)}</span>)
 				}}
 				multiple={multiple}
 				disabled={props.disabled}
 			/>
-		</VBDiv>
+		</div>
 	)
 }
 

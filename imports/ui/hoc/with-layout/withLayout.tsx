@@ -6,7 +6,7 @@ import Footer from '/imports/ui/components/footer'
 
 import withVisualBuilder from '/imports/ui/hoc/with-visual-builder/withVisualBuilder'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

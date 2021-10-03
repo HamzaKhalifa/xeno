@@ -11,7 +11,7 @@ import Toast from '/imports/ui/components/toast'
 
 import ProgressCheckIcon from '/imports/ui/icons/ProgressCheckIcon'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

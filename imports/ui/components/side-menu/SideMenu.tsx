@@ -13,7 +13,7 @@ import CustomButton from '/imports/ui/components/custom-button'
 
 import { setVisualBuilderVisible } from '/imports/ui/store/visual-builder/actions'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

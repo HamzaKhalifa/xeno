@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import RequiredFieldIcon from '/imports/ui/icons/RequiredFieldIcon'
 import CheckIcon from '/imports/ui/icons/CheckIcon'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+import { setThemeValue } from '/imports/ui/store/theme/actions'
+
+import useStyles from './styles'
 
 const BeforeOrAfter = ({ element }) => {
   switch(element.tag) {
@@ -31,17 +36,22 @@ const BeforeOrAfter = ({ element }) => {
 }
 
 const VBElement = ({ children, style }) => {
+  const visualBuilderVisible = useSelector<any>(state => state.visualBuilder.visible)
+
+  const styles = useStyles({ visualBuilderVisible, extended: style?.vbData?.extended })
+
   return (
     <>
       {style?.vbData?.before?.map((element, index) => <BeforeOrAfter key={index} element={element} />)}
       
-      <div 
-        className='page_indicator'
-        style={{ display: style?.vbData?.extended ? 'flex' : 'none' }} 
-      />
+      <div className={styles.pageIndicator} />
+      
       <span 
-        className='page_indicator_title' 
+        className={styles.pageIndicatorTitle} 
         style={{ display: style?.vbData?.extended ? 'flex' : 'none' }}
+        onClick={() => {
+
+        }}
       >
         {style?.vbData?.title}
       </span>

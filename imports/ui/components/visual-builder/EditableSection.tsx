@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import CustomInput from '/imports/ui/components/custom-input'
-import CustomButton from '/imports/ui/components/custom-button'
-import CustomSelector from '/imports/ui/components/custom-selector'
+import VisualBuilderInput from '/imports/ui/components/visual-builder/visual-builder-input'
+import VisualBuilderButton from '/imports/ui/components/visual-builder/visual-builder-button'
+import VisualBuilderSelector from '/imports/ui/components/visual-builder/visual-builder-selector'
 
 import AccordionIcon from '/imports/ui/icons/AccordionIcon'
 import PlusIcon from '/imports/ui/icons/PlusIcon'
@@ -84,7 +84,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
 
       {/* Add before Button  */}
       {(!isBefore && !isAfter) && 
-        <CustomButton 
+        <VisualBuilderButton 
           style={{ 
             display: 'flex',
             alignItems: 'center',
@@ -98,7 +98,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
         >
           <PlusIcon className={styles.plusButton} fill='white' width={15} height={15} />
           <span className={styles.plusButtonText}>Add before</span>
-        </CustomButton>
+        </VisualBuilderButton>
       }
 
       {/* Accordion, title and toggle */}
@@ -126,10 +126,10 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
       {/* CSS properties */}
       {Boolean(sectionValue?.vbData?.extended) && 
         <>
-          {(isBefore || isAfter) && <CustomInput value={sectionValue?.vbData?.title} placeholder='Title' label='Section Title' type='text' className={styles.sectionTitleInput} onChange={onTitleChange} />}
-          {(isBefore || isAfter) && <CustomInput value={sectionData.children} placeholder='Content' label='Section Content' type='text' className={styles.sectionContentInput} onChange={onContentChange} />}
+          {(isBefore || isAfter) && <VisualBuilderInput value={sectionValue?.vbData?.title} placeholder='Title' label='Section Title' type='text' className={styles.sectionTitleInput} onChange={onTitleChange} />}
+          {(isBefore || isAfter) && <VisualBuilderInput value={sectionData.children} placeholder='Content' label='Section Content' type='text' className={styles.sectionContentInput} onChange={onContentChange} />}
           {(isBefore || isAfter) && 
-            <CustomSelector
+            <VisualBuilderSelector
               label='Element Type'
               options={['div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'link', 'span', 'p']}
               getOptionName={tag => tag}
@@ -147,7 +147,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
           
           {/* If it's a link, then we set the "to" property of the link */}
           {(isBefore || isAfter) && sectionData.tag === 'link' && 
-            <CustomInput 
+            <VisualBuilderInput 
               labelStyle={{ fontSize: 11 }}
               label='To'
               type='text'
@@ -162,7 +162,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
 
           <div className={styles.propertiesContainer}>
 
-            <CustomSelector
+            <VisualBuilderSelector
               label='Position'
               options={['relative', 'absolute', 'fixed']}
               getOptionName={position => position}
@@ -188,7 +188,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
               'background-color', 'color', 'textAlign', 'verticalAlign',
               'cursor', 'opacity', 'overlow', 'zIndex'
             ].map(((property, index) => (
-              <CustomInput 
+              <VisualBuilderInput 
                 key={index}
                 style={{ marginTop: 5, width: '25%' }}
                 labelStyle={{ fontSize: 11 }}
@@ -209,7 +209,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
 
       {/* Add after button */}
       {(!isBefore && !isAfter) && 
-        <CustomButton 
+        <VisualBuilderButton 
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -222,7 +222,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
         >
           <PlusIcon className={styles.plusButton} fill='white' width={15} height={15} />
           <span className={styles.plusButtonText}>Add after</span>
-        </CustomButton>
+        </VisualBuilderButton>
       }
 
     </div>

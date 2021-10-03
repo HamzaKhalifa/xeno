@@ -22,3 +22,9 @@ It means that there shouldn't be a nesting of sections inside sections. It's alw
 <br>
 
 2- Never create normal html/jsx tags. Always go through the visual builder elements
+
+## Plans: 
+-Hover over elements in edit mode with a sign + click and have the element selected and scrolled to in the visual builder
+-Add the ability to add sub-elements
+-Add the ability to add images
+-Add the ability to order elements

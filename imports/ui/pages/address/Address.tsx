@@ -12,7 +12,7 @@ import withSideMenu from '/imports/ui/hoc/with-side-menu'
 import AddressForm from '/imports/ui/pages/payment-method/address-form'
 import Toast from '/imports/ui/components/toast'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

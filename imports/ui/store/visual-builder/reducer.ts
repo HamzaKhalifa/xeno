@@ -1,6 +1,5 @@
 import {
   SET_VISUAL_BUILDER_VISIBLE,
-  SET_PAGES
 } from './actionTypes'
 
 import initialState from './initialState'
@@ -12,16 +11,8 @@ const setVisualBuilderVisible = (state, action) => {
   }
 }
 
-const setPages = (state, action) => {
-  return {
-    ...state,
-    pages: action.payload
-  }
-}
-
 const actionHandler = {
   [SET_VISUAL_BUILDER_VISIBLE]: setVisualBuilderVisible,
-  [SET_PAGES]: setPages,
 }
 
 const reducer = (state = initialState, action) => {

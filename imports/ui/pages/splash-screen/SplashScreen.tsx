@@ -3,7 +3,7 @@ import React from 'react'
 import CustomLoader from '/imports/ui/components/custom-loader'
 import AutomaticLogin from '/imports/ui/pages/automatic-login'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 const SplashScreen = () => {
   

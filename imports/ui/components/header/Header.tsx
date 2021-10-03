@@ -13,7 +13,7 @@ import useAuth from '/imports/ui/hooks/useAuth'
 import HeaderIcon from '/imports/ui/icons/HeaderIcon'
 import LogoutIcon from '/imports/ui/icons/LogoutIcon'
 
-import { VBDiv, VBLink, VBSpan } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBLink, VBSpan } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     overflow: 'auto',
     height: '100vh',
     boxSizing: 'border-box',
-    zIndex: 999
+    zIndex: 999,
   },
   themeElements: {},
   themeElement: {
@@ -96,7 +96,7 @@ const useStyles = createUseStyles({
   },
   themeElementSections: {
     marginLeft: 20
-  }
+  },
 })
 
 export default useStyles

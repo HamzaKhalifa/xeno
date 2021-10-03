@@ -14,7 +14,7 @@ import CustomPhoneNumber from '/imports/ui/components/custom-phone-input'
 import CustomCheckBoxes from '/imports/ui/components/custom-checkboxes'
 import CustomButton from '/imports/ui/components/custom-button'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

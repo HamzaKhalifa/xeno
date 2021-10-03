@@ -11,26 +11,3 @@ body {
 a {
   text-decoration: none;
 }
-
-.page_indicator {
-  background-color: #006bf3;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-  opacity: .1;
-  left: 0px;
-  top: 0px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.page_indicator_title {
-  z-index: 100;
-  color: rgb(29, 29, 223);
-  position: absolute;
-  top: -20px;
-  font-size: 17px;
-}

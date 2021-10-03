@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { useSelector } from 'react-redux'
 import { useTracker } from 'meteor/react-meteor-data'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visualBuilderElements'
+import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 interface IProfileButton {
 }

@@ -1,13 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import CustomLoader from '/imports/ui/components/custom-loader'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
-
 import useStyles from './styles'
 
-interface ICustomButton {
+interface IVisualBuilderButton {
   children?: any
   loading?: boolean
   disabled?: boolean
@@ -17,10 +14,8 @@ interface ICustomButton {
   loadingStyle?: any
 }
 
-const CustomButton = (props: ICustomButton) => {
+const VisualBuilderButton = (props: IVisualBuilderButton) => {
   const { type = 'button' } = props
-
-  const { button: buttonStyles } = useSelector(state => state.theme)
 
   const styles = useStyles()
 
@@ -30,11 +25,11 @@ const CustomButton = (props: ICustomButton) => {
 
   if (props.loading) {
     return(
-      <VBDiv style={{ 
+      <div style={{ 
         ...(props.loadingStyle ?? {})
       }}>
         <CustomLoader />
-      </VBDiv>
+      </div>
     )
   }
   
@@ -43,18 +38,17 @@ const CustomButton = (props: ICustomButton) => {
       onClick={onClick}
       type={type}
       disabled={props.loading}
-      className={styles.customButtonContainer}
+      className={styles.visualBuilderButtonContainer}
       style={{ 
-        ...buttonStyles.buttonContainer,
         ...(props.style ?? {})
       }}
     >
-      <VBDiv className={styles.content}>
+      <div className={styles.content}>
         {props.children}
-      </VBDiv>
+      </div>
     </button>
   )
 }
 
-export default React.memo(CustomButton)
+export default React.memo(VisualBuilderButton)
 
