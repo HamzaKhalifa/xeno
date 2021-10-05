@@ -57,7 +57,8 @@ const CustomSelector = (props: IVisualBuilderSelector) => {
 						borderRadius: 4,
 						backgroundColor: '#FDFFFF',
 						borderStyle: 'solid'
-					}} />}
+					}} />
+				}
 				renderOption={params => {
 					const optionStyle = (multiple && props.value?.find(potential => potential._id === params._id)) ? 
 					{

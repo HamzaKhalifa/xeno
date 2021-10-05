@@ -1,52 +1,117 @@
+export interface IThemeElement {
+  to: string
+  extended: boolean
+}
+
 export interface ISection {
   // ...CSS styles here for each section
-  tag?: string
-  childre?: any
   vbData?: {
-    visible: boolean
+    id: string
+    extended: boolean
     title: string
+    before: [{
+      tag: string
+      contentType: 'Text' | 'Components'
+      children?: any
+      text?: string
+      style: {
+        // ...CSS styles here for each section
+        vbData: {
+          id: string
+          extended: boolean
+          // ...
+        }
+      }
+
+    }]
   }
 }
+
 
 const initialState = {
   home: {
     to: '/home',
+    extended: false,
     homeContainer: {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
       vbData: {
+        id: 'someRandomId',
         title: 'Home Container',
-        // before: [
-        //   {
-        //     tag: 'div',
-        //     children: 'TEEEEEESSSSTTTT',
-        //     style: {
-        //       position: 'relative',
-        //       backgroundColor: 'red',
-        //       marginTop: 10
-        //       vbData: { 
-        //         title: 'Test before' 
-        //       }
-        //     }
-        //   }
-        // ],
-        // after: [
-        //   {
-        //     sectionName: 'Test after',
-        //     tag: 'span',
-        //     children: 'Im a span',
-        //     style: {
-        //       position: 'relative',
-        //       fontSize: 40,
-        //       backgroundColor: 'green',
-        //       vbData: {
-        //         title: 'Test after'
-        //       }
-        //     }
-        //   }
-        // ]
+        extended: false,
+        before: [
+          {
+            tag: 'div',
+            children: [],
+            text: 'Test Before'
+            contentType: 'Text',
+            style: {
+              position: 'relative',
+              backgroundColor: 'red',
+              marginTop: 10
+              vbData: { 
+                id: 'someRandofffffffffmId',
+                title: 'Test before',
+                extended: false,
+              }
+            }
+          }
+        ],
+        after: [
+          {
+            sectionName: 'Test after',
+            tag: 'div',
+            children: [
+              {
+                sectionName: 'Child of before or after',
+                tag: 'div',
+                children: [],
+                text: 'First child',
+                contentType: 'Text',
+                style: {
+                  position: 'relative',
+                  fontSize: 40,
+                  backgroundColor: 'green',
+                  vbData: {
+                    id: 'ffffdfdfdfd',
+                    title: 'Test child of before or after',
+                    extended: false,
+                  }
+                }
+              },
+              {
+                sectionName: 'Second child of before Or after',
+                tag: 'div',
+                children: [],
+                text: 'This is the second child',
+                contentType: 'Text',
+                style: {
+                  position: 'relative',
+                  fontSize: 40,
+                  backgroundColor: 'green',
+                  vbData: {
+                    id: 'ffffdfdfdfd',
+                    title: 'Test child of before or after',
+                    extended: false,
+                  }
+                }
+              }
+            ],
+            contentType: 'Components',
+            style: {
+              position: 'relative',
+              fontSize: 40,
+              backgroundColor: 'green',
+              vbData: {
+                id: 'someRdfdfdfkmdfkdandomId',
+                title: 'Test after',
+                extended: false,
+              }
+            }
+          }
+        ]
       }
     },
     title: {
@@ -649,23 +714,23 @@ const initialState = {
     },
     columnName: {
       position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
+      minWidth: 150,
+      maxWidth: 150,
     },
     columnPaymentMode: {
       position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
+      minWidth: 150,
+      maxWidth: 150,
     },
     columnLast4: {
       position: 'relative',
-      minWidth: 270,
-      maxWidth: 270,
+      minWidth: 150,
+      maxWidth: 150,
     },
     columnAction: {
       position: 'relative',
-      minWidth: 250,
-      maxWidth: 250,
+      minWidth: 150,
+      maxWidth: 150,
       display: 'flex',
       alignItems: 'center',
       padding: 0,
@@ -1506,7 +1571,6 @@ const initialState = {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
       backgroundColor: 'white',
       width: 92,
       height: '100%'
@@ -1547,11 +1611,13 @@ const initialState = {
       justifyContent: 'space-between'
     },
     bottom: {
-      position: 'relative',
+      position: 'absolute',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      marginBottom: 24
+      bottom: 0,
+      left: 0,
+      width: '100%'
     },
     option: {
       position: 'relative',
@@ -1783,7 +1849,7 @@ const initialState = {
     },
     last4: {
       position: 'relative',
-      width: '60%',
+      width: '20%',
       flex: 'initial'
     },
     expirationMonth: {

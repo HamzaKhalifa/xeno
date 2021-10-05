@@ -74,7 +74,7 @@ const PaymentMethods = () => {
           </VBDiv>
 
           <VBDiv style={{ ...paymentMethodsStyles.headerRight }}>
-          <VBLink to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton></VBLink>
+            <VBLink to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton1 }}><PlusIcon /></CustomButton></VBLink>
 
             <VBLink to='/paymentMethod'><CustomButton style={{ ...paymentMethodsStyles.inviteButton2 }}>Add a payment method</CustomButton></VBLink>
           </VBDiv>

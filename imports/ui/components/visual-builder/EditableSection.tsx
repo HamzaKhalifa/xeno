@@ -10,6 +10,7 @@ import PlusIcon from '/imports/ui/icons/PlusIcon'
 import DeleteIcon from '/imports/ui/icons/DeleteIcon'
 
 import { setThemeValue } from '/imports/ui/store/theme/actions'
+import makeId from '/imports/ui/utils/makeId'
 
 import useStyles from './styles'
 
@@ -36,7 +37,6 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
   
   //#region Event listeners
   const toggleSectionExtended = () => {
-    console.log('pathToValue', pathToValue)
     dispatch(setThemeValue([...pathToValue, 'vbData', 'extended'], !Boolean(sectionValue?.vbData?.extended)))
   }
 
@@ -44,17 +44,43 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
     const newList = sectionValue?.vbData?.[beforeOrAfter] ?? []
     newList.push({
       tag: 'div',
-      children: 'New Section Content',
+      children: [],
+      text: 'New Section content',
+      contentType: 'Text',
       style: {
         position: 'relative',
         marginTop: 10
         vbData: { 
-          title: 'New Section' 
+          id: makeId(10),
+          title: 'New Section',
         }
       }
     })
 
-    dispatch(setThemeValue([...pathToValue, 'vbData', (beforeOrAfter)], newList))
+    dispatch(setThemeValue([...pathToValue, 'vbData', beforeOrAfter], newList))
+  }
+
+  const addContentComponent = (e) => {
+    const newList = sectionData?.children ?? []
+    newList.push({
+      tag: 'div',
+      children: [],
+      text: 'New Section content',
+      contentType: 'Text',
+      style: {
+        position: 'relative',
+        marginTop: 10
+        vbData: { 
+          id: makeId(10),
+          title: 'New Section',
+        }
+      }
+    })
+
+    const newPathToValue = [...pathToValue]
+    newPathToValue.pop()
+
+    dispatch(setThemeValue([...pathToValue, 'children'], newList))
   }
 
   const deleteSection = () => {
@@ -72,10 +98,16 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
     dispatch(setThemeValue([...pathToValue, 'vbData', 'title'], e.target.value))
   }
 
+  const onContentTypeChange = (contentType => {
+    const newPathToValue = [...pathToValue]
+    newPathToValue.pop()
+    dispatch(setThemeValue([...newPathToValue, 'contentType'], contentType.id))
+  })
+
   const onContentChange = (e) => {
     const newPathToValue = [...pathToValue]
     newPathToValue.pop()
-    dispatch(setThemeValue([...newPathToValue, 'children'], e.target.value))
+    dispatch(setThemeValue([...newPathToValue, 'text'], e.target.value))
   }
   //#endregion Event listeners
 
@@ -106,7 +138,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
         {(isBefore || isAfter) && <DeleteIcon width={15} height={15} onClick={deleteSection} className={styles.deleteButton} />}
 
         <div
-          className={styles.sectionTitleContainer} 
+          className={styles.sectionTitleContainer}
           onClick={toggleSectionExtended} 
         >
           <AccordionIcon 
@@ -127,7 +159,54 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
       {Boolean(sectionValue?.vbData?.extended) && 
         <>
           {(isBefore || isAfter) && <VisualBuilderInput value={sectionValue?.vbData?.title} placeholder='Title' label='Section Title' type='text' className={styles.sectionTitleInput} onChange={onTitleChange} />}
-          {(isBefore || isAfter) && <VisualBuilderInput value={sectionData.children} placeholder='Content' label='Section Content' type='text' className={styles.sectionContentInput} onChange={onContentChange} />}
+
+          {(isBefore || isAfter) && 
+            <VisualBuilderSelector 
+              getOptionName={option => option.label} 
+              label='Content Type'
+              options={[{ id: 'Text', label: 'Text' }, { id: 'Components', label: 'Components' }]} 
+              value={{ Text: { id: 'Text', label: 'Text' }, Components: { id: 'Components', label: 'Components' }}[sectionData.contentType]}
+              onChange={onContentTypeChange}
+            />
+          }
+
+          {/* Content Text */}
+          {(isBefore || isAfter) && sectionData.contentType === 'Text' && 
+            <VisualBuilderInput 
+              value={sectionData.text} 
+              placeholder='Content' 
+              label='Section Content' 
+              type='text' 
+              className={styles.sectionContentInput} 
+              onChange={onContentChange} 
+            />
+          }
+
+          {/* Content components */}
+          {(isBefore || isAfter) && sectionData.contentType === 'Components' && 
+            <div className={styles.contentComponents}>
+              {sectionData.children.map((child, index) => {
+                let newPathToValue = [...pathToValue]
+                newPathToValue.pop()
+                newPathToValue = [...newPathToValue, 'children', index, 'style']
+                return (
+                  <EditableSection 
+                    key={index} 
+                    sectionTitle={child.style?.vbData?.title} 
+                    pathToValue={newPathToValue} 
+                    isBefore={isBefore}
+                    isAfter={isAfter}
+                  />
+                )
+              })}
+            </div>
+          }
+
+          {/* Add more content components */}
+          {(isBefore || isAfter) && sectionData.contentType === 'Components' && 
+            <VisualBuilderButton style={{ marginTop: 10, padding: 5 }} onClick={addContentComponent}>Add Child</VisualBuilderButton>
+          }
+
           {(isBefore || isAfter) && 
             <VisualBuilderSelector
               label='Element Type'
@@ -139,7 +218,6 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
               onChange={tag => {
                 const newPathToValue = [...pathToValue]
                 newPathToValue.pop()
-                console.log('newPathToValue', newPathToValue)
                 dispatch(setThemeValue([...newPathToValue, 'tag'], tag))
               }}
             />
@@ -185,7 +263,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
               'borderBottom', 'borderBottomWidth', 'borderBottomStyle', 'borderBottomColor',
               'borderLeft', 'borderLeftWidth', 'borderLeftStyle', 'borderLeftColor',
               'borderRight', 'borderRightWidth', 'borderRightStyle', 'borderRightColor',
-              'background-color', 'color', 'textAlign', 'verticalAlign',
+              'backgroundColor', 'color', 'textAlign', 'verticalAlign',
               'cursor', 'opacity', 'overlow', 'zIndex'
             ].map(((property, index) => (
               <VisualBuilderInput 
@@ -196,9 +274,6 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
                 type='text'
                 value={sectionValue[property] ?? ''} 
                 onChange={(e) => {
-                  console.log('pathToValue', pathToValue)
-                  console.log('e.target.value', e.target.value)
-                  console.log('sectionValue', sectionValue)
                   dispatch(setThemeValue([...pathToValue, property], e.target.value ?? ''))}
                 } 
               />

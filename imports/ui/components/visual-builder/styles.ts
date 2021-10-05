@@ -3,13 +3,14 @@ import { createUseStyles } from 'react-jss'
 const useStyles = createUseStyles({
   visualBuilderContainer: {
     width: 500,
-    top: '10%',
     backgroundColor: 'white',
     padding: 30,
     overflow: 'auto',
     height: '100vh',
     boxSizing: 'border-box',
     zIndex: 999,
+    position: 'sticky',
+    top: 0
   },
   themeElements: {},
   themeElement: {
@@ -97,6 +98,14 @@ const useStyles = createUseStyles({
   themeElementSections: {
     marginLeft: 20
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginBottom: 20
+  },
+  contentComponents: {
+    marginLeft: 20
+  }
 })
 
 export default useStyles

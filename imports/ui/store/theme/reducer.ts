@@ -6,7 +6,7 @@ import initialState from './initialState'
 
 const setThemeValue = (state, action) => {
   const { path, value } = action.payload
-  const newTheme = { ...state }
+  let newTheme = { ...state }
 
   let looper = { ...newTheme }
   path.forEach((key, index) => {
@@ -24,7 +24,10 @@ const setThemeValue = (state, action) => {
         Object.assign(looper, { key: value })
       }
     }
-  })  
+  }) 
+  
+  // If the path is an empty array, then we override the entire theme by the passed value
+  if (path.length === 0) newTheme = value
 
   return newTheme
 }
