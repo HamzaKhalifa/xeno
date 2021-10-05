@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 
 import VisualBuilder from '/imports/ui/components/visual-builder'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
-
 import useStyles from './styles'
 
 const withVisualBuilder = Component => props => {
@@ -13,13 +11,13 @@ const withVisualBuilder = Component => props => {
   const visualBuilderVisible = useSelector<any>(state => state.visualBuilder.visible)
 
   return (
-    <VBDiv className={styles.withVisualBuilderContainer}>
-      <VBDiv style={{ width: visualBuilderVisible ? 'calc(100% - 500px)' : '100%' }}>
+    <div className={styles.withVisualBuilderContainer}>
+      <div style={{ width: visualBuilderVisible ? 'calc(100% - 500px)' : '100%' }}>
         <Component {...props} />
-      </VBDiv>
+      </div>
       
       {visualBuilderVisible && <VisualBuilder />}
-    </VBDiv>
+    </div>
   )
 }
 

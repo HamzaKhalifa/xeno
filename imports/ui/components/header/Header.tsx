@@ -39,13 +39,14 @@ const Header = () => {
   
   return (
     <VBDiv style={{ ...(user ? headerStyles.loggedInHeaderContainer : headerStyles.headerContainer) }}>
-      <VBDiv style={{ ...headerStyles.left }}>
-        <VBLink to={user ? '/home' : '/login'}><HeaderIcon /></VBLink>
 
-        <VBDiv className={styles.links} style={{ ...headerStyles.links }}>
-          <VBLink to='#'><VBSpan style={{ ...headerStyles.link }}>Our Story</VBSpan></VBLink>
-          <VBLink to='#'><VBSpan style={{ marginRight: 16, marginLeft: 16, ...headerStyles.link }}>Our Services</VBSpan></VBLink>
-          <VBLink to='#'><VBSpan style={{ ...headerStyles.link }}>Our Products</VBSpan></VBLink>
+      <VBDiv style={{ ...headerStyles.left }}>
+        <VBLink style={{ ...headerStyles.homeLogo }} to={user ? '/home' : '/login'}><HeaderIcon /></VBLink>
+
+        <VBDiv style={{ ...headerStyles.links }}>
+          <VBLink style={{ ...headerStyles.link }} to='#'><VBSpan style={{ ...headerStyles.linkSpan }}>Our Story</VBSpan></VBLink>
+          <VBLink style={{ ...headerStyles.link }} to='#'><VBSpan style={{ marginRight: 16, marginLeft: 16, ...headerStyles.linkSpan }}>Our Services</VBSpan></VBLink>
+          <VBLink style={{ ...headerStyles.link }} to='#'><VBSpan style={{ ...headerStyles.linkSpan }}>Our Products</VBSpan></VBLink>
         </VBDiv>
 
         <CustomButton style={{ ...headerStyles.contactUsButton }}>Contact us</CustomButton>

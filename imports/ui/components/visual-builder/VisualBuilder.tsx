@@ -30,7 +30,8 @@ const VisualBuilder = () => {
   // Initialize builder by giving IDs to every style object
   React.useEffect(() => {
     const addIdsToBeforeOrAfter = (beforeOrAfter) => {
-      beforeOrAfter.style.vbData = { ...(beforeOrAfter.style?.vbData ?? {}), id: makeId(10) }
+      if (!beforeOrAfter.style.vbData.id)
+        beforeOrAfter.style.vbData = { ...(beforeOrAfter.style?.vbData ?? {}), id: makeId(10) }
       if (Array.isArray(beforeOrAfter.children)) {
         beforeOrAfter.children.forEach(child => addIdsToBeforeOrAfter(child))
       }
@@ -39,7 +40,11 @@ const VisualBuilder = () => {
     const newTheme = { ...theme }
     Object.keys(newTheme).forEach(key => {
       Object.keys(newTheme[key]).forEach(sectionKey => {
-        newTheme[key][sectionKey].vbData = { ...(newTheme[key][sectionKey].vbData ?? {}), id: makeId(10) }
+
+        if (!newTheme[key][sectionKey].vbData) {
+          newTheme[key][sectionKey].vbData = { ...(newTheme[key][sectionKey].vbData ?? {}), id: makeId(10) }
+        }
+
         if (newTheme[key][sectionKey].vbData?.before?.length > 0) {
           newTheme[key][sectionKey].vbData?.before?.forEach(before => addIdsToBeforeOrAfter(before))
           newTheme[key][sectionKey].vbData?.after?.forEach(after => addIdsToBeforeOrAfter(after))

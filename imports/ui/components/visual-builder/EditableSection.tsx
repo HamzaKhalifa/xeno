@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import VisualBuilderInput from '/imports/ui/components/visual-builder/visual-builder-input'
-import VisualBuilderButton from '/imports/ui/components/visual-builder/visual-builder-button'
-import VisualBuilderSelector from '/imports/ui/components/visual-builder/visual-builder-selector'
+import VisualBuilderInput from '../visual-builder/visual-builder-input'
+import VisualBuilderButton from '../visual-builder/visual-builder-button'
+import VisualBuilderSelector from '../visual-builder/visual-builder-selector'
+import VisualBuilderImageUpload from '../visual-builder/visual-builder-image-upload'
 
 import AccordionIcon from '/imports/ui/icons/AccordionIcon'
 import PlusIcon from '/imports/ui/icons/PlusIcon'
@@ -210,7 +211,7 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
           {(isBefore || isAfter) && 
             <VisualBuilderSelector
               label='Element Type'
-              options={['div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'link', 'span', 'p']}
+              options={['div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'link', 'span', 'p', 'img']}
               getOptionName={tag => tag}
               style={{ marginTop: 5, width: '100%' }}
               labelStyle={{ fontSize: 11 }}
@@ -236,6 +237,11 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
                 dispatch(setThemeValue([...newPathToValue, 'to'], e.target.value))
               }}
             />
+          }
+
+          {/* If it's an image, then we show the image input field */}
+          {(isBefore || isAfter) && sectionData.tag === 'img' && 
+            <VisualBuilderImageUpload />
           }
 
           <div className={styles.propertiesContainer}>

@@ -27,7 +27,6 @@ export interface ISection {
   }
 }
 
-
 const initialState = {
   home: {
     to: '/home',
@@ -981,6 +980,9 @@ const initialState = {
       justifyContent: 'flex-end',
       alignItems: 'center',
     },
+    homeLogo: {
+      position: 'relative'
+    },
     right: {
       position: 'relative',
       display: 'flex',
@@ -995,6 +997,9 @@ const initialState = {
       marginRight: 73
     },
     link: {
+      position: 'relative',
+    },
+    linkSpan: {
       position: 'relative',
       color: 'black'
     },

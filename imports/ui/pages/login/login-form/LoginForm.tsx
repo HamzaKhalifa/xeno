@@ -10,14 +10,12 @@ import CustomButton from '/imports/ui/components/custom-button'
 import Toast from '/imports/ui/components/toast'
 
 import FacebookIcon from '/imports/ui/icons/FacebookIcon'
-import GoogleIcon from '/imports/ui/icons/GoogleIcon'
-import LinkedinIcon from '/imports/ui/icons/LinkedinIcon'
 
 import validateEmail from '/imports/ui/utils/validateEmail'
 
 import remote from '/imports/api/remote'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
+import { VBDiv, VBH2, VBLink, VBSpan } from '/imports/ui/components/visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 

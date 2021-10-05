@@ -34,7 +34,7 @@ const Home = () => {
       <VBH2 style={{ ...homeStyles.title }}>Welcome to your client portal</VBH2>
 
       <VBDiv className={styles.sections} style={{ ...homeStyles.sections }}>
-        <VBLink className={styles.section} style={{ ...homeStyles.section }} to='#'>
+        <VBLink className={styles.section} style={{ ...homeStyles.section }} to='/invoices'>
           <VBH3 className={styles.sectionTitle} style={{ ...homeStyles.sectionTitle }}>Your Invoices</VBH3>
           <VBP className={styles.sectionDescription} style={{ ...homeStyles.sectionDescription }}>Consult my invoices</VBP>
         </VBLink>
