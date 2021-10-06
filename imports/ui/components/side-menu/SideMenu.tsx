@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import HomeIcon from '/imports/ui/icons/HomeIcon'
 import UserIcon from '/imports/ui/icons/UserIcon'
@@ -8,12 +8,11 @@ import InvoiceIcon from '/imports/ui/icons/InvoiceIcon'
 import PaymentMethodIcon from '/imports/ui/icons/PaymentMethodIcon'
 import ParametersIcon from '/imports/ui/icons/ParametersIcon'
 
-import Toast from '/imports/ui/components/toast'
 import CustomButton from '/imports/ui/components/custom-button'
 
 import { setVisualBuilderVisible } from '/imports/ui/store/visual-builder/actions'
 
-import { VBDiv, VBH2, VBH3, VBLink, VBP, VBSpan, VBForm } from '../visual-builder/visual-builder-elements/visualBuilderElements'
+import { VBDiv, VBLink } from '../visual-builder/visual-builder-elements/visualBuilderElements'
 
 import useStyles from './styles'
 
@@ -51,7 +50,7 @@ const SideMenu = (props: ISideMenu) => {
 
       <VBDiv className={styles.bottom} style={{ ...sideMenuStyles.bottom }}>
         <CustomButton style={{ ...sideMenuStyles.paramsButton }} onClick={onSettingsClicked}>
-          <ParametersIcon fill={visualBuilderVisible ? '#3CD2C8' : '#ABA5A7'} />
+          <ParametersIcon style={{ ...sideMenuStyles.paramsIcon }} fill={visualBuilderVisible ? '#3CD2C8' : '#ABA5A7'} />
         </CustomButton>
       </VBDiv>
       

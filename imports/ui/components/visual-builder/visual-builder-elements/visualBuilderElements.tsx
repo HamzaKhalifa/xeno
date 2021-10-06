@@ -54,12 +54,19 @@ const VBElement = ({ children, style }) => {
       const newTheme = { ...theme }
 
       // Recuresively look for the before or after section
-      const extendBeforeOrAfter = (beforeOrAfter) => {
+      const extendBeforeOrAfter = (beforeOrAfter, parents) => {
         if (beforeOrAfter.style?.vbData?.id === style?.vbData?.id && style?.vbData?.id) {
           beforeOrAfter.style.vbData.extended = true
+          // Extend all the parents if this is the right element
+          parents.forEach((parent, index) => {
+            // If it's the first parent, then the datastructure is different as this one doesn't contain vbData
+            if (index === 0) {
+              parent.extended = true
+            } else parent.vbData = { ...(parent.vbData ?? {}), extended: true }
+          })
         } else {
           if (Array.isArray(beforeOrAfter.children)) {
-            beforeOrAfter.children.forEach(child => extendBeforeOrAfter(child))
+            beforeOrAfter.children.forEach(child => extendBeforeOrAfter(child, [...parents, beforeOrAfter.style]))
           }
         }
       }
@@ -71,15 +78,16 @@ const VBElement = ({ children, style }) => {
             newTheme[key].extended = true
             newTheme[key][sectionKey].vbData = { ...(newTheme[key][sectionKey].vbData ?? {}), extended: true }
           } else {
-
             if (newTheme[key][sectionKey].vbData?.before?.length > 0) {
-              newTheme[key][sectionKey].vbData?.before?.forEach(before => extendBeforeOrAfter(before))
-              newTheme[key][sectionKey].vbData?.after?.forEach(after => extendBeforeOrAfter(after))
+              newTheme[key][sectionKey].vbData?.before?.forEach(before => extendBeforeOrAfter(before, [newTheme[key], newTheme[key][sectionKey]]))
+            }
+            if (newTheme[key][sectionKey].vbData?.after?.length > 0) {
+              newTheme[key][sectionKey].vbData?.after?.forEach(after => extendBeforeOrAfter(after, [newTheme[key], newTheme[key][sectionKey]]))
             }
           }
         })
       })
-
+      
       dispatch(setThemeValue([], newTheme))
     }
   }

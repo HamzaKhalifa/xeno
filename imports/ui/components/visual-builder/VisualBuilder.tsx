@@ -77,6 +77,8 @@ const VisualBuilder = () => {
         newTheme[key][sectionKey].vbData = { ...(newTheme[key][sectionKey].vbData ?? {}), extended: false }
         if (newTheme[key][sectionKey].vbData?.before?.length > 0) {
           newTheme[key][sectionKey].vbData?.before?.forEach(before => unextendBeforeOrAfter(before))
+        }
+        if (newTheme[key][sectionKey].vbData?.after?.length > 0) {
           newTheme[key][sectionKey].vbData?.after?.forEach(after => unextendBeforeOrAfter(after))
         }
       })
@@ -96,6 +98,7 @@ const VisualBuilder = () => {
         <VisualBuilderButton style={{ padding: 1, width: '50%' }} onClick={closeVisualBuilder}>Close</VisualBuilderButton>
         <VisualBuilderButton style={{ padding: 1, width: '50%' }} onClick={collapseAll}>Collapse All</VisualBuilderButton>
       </div>
+
       {Object.keys(theme).map((themeElement, themeElementIndex) => (
         <div className={styles.themeElement} key={themeElementIndex}>
           <div 
@@ -121,7 +124,7 @@ const VisualBuilder = () => {
             return (
               <div 
                 className={styles.themeElementSections} 
-                id={theme[themeElement][sectionTitle].vbData?.id} // Id used by react-scroll to scroll into this instance when the element is clicked
+                // id={theme[themeElement][sectionTitle].vbData?.id} // Id used by react-scroll to scroll into this instance when the element is clicked
                 key={index}
               >
                 {theme[themeElement][sectionTitle].vbData?.before?.map((beforeSection, index) => (

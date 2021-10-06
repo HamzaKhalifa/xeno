@@ -113,7 +113,8 @@ const EditableSection = ({ sectionTitle, pathToValue, isBefore = false, isAfter 
   //#endregion Event listeners
 
   return (
-    <div className={styles.section}>
+    // Id used by react-scroll to scroll into this instance when the element is clicked
+    <div className={styles.section} id={sectionValue?.vbData?.id} >
 
       {/* Add before Button  */}
       {(!isBefore && !isAfter) && 

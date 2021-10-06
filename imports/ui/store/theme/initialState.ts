@@ -1628,6 +1628,9 @@ const initialState = {
       position: 'relative',
       marginBottom: 16
     },
+    paramsIcon: {
+
+    },
     selectedOptionColor: '#3CD2C8',
     unselectedOptionColor: '#ABA5A7'
   },
