@@ -1,36 +1,32 @@
-export interface IThemeElement {
-  to: string
+export interface IVBData {
+  id: string
   extended: boolean
-}
-
-export interface ISection {
-  // ...CSS styles here for each section
-  vbData?: {
-    id: string
-    extended: boolean
-    title: string
-    before: [{
-      tag: string
-      contentType: 'Text' | 'Components'
-      children?: any
-      text?: string
-      style: {
-        // ...CSS styles here for each section
-        vbData: {
-          id: string
-          extended: boolean
-          // ...
-        }
-      }
-
-    }]
-  }
+  customPage?: boolean
+  title: string
+  tag: string
+  text?: string
+  contentType: 'Tag' | 'Components'
+  to?: string
+  children?: [{
+    // ...CSS styling
+    vbData: IVBData
+  }]
+  before: [{
+    // ...CSS styling
+    vbData: IVBData
+  }],
+  after: [{
+    // ...CSS styling
+    vbData: IVBData
+  }]
 }
 
 const initialState = {
   home: {
-    to: '/home',
-    extended: false,
+    vbData: {
+      to: '/home',
+      extended: false,
+    },
     homeContainer: {
       position: 'relative',
       display: 'flex',
@@ -181,7 +177,10 @@ const initialState = {
     }
   },
   contacts: {
-    to: '/contacts',
+    vbData: {
+      to: '/contacts',
+      extended: false,
+    },
     contactsContainer: {
       position: 'relative',
       display: 'flex',
@@ -383,7 +382,10 @@ const initialState = {
     }
   },
   invoices: {
-    to: '/invoices',
+    vbData: {
+      to: '/invoices',
+      extended: false,
+    },
     invoicesContainer: {
       position: 'relative',
       display: 'flex',
@@ -585,7 +587,10 @@ const initialState = {
     }
   },
   paymentMethods: {
-    to: '/paymentMethods',
+    vbData: {
+      to: '/paymentMethods',
+      extended: false,
+    },
     paymentMethodsContainer: {
       position: 'relative',
       display: 'flex',
